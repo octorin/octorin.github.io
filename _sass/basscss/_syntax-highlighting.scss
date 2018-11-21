@@ -1,119 +1,77 @@
-.highlight {
-  -webkit-text-size-adjust: none;
+.highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
 }
-
-.highlight .c,
-.highlight .cs,
-.highlight .cm,
-.highlight .cp,
-.highlight .c1 {
-  color: $hljs-comment;
-  font-style: italic;
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
 }
-
-.highlight .k,
-.highlight .kc,
-.highlight .kd,
-.highlight .kn,
-.highlight .kr,
-.highlight .kt,
-.highlight .kp {
-  color: $hljs-keyword;
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #657b83;
 }
-
-.highlight .na,
-.highlight .nb,
-.highlight .nc,
-.highlight .no,
-.highlight .nd,
-.highlight .ni,
-.highlight .ne,
-.highlight .nf,
-.highlight .nl,
-.highlight .nn,
-.highlight .nx {
-  color: $hljs-name;
+.highlight .cp {
+  color: #b58900;
 }
-
-.highlight .mi,
-.highlight .il {
-  color: $hljs-number;
+.highlight .nt {
+  color: #b58900;
 }
-
-.highlight .s,
-.highlight .sb,
-.highlight .sc,
-.highlight .sd,
-.highlight .s2,
-.highlight .s3,
-.highlight .sh,
-.highlight .si,
-.highlight .sx,
-.highlight .sr,
-.highlight .ss,
-.highlight .s1 {
-  color: $hljs-string;
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
 }
-
-.hljs-title,
-.hljs-id,
-.scss .hljs-preprocessor {
-  color: $hljs-title;
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
   font-weight: bold;
 }
-
-.highlight .k {
-  font-weight: normal;
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
 }
-
-.highlight .nc,
-.highlight .no {
-  color: $hljs-type;
+.highlight .kc {
+  color: #cb4b16;
 }
-
-.highlight .o {
-  color: $hljs-tag;
-  font-weight: normal;
+.highlight .kt {
+  color: #cb4b16;
 }
-
-.highlight .nb {
-  color: $hljs-attribute;
+.highlight .kd {
+  color: #cb4b16;
 }
-
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
 .highlight .sr {
-  color: $hljs-regexp;
+  color: #2aa198;
 }
-
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #859900;
+}
 .highlight .ss {
-  color: $hljs-symbol;
-}
-
-.hljs-built_in {
-  color: $hljs-built-in;
-}
-
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-pi,
-.hljs-doctype,
-.hljs-shebang,
-.hljs-cdata {
-  color: $hljs-preprocessor;
-  font-weight: bold;
-}
-
-.hljs-deletion {
-  background: $hljs-deletion;
-}
-
-.hljs-addition {
-  background: $hljs-addition;
-}
-
-.diff .hljs-change {
-  background: $hljs-change;
-}
-
-.hljs-chunk {
-  color: $hljs-chunk;
+  color: #859900;
 }

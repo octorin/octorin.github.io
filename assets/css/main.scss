@@ -3,7 +3,6 @@
 ---
 @charset "utf-8";
 
-
 @import 'variables';
 @import 'media-queries';
 @import 'basscss';
@@ -23,7 +22,6 @@
 @import 'publications';
 
 @import 'blockquotes';
-@import 'code';
 @import 'gallery';
 @import 'gists';
 @import 'links';
@@ -32,3 +30,5 @@
 @import 'social-icons';
 @import 'tables';
 @import 'typography';
+
+@import 'syntax-highlighting';
