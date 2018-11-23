@@ -7,7 +7,6 @@ description: > # this means to ignore newlines until "url:"
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 
 url:  # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
@@ -43,7 +42,7 @@ text:
     older: 'Older'
 
 # Comments
-disqus_shortname: al-folio # put your disqus shortname
+disqus_shortname: # put your disqus shortname
 
 # Optional features
 show_social_icons:  false
@@ -59,9 +58,9 @@ collections:
       layout: post
     output: true
     permalink: /news/:path/
-  projects:
-    output: true
-    permalink: /projects/:path/
+  #projects:
+    #output: true
+    #permalink: /projects/:path/
 
 news_limit: 5
 
@@ -78,39 +77,39 @@ highlighter: rouge
 
 # Includes & excludes
 include: ['_pages']
-exclude: [vendor]
+exclude: [vendor, node_modules]
 
 # Plug-ins
 plugins:
     - jekyll-email-protect
     - jekyll-paginate
-    - jekyll/scholar
     - jemoji
     - jekyll-katex
+    # - jekyll/scholar
 
 # Jekyll-Scholar
-scholar:
+# scholar:
 
-  last_name: Einstein
+  # last_name: Park
 
-  style: apa
-  locale: en
+  # style: apa
+  # locale: en
 
-  sort_by: year
-  order: descending
+  # sort_by: year
+  # order: descending
 
-  source: /_bibliography/
-  bibliography: papers.bib
-  bibliography_template: bib
+  # source: /_bibliography/
+  # bibliography: papers.bib
+  # bibliography_template: bib
 
-  replace_strings: true
-  join_strings: true
+  # replace_strings: true
+  # join_strings: true
 
-  details_dir: bibliography
-  details_layout: bibtex.html
-  details_link: Details
+  # details_dir: bibliography
+  # details_layout: bibtex.html
+  # details_link: Details
 
-  query: "@*"
+  # query: "@*"
 
 # -----------------------------------------------------------------------------
 # Other settings

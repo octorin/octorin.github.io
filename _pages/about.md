@@ -7,10 +7,10 @@ description: PhD Candidate, Department of Sociology, New York University
 profile:
   align: right
   image: img_0930.jpg
-  address: >
-    <p>Department of Sociology</p>
-    <p>295 Lafayette Street</p>
-    <p>New York, NY 10012</p>
+  # address: >
+    # <p>Department of Sociology</p>
+    # <p>295 Lafayette Street</p>
+    # <p>New York, NY 10012</p>
 
 news: true
 social: true
