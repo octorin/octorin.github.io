@@ -47,7 +47,7 @@ disqus_shortname: # put your disqus shortname
 # Optional features
 show_social_icons:  false
 enable_anchorjs:    false
-enable_katex:       true
+#enable_katex:       true
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -71,22 +71,31 @@ news_limit: 5
 # Build settings
 markdown: kramdown
 kramdown:
-    input: GFM
-    syntax_highlighter: rouge
-highlighter: rouge
+    math_engine: mathjax
+    # input: GFM
+    # syntax_highlighter: rouge
+# highlighter: rouge
 
 # Includes & excludes
 include: ['_pages']
-exclude: [vendor, node_modules]
+exclude: [vendor]
+keep_files: [images]
+#exclude: [vendor, node_modules]
 
 # Plug-ins
 plugins:
     - jekyll-email-protect
     - jekyll-paginate
-    - jemoji
-    - jekyll-katex
+    # - jemoji
+    # - jekyll-katex
     # - jekyll/scholar
 
+# katex:
+    # js_path : "/assets/js/"
+    # rendering_options:
+        # displayMode: false
+        # maxSize: 1000
+        
 # Jekyll-Scholar
 # scholar:
 
@@ -114,6 +123,7 @@ plugins:
 # -----------------------------------------------------------------------------
 # Other settings
 # -----------------------------------------------------------------------------
+
 jquery_version: "1.12.4"
-katex_version: "0.1.3"
-anchorjs_version: "3.2.2"
+# katex_version: "0.10.0"
+# anchorjs_version: "3.2.2"
