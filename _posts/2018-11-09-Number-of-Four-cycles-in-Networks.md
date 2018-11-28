@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Number of Four-cycles in Networks
-date: 2017-06-26 21:48
+date: 2018-11-09 21:48
 author: baruuum
 comments: false
 categories: [Graph Theory, R]
