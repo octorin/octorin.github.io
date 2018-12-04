@@ -44,6 +44,14 @@
   </div>
   
   <script src="{{ '/assets/highlighting/highlight.pack.js' | prepend: site.baseurl | prepend: site.url }}"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+  <script> window.onload = function () {
+    var allPre, i, j;
+    allPre = document.getElementsByClassName("language-r");
+    for (i = 0, j = allPre.length; i < j; i++) {
+        hljs.highlightBlock(allPre[i]);
+    }
+    };
+  </script>
   
 </header>
