@@ -7,7 +7,7 @@ comments: true
 categories: [Graph Theory, R]
 ---
 
-I'm in the middle of moving my website from WordPress to Github Pages. I've exported my posts on WordPress into a `.xml` file and have used [this great program](https://github.com/theaob/wpXml2Jekyll) to transform the pages into Markdown documents. One problem that remains is translating equations from the blogs in Wordpress to those in Jekyll. So, I'm trying different things out. So, here is a test (by the way, the reason for working on this weird mathematical problem, if I remember correctly, was the amazing <em>AJS</em> article by Peter Bearman, James Moody, and Katherine Stovel on the sexual network of high school students).
+I'm in the middle of moving my website from WordPress to Github Pages. I've exported my posts on WordPress into a `.xml` file and have used [this great program](https://github.com/theaob/wpXml2Jekyll) to transform the pages into Markdown documents. One problem that remains is translating equations from the blogs in Wordpress to those in Jekyll. So, I'm trying different things out. So, here is a test using the same post that I've used to test Wordpress when I started there (by the way, the reason for working on this weird mathematical problem, if I remember correctly, was the amazing <em>AJS</em> article by Peter Bearman, James Moody, and Katherine Stovel on the sexual network of high school students).
 
 <hr />
 
@@ -47,30 +47,4 @@ $$  \begin{aligned} \vert\mathcal C_4(G)\vert &= \frac{1}{8}\left( \text{trace}(
 
 <hr />
 
-Works great! The `R` code that was used is shown below:
-
-{% highlight r %}
-library("magrittr")
-
-# file names
-fn <- "filname.md"
-out <- "output.md"
-
-# convert equations
-x <- readLines(fn) %>%
-    gsub("&amp;fg=0*", "", .) %>%
-    gsub("&amp;=&amp;", "&=", .) %>%
-    gsub("(<\\s*p.*?>)(.*?)(<\\s*/p\\s*>)", "\\2", .) %>%
-    gsub("(\\$\\s*latex\\s*\\\\displaystyle)(.*?)(\\$)", 
-         "\n\n$$ \\2 \n\n", .) %>%
-    gsub("\\\\begin\\\{array\\\}\\\{.*?\\\}", "\\\\begin{aligned}", .) %>%
-    gsub("\\\\end\\\{array\\\}", "\\\\end{aligned}", .) %>%
-    gsub("(\\$\\s*latex\\s*\\\{)(.*?)(\\\}\\s*\\$)", "$$ \\2 $$", .)
-
-# check
-cat(x)
-
-# write out
-writeLines(x, out)
-{% endhighlight %}
-
+Looks great!
