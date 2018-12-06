@@ -48,9 +48,9 @@ $$  D_{KL}(p\|q_1)- D_{KL}(p\|q_2) = E_p[\log q_2] - E_p[\log q_1].  $$
 
 In words, ''truth'' is subtracted out and only the cross-entropy remains. Hence, we do not need to know the entropy of the true distribution in order to calculate the relative divergence from the truth of the candidate models: the quantity $ E_p[\log q(x\vert\theta_k)]  $ is sufficient to compare them.
 
-Still, we need to know $ p  $ in order to calculate $ E_p[\log q(\cdot\vert\theta_k)]  $ as it is an average over the distribution $ p  $. But, as assumed, $ p  $ is not known. Hence, we start with a different question: namely, what is the value $ \theta_0\in \Theta  $, $ \Theta  $ denoting the parameter space, such that the K-L divergence of $ q(\cdot \vert \theta)  $ to $ p  $ is minimized? That is, we are seeking the value $ \theta_0  $ that solves the minimization problem
+Still, we need to know $ p  $ in order to calculate $ E_p[\log q(\cdot\vert\theta_k)]  $ as it is an average over the distribution $ p  $. But, as assumed, $ p  $ is not known. Hence, we start with a different question: namely, what is the value $ \theta_0\in \Theta  $, $ \Theta  $ denoting the parameter space, such that the K-L divergence of $ q(\cdot \vert \theta)  $ to $ p  $ is minimized? That is, we are seeking the value $ \theta_0  $ that solves the problem
 
-$$  \min_{\theta\in \Theta}D_{KL}(p\|q_{\theta})=\min_{\theta\in \Theta}\int p(y) \log\left(\frac{p(y)}{q(y\vert\theta)}\right) dy.  $$
+$$  \min_{\theta\in \Theta}D_{KL}(p\|q_{\theta})=\max_{\theta\in \Theta}\int p(y) \log\left(\frac{p(y)}{q(y\vert\theta)}\right) dy.  $$
 
 If there exists such a $ \theta_0  $, it has to satisfy the first-order condition
 
