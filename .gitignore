@@ -5,3 +5,7 @@ _site
 .ruby-version
 Gemfile.lock
 .Rhistory
+Rmarkdown/*
+
+# exceptions
+!Rmarkdown/.keep
