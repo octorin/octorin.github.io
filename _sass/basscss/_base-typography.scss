@@ -47,6 +47,11 @@ pre {
   overflow-x: auto;
 }
 
+:not(pre) > code {
+    color: black;
+    background-color: $lighter-gray;
+}
+
 hr {
   margin-top: $space-3;
   margin-bottom: $space-3;
