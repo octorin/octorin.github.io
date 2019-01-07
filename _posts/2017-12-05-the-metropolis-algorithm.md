@@ -16,28 +16,27 @@ The Metropolis algorithm can be summarized as follows. Starting from a parameter
 
 <ol>
 <li>sample $ \theta^*  $ from $ J(\theta^*,\theta^t)  $.</li>
-<li>calculate $ r(\theta^*,\theta^t) = p(\theta^*)/p(\theta^t).  $</li>
-<li>calculate $ \rho(\theta^*, \theta^t) = \min(r,1)  $</li>
+<li>calculate $ \rho= \min[1, p(\theta^*)/p(\theta^t)].  $</li>
 <li>sample $ u \sim \text{unif}(0,1)  $.</li>
-<li>if $ u\le \rho  $ then $ \theta^{t+1} = \theta^*  $, else set $ \theta^{t+1}=\theta^t  $.</li>
+<li>if $ u\le \rho$ then $ \theta^{t+1} = \theta^*  $, else set $ \theta^{t+1}=\theta^t  $.</li>
 </ol>
 
 Describing why this algorithm belongs to the family of Markov chain Monte Carlo methods will make also clear why it works.
 
-First, given the current value $ \theta^t  $ and a proposal $ \theta^*  $, the algorithm will move to $ \theta^* $ whenever $ p(\theta^* > p(\theta^t)$. Otherwise, the algorithm moves to $ \theta^* $ with probability $ \rho $ and stays at its current value with probability $ 1-\rho $. Note that the algorithm is ignorant of the history of previous visits and depends solely on where it is right now in determining the next sampled value. Thus, the probabilistic movement of the sampler can be conceptualized as a first-order Markov chain where the <em>transition probabilities</em> are defined in terms of $ J(\cdot,\cdot)  $ and $ \rho(\cdot,\cdot)  $.
+First, given the current value $ \theta^t  $ and a proposal $ \theta^*  $, the algorithm will move to $ \theta^* $ whenever $ p(\theta^* > p(\theta^t)$. Otherwise, the algorithm moves to $ \theta^* $ with probability $ \rho $ and stays at its current value with probability $ 1-\rho $. Note that the algorithm is ignorant of the history of previous visits and depends solely on where it is right now in determining the next sampled value. Thus, the probabilistic movement of the sampler can be conceptualized as a first-order Markov chain where the <em>transition probabilities</em> are defined in terms of $ J(\cdot,\cdot)  $ and $ \rho$.
 
-For instance, suppose that the distribution from which we want to sample is supported on three finite values, i.e., $ \text{Supp}(\theta) = \Theta= \\{\theta_1,\theta_2,\theta_3\\}$ with $ p(\theta_i)=p_i, i=1,2,3.  $ Suppose further that the proposal distribution $ J  $ proposes the two states at which we are currently <em>not</em> with equal probability. That is, if we are at $ \theta_2  $, $ J(\theta_1,\theta_2)=J(\theta_3,\theta_2)=1/2  $. Pick any two states $ i  $ and $ j  $ and consider the ratio of moving from $ i  $ to $ j  $ and from $ j  $ to $ i  $, i.e., $ \Pr[\theta_i\rightarrow \theta_j]/\Pr[\theta_j\rightarrow \theta_i]  $. The numerator can be expressed as the probability that $ \theta_j  $ is proposed times the probability that it is accepted given that it was proposed. Thus, we have
+For instance, suppose that the distribution from which we want to sample is supported on three finite values, i.e., $\Theta= \\{\theta_1,\theta_2,\theta_3\\}$ with $ p(\theta_i)=p_i, i=1,2,3.  $ Suppose further that the proposal distribution $ J  $ proposes the two states at which we are currently <em>not</em> with equal probability. That is, if we are at $ \theta_2  $, $ J(\theta_1,\theta_2)=J(\theta_3,\theta_2)=1/2  $. Pick any two states $ i  $ and $ j  $ and consider the ratio of moving from $ i  $ to $ j  $ and from $ j  $ to $ i  $, i.e., $ \Pr[\theta_i\rightarrow \theta_j]/\Pr[\theta_j\rightarrow \theta_i]  $. The numerator can be expressed as the probability that $ \theta_j  $ is proposed times the probability that it is accepted given that it was proposed. Thus, we have
 
-$$  \Pr[\theta_i\rightarrow \theta_j] = \frac{1}{2} \cdot \rho(\theta_j,\theta_i) = .5\min(p_j/p_i,1). $$
+$$  \Pr[\theta_i\rightarrow \theta_j] = \frac{\rho}{2} = \frac{\min(p_j/p_i,1)}{2}. $$
 
-$ \Pr[\theta_j\rightarrow\theta_i]  $ might be derived in the same way. Now, it turns out that the ratio of moving to the two different states is proportional to the ratio of the corresponding probabiliites of our target distribution. Namely,
+$ \Pr[\theta_j\rightarrow\theta_i]  $ can be derived in the same way. Now, it turns out that the ratio of moving to the two different states is proportional to the ratio of the corresponding probabiliites of our target distribution. Namely,
 
-$$ \begin{aligned}\frac{\Pr[\theta_i\rightarrow \theta_j]}{\Pr[\theta_j\rightarrow \theta_i]}&=\frac{.5\min(p_j/p_i,1)}{.5\min(p_i/p_j,1)}\\
+$$ \begin{aligned}\frac{\Pr[\theta_i\rightarrow \theta_j]}{\Pr[\theta_j\rightarrow \theta_i]}&=\frac{.5\times \min(p_j/p_i,1)}{.5\times \min(p_i/p_j,1)}\\
 &=\frac{p_j/p_i}{1}\mathbb I(p_i>p_j)+ \frac{1}{p_i/p_j}\mathbb I(p_j>p_i) + 1\cdot \mathbb I(p_i=p_j)\\&=\frac{p_j}{p_i},\end{aligned} $$
 
 where $ \mathbb I(z)  $ is an indicator function that is equal to one if $ z  $ is true and zero otherwise. Thus, the <em>relative</em> probability of moving from a state to another matches exactly the ration of their probabilility under the target density. This means by sampling the trajectory of the Markov chain, we will be sampling proportional to the target distribtuion!
 
-Let us make this intition a little bit more rigorous. We will assume that the parameter space $ \Theta  $ is both discrete and finite. I call it the <em>parameter space</em> as I have a Bayesian model in mind, but this is nothing but the state-space in Markov chains and could be also (as in the example from above) be the support of any random variable. For countably infinite or uncountably infinite parameter spaces, the intuition of what follows will remain the same, although a rigorous treatment would require knowledge of measure theory. For example, if $ \Theta  $ is an uncountable set, the probability to move to a particular $ \theta\in \Theta  $ will be always zero, so that the transition probabilities are ill-defined in the current framework. Instead, we have to conceptualize the transition probabilities in terms of subsets of $ \Theta  $, $ A\in \mathcal F  $, where $ \mathcal F  $ is usually taken as the Borel Sigma-algebra of $ \Theta  $. Also, concepts such as recurrence of Markov chains have to be refined to match the infinite nature of the state space. Here, we will not deal with these complexities but simply assume that all the results on finite parameter spaces carry over to infinite ones.
+Let us make this intition a little bit more rigorous. We will assume that the parameter space $ \Theta  $ is both discrete and finite. I call it the <em>parameter space</em> as I have a Bayesian model in mind, but this is nothing but the state-space in Markov chains and could be also (as in the example from above) be the support of any random variable. For countably infinite or uncountably infinite parameter spaces, the intuition of what follows will remain the same, although a rigorous treatment would require knowledge of measure theory. For example, if $ \Theta  $ is an uncountable set, the probability to move to a particular $ \theta\in \Theta  $ will be always zero, so that the transition probabilities are ill-defined in the current framework. Instead, we have to conceptualize the transition probabilities in terms of subsets of $ \Theta  $, $ A\in \mathcal F  $, where $ \mathcal F  $ is usually taken as the Borel Sigma-algebra of $ \Theta  $. Here, we will not deal with these complexities but simply assume that all the results on finite parameter spaces carry over to infinite ones.
 
 We assume that for all $ \theta_1,\theta_2\in \Theta\times\Theta,  $ we have $ J(\theta_1,\theta_2) > 0  $. In words, this means that regardless what our current parameter value is, we have a non-zero probability to jump to <em>any</em> other value in the parameter space in the next move. Thus, the condition ensures that we can jump from any state to every other state at each iteration of the Markov chain. This implies, in turn, that the Markov chain constructed by $ J  $ and $ \rho  $ is <em>irreducible</em> (all states in $ \Theta  $ belong to the same communicating class), <em>positive recurrent</em> (for all $ \theta_i\in \Theta  $ the expected waiting time for a chain starting at $ \theta_i  $ to return to state $ \theta_i  $ is finite), and <em>aperiodic</em> (for at least one $ \theta_i\in \Theta  $, we have $ \Pr[\theta_i \rightarrow \theta_i]>0  $. But as all states of $ \Theta  $ belong to the same communicating class, the period of the Markov chain is equal to one). Given these results, standard Markov chain theory tells us that a <em>unique</em> stationary distribution $ \pi  $ of the Markov chain exists. In plain words, this means that the Markov chain will converge to the <em>same</em> distribution $ \pi  $ <em>irrespective of</em> the specific initial point from which we have started the chain.
 
@@ -59,11 +58,13 @@ so that
 
 $$  p(\theta^t)P(\theta^t, \theta^{t+1}) =p(\theta^{t+1})P(\theta^{t+1},\theta^t).  $$
 
-The last equation is called the <em>detailed balance equation</em>, and a Markov chain with stationary distribution satisfying the detailed balance condition is said to be <em>reversible</em>. The detailed balance condition implies that $ p  $ is indeed the stationary distribution. To illustrate this point, suppose the chain has reached $p$ at its $ t  $th iteration and consider the probability that it will move to state $ \theta_j  $ in the next iteration. This probability can be written as
+The last equation is called the <em>detailed balance equation</em> and a Markov chain with stationary distribution satisfying the detailed balance condition is said to be <em>reversible</em>. The important point here is that a distribution $p$ satisfies the detailed balance condition only if $p$ is indeed the stationary distribution of the Markov chain. 
+
+To illustrate, suppose the chain has reached $p$ at its $ t  $th iteration and consider the probability that it will move to state $ \theta_j  $ in the next iteration. This probability can be written as
 
 $$  \sum_{i}p(\theta_i) P(\theta_i, \theta_j)=\sum_{i}p(\theta_j)P(\theta_j,\theta_i)=p(\theta_j)\sum_{i}P(\theta_j,\theta_i) = p(\theta_j).  $$
 
-for all $ j  $, where we used reversibility at the second step. Thus, if the chain is at $ p  $ it will stay there, which is precisely what is meant by a distribution being stationary. Yet, by hypothesis, the stationary distribution is unique, which shows that $p$ has to be the distribution we are seeking.
+for all $ j  $, where we used reversibility at the second step and the sum of $P(\theta_j, \theta_i) = \Pr[\theta_j \rightarrow \theta_i]$ over $i$ is equal to one. Thus, if the chain is at $p$, the probability of moving to $\theta_j$ in the next step is equal to $p(\theta_j)$; in other words, once the Markov Chain has reached this distribution, it will stay there. This is precisely what is meant by a distribution being stationary. Yet, we know that the stationary distribution is unique, which shows that $p$ has to be the distribution we are seeking.
 
 In sum, by irreducibility, positive recurrence, and aperiodicity, the Markov chain constructed by the Metrpolis algorithm has a <em>unique</em> stationary distribution; and further using the detailed balance condition, we have shown that this unique stationary distribution coincides with the target density from which we want to sample. Thus every new value of $ \theta\in\Theta  $ that is visited after the Markov chain has reached the stationary distribution will be a sample from $ p  $.
 
@@ -73,14 +74,14 @@ However, although we know that the chain will <em>eventually</em> converge to $ 
 
 Now, let us try the algorithm out. Consider a situation in which we know in advance that our parameter vector $ \theta=[\theta_1,\theta_2]  $ is distributed according to a bivariate Normal distribution, $ \text{Normal}_2(\mu,\Sigma)  $, but have no way to sample from it. Suppose that $ \mu_1=0,\mu_2=1  $, $ \text{diag}(\Sigma) = \mathbf I_2  $, and the off-diagonal element of $ \Sigma $ is equal to $ 0.5  $. To use the Metropolis algorithm, we have to define a proposal distribution, which is symmetric. Define $ J(\theta^{t+1},\theta^t) = (\theta_1^t + Z_1, \theta_2^t + Z_2)  $ where $ Z_i \sim \text{Normal}(0,\delta^2), i=1,2  $. That is, the proposal distribution is a bivariate Normal distribution with standard deviations $ (\delta,\delta)  $ centered at current parameter value (and zero correlations between the dimensions). 
 
-To calculate $ r  $ and $ \rho  $, we have to evaluate some function that is proportional to the target density. For the bivariate normal density with the parameters as defined above, we have
+To calculate $ \rho  $, we have to evaluate some function that is proportional to the target density. For the bivariate normal density with the parameters as defined above, we have
 
 $$ \begin{aligned}
 f(\theta|\mu,\Sigma) &=\propto \exp\left(-\frac{2}{3}\Big[\theta_1^2 + (\theta_2-1)^2 - \theta_1(\theta_2-1)\Big]\right)\\
 &= h(\theta)
 \end{aligned}$$
 
-In coding the algorithm, we use the log of $ h(\theta)  $, which can be exponentiated to calculate the acceptance ratio. First, we load some libraries.
+In coding the algorithm, we use the log of $ h(\theta)  $, which can be exponentiated to calculate the acceptance ratio $\rho$ (In fact, it is often simpler to keep the log-scale and compare it to $\log u$ where $u$ is a $\text{Uniform}(0,1)$ random variate). First, we load some libraries.
 
 {% highlight r %}
 library('data.table')
@@ -264,9 +265,9 @@ grid.arrange(grobs = g.list, nrow = 2)
 
 <center><img  src="/assets/img/metropolis2.jpg" width="500" height="500" /></center>
 
-As expected, for too small values of $ \delta  $, the sampler is very inefficient, while for too large values, the sampler takes much fewer steps; and if it moves, it moves in large steps. For the current application, a delta value near unity seems to be the best choice.
+As expected, for too small values of $ \delta  $, the sampler is very inefficient, while for too large values, the sampler takes much fewer steps; and if it moves, it moves in large steps. For the Normal distribution, analytical results exist that determine the optimal values of $\delta$. Yet, for other distributions, the only way to choose a good $\delta$ is often to monitor the acceptance rates, i.e., how often a proposal was accepted/rejected. If the acceptance rate is too high, this means that the sampler moves in too small steps, so increasing $\delta$ would give better results; the opposite holds for the case in which the acceptance rate is too low.
 
-A last important point, which was also noted above, is that the Metropolis algorithm as other MCMC mdethods will generate generate <em>dependent</em> samples. Indeed the next sampled value will inherently depend on where the sampler was at the previous step, which is clear from the <em>traceplot</em> (shown below). But even from the figure above, especially for small values of $ \delta  $, we can see immediately that the samples are not independent.
+A last important point, which was also noted above, is that the Metropolis algorithm as other MCMC mdethods will generate generate <em>dependent</em> samples. Indeed the next sampled value will inherently depend on where the sampler was at the previous step, which is clear from the <em>traceplot</em> (shown below). But even from the figure above, especially for small values of $ \delta  $, we can see immediately that the samples are not independent. The autocorrelation between subsequent samples can be reduced by sampling only the $k$th step of the sampler, which is called <em> thinning</em>. Yet, using more efficient algorithms, such as Hamiltonian Monte Carlo, is probably a better way to go, especially if all the parameters in the model are continuous.
 
 {% highlight r %}
 res <- metropolis(theta = c(-4, 4), 
