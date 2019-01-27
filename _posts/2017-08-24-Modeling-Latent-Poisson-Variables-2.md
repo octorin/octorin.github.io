@@ -118,21 +118,21 @@ $$ \ln p(\theta\vert  \mathbf y) = \ln K + \ln p(\theta) + \ln p(\mathbf y \vert
 
 where $$K$$ is a constant that does not depend on the parameters. As the posterior is a linear function of the log-likelihood and the log-prior density, we can add the contribution of each observation to the log-likelihood one-by-one in order to obtain the posterior density we desire. For example,
 
-->`y ~ normal(mu, sigma)`<-
+    y ~ normal(mu, sigma)
 
 is equivalent to
 
-->`for (i in 1:N) y[i] ~ normal(mu, sigma)`<-
+    for (i in 1:N) y[i] ~ normal(mu, sigma)
 
 and does the same thing in `STAN` as
 
-->` target += normal_lpdf(y\vert  mu,sigma), `<-
+    target += normal_lpdf(y | mu, sigma)
 
 which is, again, equivalent to
 
-->` for (i in 1:N) target += normal_lpdf(y[i]\vert mu, sigma). `<-
+    for (i in 1:N) target += normal_lpdf(y[i] | mu, sigma).
 
-The meaning of the first statement is quite clear, we are asserting that the likelihood is the pdf of a $$N$$ iid $$\text{Normal}(\mu, \sigma)$$ variables. With this statement `STAN` will calculate the log-likelihood for us, which is then used to sample from the posterior. But, rather than writing it in a "sampling statement" as in the first line, we can simply take the log of the density function of a $$\text{Normal}(\mu, \sigma)$$ variable, evaluate it at each data point, and sum these values up. This is what we are doing in the second and the third line. `normal_lpdf(y\vert mu,sigma)` is the log of the normal density with parameters `mu` and `sigma` evaluated at `y`. By putting this expression on the RHS of the syntax, we require `STAN` to increment the log target density by this amount, which is equivalent to the adding each observation's contribution to the log-likelihood.
+The meaning of the first statement is quite clear, we are asserting that the likelihood is the pdf of a $$N$$ iid $$\text{Normal}(\mu, \sigma)$$ variables. With this statement `STAN` will calculate the log-likelihood for us, which is then used to sample from the posterior. But, rather than writing it in a "sampling statement" as in the first line, we can simply take the log of the density function of a $$\text{Normal}(\mu, \sigma)$$ variable, evaluate it at each data point, and sum these values up. This is what we are doing in the second and the third line. `normal_lpdf(y | mu,sigma)` is the log of the normal density with parameters `mu` and `sigma` evaluated at `y`. By putting this expression on the RHS of the syntax, we require `STAN` to increment the log target density by this amount, which is equivalent to the adding each observation's contribution to the log-likelihood.
 
 Thus, the model can be written as
 
@@ -158,14 +158,14 @@ model {
    omega ~ uniform(0, 1);  // prior
    for (nn in 1:N) { // likelihood
       if (y[nn] == 1) {
-         target += poisson_lpmf(0 \vert lambda);
+         target += poisson_lpmf(0 | lambda);
       } else if (y[nn] == 2) {
-         target += poisson_lpmf(1\vert lambda);
+         target += poisson_lpmf(1 | lambda);
       } else if (y[nn] == 3) {
-         target += log(exp(poisson_lcdf(4\vert lambda))
-                       - exp(poisson_lcdf(1\vert lambda)));
+         target += log(exp(poisson_lcdf(4 |lambda))
+                       - exp(poisson_lcdf(1| lambda)));
       } else {
-         target += poisson_lccdf(4\vert lambda);
+         target += poisson_lccdf(4 | lambda);
       }
    }
 
