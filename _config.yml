@@ -29,7 +29,7 @@ google_analytics: UA-130591619-1
 # Blog
 # -----------------------------------------------------------------------------
 blog_name: 
-blog_description: 
+blog_description: This blog is a result of a time-consuming habit of mine to write down notes on quantitative methods that I find difficult to understand (which includes quite everything). Many of the current posts are based on notes that I've created in my first three years of graduate school. It often happens that I have to return to these notes and, when time allows, I'm trying to revise and post them here. <br /> <br /> The best way to understand statistical models, I came to believe, is to play around with them by the means of simulations. Hence, almost all of the post have some  theoretical considerations followed by a simulation example. Equations that appear in the posts will be unnecessarily lengthy. This is intentional, since what is deemed to be "clear," "obvious," and "easily shown" by writers of statistics and mathematics textbooks is often not at all easy to grasp for sociologists like myself. I hope that these materials will be helpful for students who are as confused by these methods as I was when writing down these notes.
 
 # Pagination
 paginate: 10
