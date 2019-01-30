@@ -108,3 +108,17 @@
         font-size:25px;
     }
 }
+
+.header-bar-blog{
+    border-bottom: 1px solid $light-gray;
+    font-size: 15px;
+    display: block;
+    opacity: 1;
+    width: 100%;
+    text-align: stretch;
+    padding-top: 25px;
+    padding-bottom: $space-4;
+    line-height: 1.5em;
+    z-index: 25;
+    color: $dark-gray
+}
