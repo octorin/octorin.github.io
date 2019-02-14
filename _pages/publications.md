@@ -9,7 +9,7 @@ years: [2018, 2019]
 <h3 class="year">{{2019}}</h3>
 -  \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion," with Delia Baldassarri, forthcoming in _Journal of Politics_
 1. <a href="https://github.com/baruuum/Replication_Code/tree/master/2019_WTCW">Replication Code</a>
-2. <a href="https://doi.org/10.7910/DVN/UFZTYU"> Full replication materials (Dataverse) </a>
+2. <a href="https://doi.org/10.7910/DVN/UFZTYU"> Full Replication Materials (Dataverse) </a>
 
 <h3 class="year">{{2018}}</h3>
   - "How Are We Apart?Continuity and Change in the Structure of Ideological Disagreement in the American Public, 1980-2012," <em>Social Forces</em>, Volume 96, Issue 4, pp. 1757-1784.
