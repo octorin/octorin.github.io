@@ -8,6 +8,7 @@ years: [2018, 2019]
 
 <h3 class="year">{{2019}}</h3>
 -  \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion," with Delia Baldassarri, forthcoming in _Journal of Politics_
+1. <a href="{{ '/assets/pdf/CultureWar.pdf' | prepend: site.baseurl | prepend: site.url }}"> Accepted Manuscript </a>
 1. <a href="https://github.com/baruuum/Replication_Code/tree/master/2019_WTCW">Replication Code</a>
 2. <a href="https://doi.org/10.7910/DVN/UFZTYU"> Data </a>
 
