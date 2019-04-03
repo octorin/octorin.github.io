@@ -96,9 +96,11 @@ title('Prior, Likelihood, and Posterior')
 <img src="/assets/img/misleading2.png" width="500" height="400" />
 </center>
 
-Recall that <strong>the likelihood is not a probability distribution of $ \theta  $: it is the Binomial pmf treated as a function of $ \theta  $.</strong> It will sum to one if we sum of the number of successes from $ 0  $ to $ n=10  $ with fixed $ \theta  $; but it will <**not** integrate to one if we integrate the likelihood function with respect to $ \theta  $ over $ [0,1]  $ for fixed number of successes and trials. Thus, the area under the purple curve in the figure is not equal to one.
+Recall that <strong>the likelihood is not a probability distribution of $ \theta  $: it is the Binomial pmf treated as a function of $ \theta  $.</strong> It will sum to one if we sum of the number of successes from $ 0  $ to $ n=10  $ with fixed $ \theta  $; but it will **not** integrate to one if we integrate the likelihood function with respect to $ \theta  $ over $ (0,1)  $ for fixed number of successes and trials. Thus, the area under the purple curve in the figure is not equal to one. For the example case we can calculate the area under the curve explicitly as 
 
-So, what people often do is to scale the likelihood such that the area under the curve becomes equal to one. This can be done by using the fact that the the expression involving $ \theta  $ in the binomial likelihood is the kernel of a Beta distribution. Using this _trick_, we get the well-known plot
+$$ \binom{10}{2} \int_{(0,1)} \theta^2(1-\theta)^8 d\theta = \frac{1}{11}.$$
+
+So, what people often do is to scale the likelihood such that the area under the curve becomes equal to one. Using this _trick_, we get the well-known plot
 
 {% highlight r %}
 # prior

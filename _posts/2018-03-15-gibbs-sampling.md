@@ -89,7 +89,7 @@ Now, consider the transition kernel of the Gibbs sampler, i.e.,
 
 $$  P(\theta^t, \theta^{t+1}) = p_1(\theta_1^{t+1}\vert\theta_2^t)\cdot p_2(\theta_2^{t+1}\vert\theta_1^{t+1}).  $$
 
-Suppose the sampler is at $ \theta^t  $ and consider he probability that it will visits a subset $ A  $ of $ \Theta  $ at iteration $ t+1  $:
+Suppose the sampler is at $ \theta^t  $ and consider the probability that it visits a subset $ A  $ of $ \Theta  $ at iteration $ t+1  $:
 
 $$  \int_A P(\theta^t, \theta^{t+1}) d\theta^{t+1} = \int_A p_1(\theta_1^{t+1}\vert\theta_2^t)\cdot p_2(\theta_2^{t+1}\vert\theta_1^{t+1})d\theta^{t+1}.  $$
 
