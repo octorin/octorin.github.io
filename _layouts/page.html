@@ -16,8 +16,13 @@ layout: default
     {% include news.html %}
   {% endif %}
 
+  {% if page.recent_posts %}
+    {% include recentposts.html %}
+  {% endif %}
+
   {% if page.social %}
     {% include social.html %}
   {% endif %}
+  
 
 </div>

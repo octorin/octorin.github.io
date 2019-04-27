@@ -1,0 +1,17 @@
+<div class="news">
+  <h2>blog updates</h2>
+  <table>
+   {% for post in site.posts limit: 3 %}
+      <tr>
+        <td class="date">
+            {{ post.date | date: "%b %-d, %Y" }}
+        </td>
+        <td class="social"> 
+            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }} </a> 
+        </td>
+      </tr>
+    {% endfor %}
+   </table>
+</div>
+
+
