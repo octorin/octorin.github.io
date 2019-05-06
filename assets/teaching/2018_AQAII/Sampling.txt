@@ -1,0 +1,416 @@
+
+library(dplyr)
+library(data.table)
+library(ggplot2)
+library(grid)
+library(gridExtra)
+### set seed
+set.seed(123)
+
+## Set up Population (4-Component Normal Mixture) ----------------------
+
+# population size
+p.size <- 100000
+# set components
+g <- 4
+# proportion of components
+lambda <- gtools::rdirichlet(1,rep(1,g))
+# cumulative sum
+c.lambda <- cumsum(lambda)
+# component means
+p.means <- runif(g, -2,2)
+# component sds
+p.sd <- runif(g, .3,.5)
+# random number to select components
+r.num <- runif(p.size)
+# select components according to lambda probs
+which.comp <- findInterval(r.num,c.lambda) + 1
+# generate population
+p.dist <- sapply(which.comp, function (w) {
+   rnorm(1,p.means[w],p.sd[w])
+})
+# rescale to have mean zero
+p.dist <- p.dist - mean(p.dist)
+# graph of population distribution
+g.p.dist <- p.dist %>% 
+   as.data.table %>%
+   setnames('x') %>%
+   ggplot(aes(x)) + 
+      geom_histogram(col='white', 
+                     fill='darkblue',
+                     alpha=.6,
+                     bins=100) + 
+      geom_vline(xintercept=0, linetype=2)+
+      theme_classic() + 
+   ggtitle('Population Distribution') +
+   labs(x=NULL,y=NULL) + 
+   lims(x=c(-4,4))+
+   theme(axis.title.y=element_blank(),
+         axis.text.y=element_blank(),
+         axis.ticks.y=element_blank(),
+         axis.text.x=element_text(size=15))
+# look at distribution
+g.p.dist
+
+## Set up Functions ----------------------------------------------------
+
+# function to generate plot
+gen.plot <- function(df, s.size, c.size=1, strat=F, b=100) {
+   df %>%
+      as.data.table %>%
+      ggplot(aes(x=.)) + 
+      geom_histogram(col='darkblue',
+                     fill='white',
+                     bins=b) + 
+      geom_vline(xintercept=0, linetype=2)+
+      geom_vline(xintercept=mean(df), linetype=1)+
+      theme_classic() + 
+      lims(x=c(-4,4))+
+      labs(x=NULL, y=NULL) + 
+      theme(axis.title.y=element_blank(),
+            axis.text.y=element_blank(),
+            axis.ticks.y=element_blank(),
+            axis.text.x=element_text(size=15)) +
+      ggtitle(paste0(
+         ifelse(c.size==1,
+               'Simple Random Sampling',
+               ifelse(strat,
+                      paste0('Stratified Sampling (# Strata = ',
+                             c.size, 
+                             ')'), 
+                      paste0('Cluster Sampling (# Clusters = ',
+                            c.size, 
+                            ')')
+                      )
+               ),
+               ' with Sample Size ',
+               s.size
+         )
+      )
+              
+}
+
+# function to generate simple random sample
+gen.srs <- function(samp.size) {
+   p.dist[sample(1:p.size, samp.size, replace=F)]
+}
+
+# function for cluster sampling
+gen.crs <- function(num.c) {
+   ind <- p.clusters %in% sample(u.clusts, num.c, replace=F)
+   p.dist[ind]
+}
+
+# function for stratified sampling
+gen.strs <- function(within.samps) {
+   sapply(1:n.strata, function(w) {
+      sample(p.dist[strata==w], within.samps, replace=F)
+   }) %>% c
+}
+
+
+## Simple Random Sampling ----------------------------------------------
+
+# sample.size
+sample.size=10
+grid.arrange(g.p.dist, 
+             gen.plot(gen.srs(sample.size), s.size=sample.size),
+             ncol=1)
+
+## Central Limit Theorem 
+
+# number of times to sample
+n.rep <- 5000
+# sample size
+sample.size=500
+m.srs <- sapply(seq_len(n.rep), 
+                  function(...) gen.srs(sample.size)) %>%
+         colMeans
+grid.arrange(g.p.dist,
+             gen.plot(m.srs, s.size=sample.size, c.size=1,b=500),
+             ncol=1)
+
+## Cluster Sampling (Worst Case) ---------------------------------------
+
+# sort (this is the key!)
+p.dist <- sort(p.dist)
+no.clusters <- 100
+cluster.sizes <- p.size/no.clusters
+p.clusters <- rep(1:no.clusters,each=cluster.sizes)
+u.clusts <- unique(p.clusters) %>% sort
+p.dist.mat <- cbind(p.dist, p.clusters)
+p.dist.df <- data.table(p.dist.mat)
+max.vals <- p.dist.df[,max(p.dist),by=p.clusters]
+ggplot(p.dist.df, aes(x=p.dist)) +
+   geom_density(fill='darkblue', 
+                  col='white',
+                  alpha=.2) + 
+   # geom_vline(xintercept=0, linetype=2)+
+   geom_vline(xintercept=max.vals[1:(nrow(max.vals)-1),V1],
+              col='black',
+              alpha=.5)+
+   theme_classic() + 
+   ggtitle('Population Distribution') +
+   labs(x=NULL,y=NULL) + 
+   lims(x=c(-4,4))+
+   theme(axis.title.y=element_blank(),
+         axis.text.y=element_blank(),
+         axis.ticks.y=element_blank(),
+         axis.text.x=element_text(size=15))
+ 
+n.clust = 10
+grid.arrange(g.p.dist, 
+             gen.plot(gen.crs(n.clust), 
+                      c.size=n.clust,
+                      s.size=n.clust*cluster.sizes),
+             gen.plot(gen.srs(n.clust*cluster.sizes),
+                      s.size=n.clust*cluster.sizes),
+             ncol=1)
+
+## why?? 
+
+samp.c <- sample(u.clusts, n.clust, replace=F)
+index <- p.clusters %in% samp.c
+samp <- p.dist[index]
+
+# show different clusters
+gen.plot(p.dist[p.clusters==samp.c[2]],
+         s.size=n.clust*cluster.sizes,
+         c.size=10)
+
+
+## Central Limit Theorem 
+
+n.rep <- 5000
+# cluster size (vary cluster size)
+n.clust=20
+
+m.srs <- sapply(seq_len(n.rep), 
+                function(...) gen.srs(n.clust*cluster.sizes)) %>%
+   colMeans
+m.crs <- sapply(seq_len(n.rep),
+                function(...) gen.crs(n.clust)) %>%
+   colMeans
+grid.arrange(g.p.dist,
+             gen.plot(m.crs,
+                      s.size=n.clust*cluster.sizes,
+                      c.size=n.clust),
+             gen.plot(m.srs, 
+                      s.size=n.clust*cluster.sizes,
+                      c.size=1,
+                      b=500),
+             ncol=1)
+
+
+### Cluster Sampling (Best case scenario) -------------------------------
+
+# reshuffle (again, this is the key!)
+p.dist <- p.dist[sample(seq_along(p.dist),
+                        length(p.dist),
+                        replace=F)
+                 ]
+no.clusters <- 100
+cluster.sizes <- p.size/no.clusters
+p.clusters <- rep(1:no.clusters,each=cluster.sizes)
+u.clusts <- unique(p.clusters) %>% sort
+p.dist.mat <- cbind(p.dist, p.clusters)
+p.dist.df <- data.table(p.dist.mat)
+max.vals <- p.dist.df[,c(min(p.dist),max(p.dist)),by=p.clusters]
+ggplot(p.dist.df, aes(x=p.dist)) +
+   geom_density(fill='darkblue', 
+                col='white',
+                alpha=.2) + 
+   # geom_vline(xintercept=0, linetype=2)+
+   geom_vline(xintercept=max.vals[,V1],
+              col='black',
+              alpha=.5)+
+   theme_classic() + 
+   ggtitle('Population Distribution') +
+   labs(x=NULL,y=NULL) + 
+   lims(x=c(-4,4))+
+   theme(axis.title.y=element_blank(),
+         axis.text.y=element_blank(),
+         axis.ticks.y=element_blank(),
+         axis.text.x=element_text(size=15))
+
+# compare
+n.clust = 10
+grid.arrange(g.p.dist, 
+             gen.plot(gen.crs(n.clust), 
+                      c.size=n.clust,
+                      s.size=n.clust*cluster.sizes),
+             gen.plot(gen.srs(n.clust*cluster.sizes),
+                      s.size=n.clust*cluster.sizes),
+             ncol=1)
+
+## why? (show a list of different clusters)
+samp.c <- sample(u.clusts, n.clust, replace=F)
+index <- p.clusters %in% samp.c
+samp <- p.dist[index]
+
+gen.plot(p.dist[p.clusters==samp.c[3]],
+         s.size=n.clust*cluster.sizes,
+         c.size=10)
+
+## Central Limit Theorem (best case)
+
+n.rep <- 5000
+# sample size
+n.clust=10
+
+m.srs <- sapply(seq_len(n.rep), 
+                function(...) gen.srs(n.clust*cluster.sizes)) %>%
+   colMeans
+m.crs <- sapply(seq_len(n.rep),
+                function(...) gen.crs(n.clust)) %>%
+   colMeans
+grid.arrange(g.p.dist,
+             gen.plot(m.crs,
+                      s.size=n.clust*cluster.sizes,
+                      c.size=n.clust,
+                      b=500),
+             gen.plot(m.srs, 
+                      s.size=n.clust*cluster.sizes,
+                      c.size=1,
+                      b=500),
+             ncol=1)
+
+
+## Stratified Sampling (Best case) -------------------------------------
+
+# again sort them!
+p.dist <- sort(p.dist)
+# define strata
+n.strata <- 50
+n.within <- p.size/n.strata
+strata <- rep(1:n.strata, each=n.within)
+
+
+p.dist.mat <- cbind(p.dist, strata)
+p.dist.df <- data.table(p.dist.mat)
+max.vals <- p.dist.df[,max(p.dist),by=strata]
+ggplot(p.dist.df, aes(x=p.dist)) +
+   geom_density(fill='darkblue', 
+                col='white',
+                alpha=.2) + 
+   # geom_vline(xintercept=0, linetype=2)+
+   geom_vline(xintercept=max.vals[1:(nrow(max.vals)-1),V1],
+              col='black',
+              alpha=.5)+
+   theme_classic() + 
+   ggtitle('Population Distribution') +
+   labs(x=NULL,y=NULL) + 
+   lims(x=c(-4,4))+
+   theme(axis.title.y=element_blank(),
+         axis.text.y=element_blank(),
+         axis.ticks.y=element_blank(),
+         axis.text.x=element_text(size=15))
+
+# show some values
+within.samps <- 20
+grid.arrange(g.p.dist, 
+             gen.plot(gen.strs(within.samps), 
+                      c.size=n.strata,
+                      s.size=n.strata*within.samps,
+                      strat=T),
+             gen.plot(gen.srs(n.strata*within.samps),
+                      s.size=n.strata*within.samps),
+             ncol=1)
+
+## why?? 
+
+# show different strata
+gen.plot(p.dist[strata==50],
+         s.size=n.strata*within.samps,
+         c.size=n.strata,
+         strat=T)
+
+
+## Central Limit Theorem 
+
+n.rep <- 5000
+withins.samps <- 1
+
+m.srs <- sapply(seq_len(n.rep), 
+                function(...) gen.srs(n.strata*within.samps)) %>%
+   colMeans
+m.strs <- sapply(seq_len(n.rep),
+                function(...) gen.strs(within.samps)) %>%
+   colMeans
+grid.arrange(g.p.dist,
+             gen.plot(m.strs,
+                      s.size=n.strata*within.samps,
+                      c.size=n.strata,
+                      strat=T,
+                      b=500),
+             gen.plot(m.srs, 
+                      s.size=n.strata*within.samps,
+                      c.size=1,
+                      b=500),
+             ncol=1)
+
+
+### Stratified Sampling (worst-case scenario) --------------------------
+
+# reshuffle (again, this is the key!)
+p.dist <- p.dist[sample(seq_along(p.dist),
+                        length(p.dist),
+                        replace=F)
+                 ]
+# define strata
+n.strata <- 50
+n.within <- p.size/n.strata
+strata <- rep(1:n.strata, each=n.within)
+
+
+p.dist.mat <- cbind(p.dist, strata)
+p.dist.df <- data.table(p.dist.mat)
+max.vals <- p.dist.df[,c(min(p.dist),max(p.dist)),by=strata]
+ggplot(p.dist.df, aes(x=p.dist)) +
+   geom_density(fill=viridis::viridis(1, begin=.5), 
+                col='white',
+                alpha=.2) + 
+   geom_vline(xintercept=max.vals[,V1],
+              col='black',
+              alpha=.5)+
+   theme_classic() + 
+   ggtitle('Population Distribution') +
+   labs(x=NULL,y=NULL) + 
+   lims(x=c(-4,4))+
+   theme(axis.title.y=element_blank(),
+         axis.text.y=element_blank(),
+         axis.ticks.y=element_blank(),
+         axis.text.x=element_text(size=15))
+
+# show some values
+within.samps <- 2
+grid.arrange(g.p.dist, 
+             gen.plot(gen.strs(within.samps), 
+                      c.size=n.strata,
+                      s.size=n.strata*within.samps,
+                      strat=T),
+             gen.plot(gen.srs(n.strata*within.samps),
+                      s.size=n.strata*within.samps),
+             ncol=1)
+
+
+## Central Limit Theorem 
+
+n.rep <- 5000
+withins.samps <- 1
+
+m.srs <- sapply(seq_len(n.rep), 
+                function(...) gen.srs(n.strata*within.samps)) %>%
+   colMeans
+m.strs <- sapply(seq_len(n.rep),
+                 function(...) gen.strs(within.samps)) %>%
+   colMeans
+grid.arrange(g.p.dist,
+             gen.plot(m.strs,
+                      s.size=n.strata*within.samps,
+                      c.size=n.strata,
+                      strat=T),
+             gen.plot(m.srs, 
+                      s.size=n.strata*within.samps,
+                      c.size=1),
+             ncol=1)

@@ -1,0 +1,489 @@
+
+
+
+** SETTING UP THE SESSION -------------------------------
+
+* clear everything
+clear all
+
+* setting maxvar
+set maxvar 30000
+
+* set working directory
+cd d:\wd\stata
+* Load data set 
+*use "GSS7214_R3.DTA"
+
+* Save under different name
+*save "gss7214.dta"
+use gss7214.dta, clear
+
+* keep only post 2009 years
+keep if year>= 2010
+
+
+/** LaborForce Participation **/
+
+* female
+gen Female = sex == 2 if sex <.
+lab var Female "Gender"
+lab def G 0 "Male" 1 "Female"
+lab val Female G
+
+* age
+gen Age18 = age - 18
+lab var Age18 "Age"
+
+* LFP
+gen LFP=wrkstat<5
+replace LFP=wrkstat if wrkstat>=.
+lab var LFP "Labor force participation"
+lab def LFP 0 "Out" 1 "In"
+lab val LFP LFP
+
+
+/** Labor Force Participation **/
+
+* quadratic
+logit LFP c.Age18##c.Age18
+predict Yhat1 if e(sample)
+tw (line Yhat1 Age18, sort)
+* WHY DOES THE CURVE NOT LOOK QUADRATIC??
+* Because the model is quadratic with respect to the logits not the probabilities!
+* that is "logit = b0 + b1 (age) + b2 (age^2)",
+* but "p = 1/(1+exp(-b0 - b1 (age) - b2 (age^2))", which is not quadratic
+predict Xb1 if e(sample), xb 
+tw (line Xb1 Age18, sort), ytitle("Logit") 
+
+
+* add interactions
+logit LFP Age18 c.Age18#c.Age18 /// age terms
+	i.Female /// gender
+	i.Female#c.Age18 i.Female#c.Age18#c.Age18, /// interactions
+	nolog nohead
+* ALL SIGNIFICANTLY DIFFERENT FROM ZERO, WHAT CAN WE INFER FROM THIS??
+
+/** Tests for joint significance **/
+
+* Wald test
+testparm i.Female#c.Age18 i.Female#c.Age18#c.Age18
+* Likelihood-ratio test
+quietly logit LFP Age18 c.Age18#c.Age18 c.Age18#c.Age18 ///
+	i.Female ///
+	i.Female#c.Age18 i.Female#c.Age18#c.Age18
+estimates store full
+quietly logit LFP Age18 c.Age18#c.Age18 c.Age18#c.Age18 ///
+	i.Female 
+estimates store restricted
+lrtest full restricted
+
+
+/** Plotting Results (the old way) **/
+
+* predict probability
+qui logit LFP Age18 c.Age18#c.Age18 c.Age18#c.Age18 /// age terms
+	i.Female /// gender
+	i.Female#c.Age18 i.Female#c.Age18#c.Age18, /// interactions
+	nolog nohead
+* predict probability
+predict Yhat2 if e(sample)
+* separate by gender & rename
+separate Yhat2, by(Female)
+rename Yhat20 Yhat2m
+rename Yhat21 Yhat2f
+lab var Yhat2m "Predicted Probability, Male"
+lab var Yhat2f "Predicted Probability, Female"
+
+* plot
+tw (line Yhat2m Age18, sort) ///
+	(line Yhat2f Age18, sort)
+* add color
+tw (line Yhat2m Age18,sort lc(blue)) ///
+(line Yhat2f Age18, sort lc(red))
+
+* Observed Proportions?
+qui reg LFP i.Age18  /// age terms
+        i.Female /// gender
+        i.Female#i.Age18, /// interactions
+		nohead
+* WHY ARE WE NOT USING ANY SQUARED TERMS???
+* A: Because by letting Age18 be a set of dummy variables
+*    we are in modeling the proportion of LFP=1 for "all" combinations
+*    of age and gender
+
+* get proportions
+predict Obspr if e(sample)
+* Again, these predicted values are just the observed proportions!
+* you can check this by the following code:
+bysort Age18 Female: egen Obscheck = mean(LFP)
+* The "bysort (varlist) :" executes a command for subgroups defined by the categories of (varlist)
+* the "egen" function is just a "extended gen" function (so that we can generate variables using functions like mean, median, etc.)
+* Thus, in sum, "bysort Age18 Female: egen Obscheck = mean(LFP)" calcualtes the mean of LFP for each combination of gender and age
+* but as LFP is dummy coded, this is just the proportion of LFP=1 for all those subgroups.
+scatter Obspr Obscheck
+cor Obspr Obscheck
+drop Obscheck
+
+* get unique combinations of LFP Age18 and Female
+egen CombLFP = tag(LFP Age18 Female)
+* (the "tag" function will return a "1" for each unique combination of the categories,
+*  for redundant observations it returns a "0").
+* if the meaning of this statement is not clear, I encourage you to use the following lines of commands
+* and have a direct look into the data
+gsort -CombLFP -Female -LFP Age18
+bro LFP Age18 Female CombLFP
+
+* add observed proportions to plot (note that scatter comes first!)
+tw (scatter Obspr Age18 if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr Age18 if Female==1 & CombLFP==1, mc(red) m(oh)) ///
+   (line Yhat2m Age18,sort lc(blue)) (line Yhat2f Age18, sort lc(red))
+
+
+ * add legend 
+tw (scatter Obspr Age18 if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr Age18 if Female==1 & CombLFP==1, mc(red) m(oh)) ///
+   (line Yhat2m Age18,sort lc(blue)) (line Yhat2f Age18, sort lc(red)), ///
+   legend(label(1 "Observed(%), Male")) legend(label(2 "Observed(%), Female"))
+
+ 
+* change legend order
+tw (scatter Obspr Age18 if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr Age18 if Female==1 & CombLFP==1, mc(red) m(oh)) ///
+   (line Yhat2m Age18,sort lc(blue)) (line Yhat2f Age18, sort lc(red)), ///
+   legend(label(1 "Observed Proportion, Male")) legend(label(2 "Observed Proportion, Female")) ///
+   legend(order(1 3 2 4))
+   
+* change size of legend and add title
+tw (scatter Obspr Age18 if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr Age18 if Female==1 & CombLFP==1, mc(red) m(oh)) ///
+   (line Yhat2m Age18,sort lc(blue)) (line Yhat2f Age18, sort lc(red)), ///
+   legend(label(1 "Observed Proportion, Male")) legend(label(2 "Observed Proportion, Female")) ///
+   legend(order(1 3 2 4)) ///
+   legend(pos(3) size(small) subtitle({bf: Gender}))
+* the {bf: Gender} in the subtitle option specifies that "Gender" should be written in boldface
+   
+   
+* add subtitles to legend
+tw (scatter Obspr Age18 if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr Age18 if Female==1 & CombLFP==1, mc(red) m(oh)) ///
+   (line Yhat2m Age18,sort lc(blue)) (line Yhat2f Age18, sort lc(red)), ///
+   legend(label(1 "Observed Proportion, Male")) legend(label(2 "Observed Proportion, Female")) ///
+   legend(pos(3) size(small) subtitle({bf: Gender}, size(small)))  ///
+   legend(order(- "{bf: Male}" 1 3 - "{bf: Female}" 2 4))
+ * the "-" in the order option of legend says STATA to reserve that place and insert the subsequent text
+
+* Now we can shorten the labels
+tw (scatter Obspr Age18 if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr Age18 if Female==1 & CombLFP==1, mc(red) m(oh)) ///
+   (line Yhat2m Age18,sort lc(blue)) (line Yhat2f Age18, sort lc(red)), ///
+   legend(label(1 "Observed Proportion")) legend(label(2 "Observed Proportion")) ///
+   legend(label(3 "Predicted Probability")) legend(label(4 "Predicted Probability")) /// !!!
+   legend(pos(3) size(small) subtitle({bf: Gender}, size(small)))  ///
+   legend(order(- "{bf: Male}" 1 3 - "{bf: Female}" 2 4))
+
+ * Lastly, lets change the angle of the xlabs
+tw (scatter Obspr Age18 if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr Age18 if Female==1 & CombLFP==1, mc(red) m(oh)) ///
+   (line Yhat2m Age18,sort lc(blue)) (line Yhat2f Age18, sort lc(red)), ///
+   legend(label(1 "Observed Proportion")) legend(label(2 "Observed Proportion")) ///
+   legend(label(3 "Predicted Probability")) legend(label(4 "Predicted Probability")) /// 
+   legend(pos(3) size(small) subtitle({bf: Gender}, size(small)))  ///
+   legend(order(- "{bf: Male}" 1 3 - "{bf: Female}" 2 4)) ///
+   xlab(,angle(horizontal)) ///
+   xtitle("Age") ytitle("Prob. Labor Force Participation")
+
+
+   
+/** How to use MARGINS **/
+
+drop Yhat1 Yhat2
+
+* run logistic regression
+logit LFP c.age i.Female
+* predicted probabilities
+predict yhat if e(sample)
+
+tw (line yhat age, sort) // we see zig-zagged lines, why?
+tw (scatter yhat age) // Aha!
+
+* things become more complicated as we control for more vars
+drop yhat
+* add education
+logit LFP c.age i.Female c.educ
+predict yhat if e(sample)
+tw line yhat age,sort
+tw scatter yhat age
+
+* THE MARGINS COMMAND
+drop yhat
+qui logit LFP c.age i.Female c.educ 
+* let's try it out
+margins
+predict yhat if e(sample)
+sum yhat
+
+* we can calculate also the margins "over" subgroups
+margins, over(Female)
+* this is just the average of yhat within subgroups
+sum yhat if Female==0
+sum yhat if Female==1
+
+* we can also calculate the margins "at" different variable values
+margins, at(Female=(0 1))
+* note that the "over" option is different from the "at" option!
+* "over" computes averages over subgroups in your sample
+* "at" computes average assuming everyone in your sample is 
+* `at' that value!
+* To demonstrate this, we might do the follwing
+
+* store results from margins into a matrix
+mat mres = r(b)
+
+* lets reproduce these results
+qui logit
+* store coefficient matrix
+mat b = e(b)
+mat list b
+
+* linear predictors for male and females (note the (1) and (0) in place of the Female dummy!)
+gen xb_f = b[1,1]*age + b[1,3]*(1) + b[1,4]*educ + b[1,5] if e(sample)
+gen xb_m = b[1,1]*age + b[1,3]*(0) + b[1,4]*educ + b[1,5] if e(sample)
+* predicted probabilities using the formula p(w) = 1/(1+exp(-x)) 
+gen yhat_f = 1/(1+ exp(-xb_f))
+gen yhat_m = 1/(1+ exp(-xb_m))
+* compare results
+mat list mres
+sum yhat_f yhat_m
+
+* If you use the "at" option, it is important to predict only in your data!
+* For example,
+margins, at(age=(20(10)400))
+* note also that the confidence interval goes below zero!
+
+/** Marginsplot **/
+* we can plot the results after margins!
+qui margins, at(age=(18(1)89))
+marginsplot
+qui margins, over(age)
+marginsplot
+
+* Margins is most useful if you want to fix many variables
+* first, we fix gender to female and years of education to 12 years, while varying the age of the respondents
+qui margins, at(age=(18(1)89) Female=1 educ=12) 
+marginsplot, name(g1)
+* next we set Female and educ to their means except age at their means
+qui margins, at(age=(18(1)89)) atmeans 
+marginsplot, name(g2)
+* we can also let two variables vary
+qui margins, at(age=(18(1)89) educ=(9 12 20) Female=1)
+marginsplot, name(g3)
+graph combine g1 g2 g3
+graph drop _all
+
+* the marginsplot can be customized the usual way
+* change xlabes
+margins, at(age=(18(1)89) (median) educ Female=1) 
+marginsplot, xlabel(20(10)90)
+* change titles
+marginsplot, ///
+	xlabel(20(10)90) ///
+	ytitle("Predicted Probabilities") ///
+	xtitle("Age") ///
+	title("Labor Force Participation and Age") ///
+	note("Predicted Probability for women with 13 (median) years of education based on Model 1")
+
+* change pointwise the points to a line
+marginsplot, ///
+	xlabel(20(10)90) ///
+	ytitle("Predicted Probabilities") ///
+	xtitle("Age") ///
+	title("Labor Force Participation and Age") ///
+	note("Predicted Probability for women with 13 (median) years of education based on Model 1") ///
+	recast(line) 
+
+* change pointwise boxplots to lines
+marginsplot, ///
+	xlabel(20(10)90) ///
+	ytitle("Predicted Probabilities") ///
+	xtitle("Age") ///
+	title("Labor Force Participation and Age") ///
+	note("Predicted Probability for women with 13 (median) years of education based on Model 1") ///
+	recast(line) ///
+	recastci(rline)
+
+* change line pattern of ci
+marginsplot, ///
+	xlabel(20(10)90, angle(0)) ///
+	ytitle("Predicted Probabilities") ///
+	xtitle("Age") ///
+	title("Labor Force Participation and Age") ///
+	note("Predicted Probability for women with 13 (median) years of education based on Model 1") ///
+	recast(line) ///
+	recastci(rline) ciopts(lc(gray) lp(-) lw(vthin))
+	
+
+/** Use MARGINS to generate same plot as Mike's **/
+
+logit LFP age c.age#c.age c.age#c.age /// age terms
+	i.Female /// gender
+	i.Female#c.age i.Female#c.age#c.age, /// interactions
+	nolog nohead
+
+margins, at(age=(18(1)89) Female=(0 1)) vsquish
+* show plot
+marginsplot
+* show without estimated CI
+marginsplot, noci
+* change colors and add title
+marginsplot, noci recast(line) ///
+	plot1opts(lc(blue)) ///
+	plot2opts(lc(red) lp(l)) ///
+	xtitle(Age) ytitle(Predicted Probability) title(Labor Force Participation)
+
+* change labels & position of legend
+marginsplot, noci recast(line) ///
+	plot1opts(lc(blue)) ///
+	plot2opts(lc(red) lp(l)) ///
+	xtitle(Age) ytitle(Predicted Probability) title(Labor Force Participation) ///
+	xlabel(20(10)90, angle(horizontal)) legend(pos(3) subtitle("Gender") size(small))
+
+* Lastly, add observed proportions!
+
+marginsplot, noci recast(line) ///
+	plot1opts(lc(blue)) ///
+	plot2opts(lc(red) lp(l)) ///
+	xtitle(Age) ytitle(Predicted Probability) title(Labor Force Participation) ///
+	xlabel(20(10)90, angle(horizontal)) legend(pos(3) subtitle("Gender") size(small)) ///
+	addplot((scatter Obspr age if Female==0 & CombLFP==1, mc(blue) m(oh)) ///
+   (scatter Obspr age if Female==1 & CombLFP==1, mc(red) m(oh)))
+
+* The remaining task is to change the legend, which is left to you
+   
+
+/** Plot difference in predicted probability between Male and Female **/
+
+* First, as a data manipulation exercise, let's do it by hand!
+
+* save current data
+snapshot save, label("tempsave")
+
+qui logit LFP Age18 c.Age18#c.Age18 c.Age18#c.Age18 /// age terms
+	i.Female /// gender
+	i.Female#c.Age18 i.Female#c.Age18#c.Age18, /// interactions
+	nolog nohead
+* predicted probabilities
+predict yy if e(sample)
+
+* show dataset (let browser open to see how the dataset changes!)
+bro Age18 Female yy
+
+* generate mean probability by Age and gender
+bysort Age18 Female: egen mprob = mean(yy)
+* generate counter for each subgroup
+bysort Age18 Female: gen pick = _n
+* drop redundant observations by picking the first observation of each combination of categories
+keep if pick==1
+* note that which observation we pick is not important
+* ALL observations in a given gender X age category will have the same value on "mprob"
+* Thus, picking the first, second, or last does not matter (we will retain the same "mprob" value)
+* The reason for specifying pick==1 is that there might be a combination of Female and Age18 for which
+* there is only one observation. Had we used pick==2, these categories would have been lost!
+drop pick
+* sort by Age and Female (the data is already sorted, but let us play save!)
+sort Age18 Female
+* shift mprobs by one row
+gen mprob2 = mprob[_n-1]
+* Note that observations are sorted by Female with "Male" coming first. 
+* By shifting this column one row, for each "Female" observation, the mprob2 variable 
+* contains information regarding "Male"s with same age
+
+* generate difference
+gen pdiff = mprob-mprob2
+* keep only rows that contain difference
+keep if Female==1
+* note that for the rows for which Female==0, the differences would be that of males with females of the "previous" age group!
+* we don't need that information
+
+* plot differences and save under name "hand"
+tw connected pdiff Age18, ///
+	yline(0, lc(red) lp(l)) ///
+	ylabel(-.2(.1).1) ///
+	name(hand) 
+* we can restore the graph everytime we want by writing
+graph display hand
+
+* restore the data
+snapshot restore 1
+
+** Using Marginsplot
+qui logit LFP Age18 c.Age18#c.Age18 c.Age18#c.Age18 /// age terms
+	i.Female /// gender
+	i.Female#c.Age18 i.Female#c.Age18#c.Age18, /// interactions
+	nolog nohead
+
+* calculate margins as Female is a dummy, the dydx returns the discrete difference
+margins, dydx(Female) over(Age18)
+* plot
+marginsplot, ///
+	yline(0, lc(red) lp(l)) title("") ///
+	name(mplot)
+* compare graphs
+graph combine hand mplot	
+
+* we can also change the linestyle for this graph
+qui margins, dydx(Female) over(Age18)
+marginsplot, yline(0, lc(red) lp(l)) ///
+	recast(line) recastci(rline) ///
+	ciopts(lc(gray) lp(-) lw(vthin))
+	
+
+	
+/** Ordered Logistic Regression **/
+
+* clear everything and load the gss again
+clear all
+use gss7214.dta
+
+* look at outcome
+tab happy   
+recode happy 1=3 2=2 3=1, gen(rhappy)
+lab var rhappy "happiness"
+lab def happylab 1 "not so happy" 2 "pretty happy" 3 "very happy"
+lab val rhappy happylab
+
+* generate log(base2)-income (constant $)
+gen lbinc = log(coninc)/log(2)
+
+* keep only 2006-2012
+keep if year >= 2006 & year <= 2012
+
+* straight into ologit, run ordered logit regression
+ologit rhappy lbinc
+
+* predict logits
+predict xb1, xb
+tw connected xb1 lbinc, sort
+drop xb1 // not very informative ...
+
+* predict probabilities of being "not so happy," "pretty happy," and "very happy"
+predict p1 p2 p3
+tw (connected p1 p2 p3 lbinc, sort ///
+	lc(blue red green) mc(blue red green))
+	
+* look how this looks likes on the original income scale!	
+tw (connected p1 p2 p3 coninc, sort ///
+	lc(blue red green) mc(blue red green))
+drop p1 p2 p3
+
+
+* control for year
+ologit rhappy lbinc i.year
+predict p1 p2 p3
+tw (connected p1 p2 p3 lbinc, sort ///
+	lc(blue red green) mc(blue red green))
+drop p1 p2 p3 // does not look good ;(
+
+
+
+
+

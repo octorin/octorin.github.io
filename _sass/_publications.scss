@@ -16,6 +16,7 @@
     padding-top: 1ex;
     text-align: right;
 }
+
 .bibliography {
     margin-bottom: 50px;
     margin-top: 20px;
@@ -85,4 +86,8 @@
 .star {
     color: $theme-color;
     font-style: normal;
+}
+
+.note {
+    margin-top: -7px;
 }

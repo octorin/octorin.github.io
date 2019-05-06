@@ -1,0 +1,245 @@
+** LAB 8
+
+clear all
+set maxvar 30000
+* Load data and set up variables
+use gss7214
+
+* We will use the same variables as Mike did for the class
+* (except for the income variable)
+
+*** Dichotomize happiness
+gen Veryhap=happy==1
+replace Veryhap=happy if happy>=.
+lab var Veryhap "General Happiness: Very happy"
+lab def yesno 1 Yes 0 No, modify
+lab val Veryhap yesno
+tab happy Veryhap, missing
+
+*** X variables
+*** Grew up in USA
+gen US14 = reg16~=0
+replace US14=reg16 if reg16>=.
+lab var US14 "Living in USA at age 14"
+lab val US14 yesno
+
+* female
+gen female = sex==1 if sex <.
+
+*** Reduce race/ethnicity to four categories
+gen Latino=hispanic>1 if hispanic<.
+replace Latino = 1 if hispanic>=. & ethnic==17
+replace Latino = 1 if hispanic>=. & ethnic==22
+replace Latino = 1 if hispanic>=. & ethnic==25
+replace Latino = 1 if hispanic>=. & ethnic==28
+replace Latino = 1 if hispanic>=. & ethnic==38
+replace Latino = 1 if hispanic>=. & eth1==17
+replace Latino = 1 if hispanic>=. & eth1==22
+replace Latino = 1 if hispanic>=. & eth1==25
+replace Latino = 1 if hispanic>=. & eth1==28
+replace Latino = 1 if hispanic>=. & eth1==38
+replace Latino = 1 if hispanic>=. & eth2==17
+replace Latino = 1 if hispanic>=. & eth2==22
+replace Latino = 1 if hispanic>=. & eth2==25
+replace Latino = 1 if hispanic>=. & eth2==28
+replace Latino = 1 if hispanic>=. & eth2==38
+replace Latino = 1 if hispanic>=. & eth3==17
+replace Latino = 1 if hispanic>=. & eth3==22
+replace Latino = 1 if hispanic>=. & eth3==25
+replace Latino = 1 if hispanic>=. & eth3==28
+replace Latino = 1 if hispanic>=. & eth3==38
+lab var Latino "Hispanic Heritage"
+lab def Latino 0 "Other" 1 "Latino"
+lab val Latino Latino
+
+recode race 1=1 2=2 3=4, gen(Race4)
+replace Race4=3 if Latino==1 & race~=2
+lab var Race4 "Racial ancestry"
+lab def Race4 1 White 2 Black 3 Latino 4 Other
+lab val Race4 Race4
+
+*** Any religion
+gen Anyrel=(relig!=4) if relig<.
+lab var Anyrel "Has a religious preference"
+lab val Anyrel yesno
+
+*** Raised in any religion
+gen Anyrel16 = (relig16!=4) if relig16<.
+lab var Anyrel16 "Raised in a religion"
+lab val Anyrel16 yesno
+
+
+** keep years 2000-2006
+keep if year >= 2000 & year <=2006
+
+
+** ESTIMATE PROPENSITY SCORES ** 
+
+* age squared
+gen agesq = age*age
+
+* vars for racial categoreis
+gen black = Race4==2 & !missing(Race4)
+gen hisp = Race4==3 & !missing(Race4)
+gen raceoth = Race==4 & !missing(Race4)
+
+* cohorts
+recode cohort 1850/1944=1 1945/1979=2 1980/1999=3, gen(cohort3)
+lab var cohort3 "Year of birth"
+lab def cohort3 1 "Before 1945" 2 "1945-1979" 3 "Since 1980"
+lab val cohort3 cohort3
+
+* years
+gen y02=year==2002
+gen y04=year==2004
+gen y06=year==2006
+
+
+
+
+
+
+* predict propensity scores
+
+logit Anyrel Anyrel16 female age coninc US14 i.cohort3 black  ///
+		hisp raceoth educ i.year
+predict pscore if e(sample)  
+lab var pscore "Propensity score"  
+
+
+* overlap?
+twoway (histogram pscore if Anyrel==1, lc(blue) fc(none)) ///
+		(histogram pscore if Anyrel==0, lc(red) fc(none)), ///
+		legend(label(1 "Treated") label(2 "Control"))
+
+twoway (histogram pscore if Anyrel==1, lc(blue) fc(none) frac) ///
+		(histogram pscore if Anyrel==0, lc(red) fc(none) frac) ///
+		(lowess Veryhap pscore if Anyrel==1, lc(blue)) ///
+		(lowess Veryhap pscore if Anyrel==0, lc(red)), ///
+		legend(label(1 "Treated") label(2 "Control"))
+		
+		
+* look into summaries
+sum pscore if Anyrel==1
+sum pscore if Anyrel==0
+
+*** balance?
+
+* generate weights
+gen wate = 1/pscore  if Anyrel==1 & !missing(pscore)
+replace wate=1/(1-pscore) if Anyrel==0 & !missing(pscore)
+
+gen watt = 1 if Anyrel==1 & !missing(pscore)
+replace watt=pscore/(1-pscore) if Anyrel==0 & !missing(pscore)
+
+gen watc = (1-pscore)/pscore if Anyrel==1 & !missing(pscore)
+replace watc= 1 if Anyrel==0 & !missing(pscore)
+
+gen watei = round(wate)
+gen watti = round(watt)
+gen watci = round(watc)
+
+summ female if Anyrel==1
+summ female if Anyrel==0
+summ female [aw=wate] if Anyrel==1
+summ female [aw=wate] if Anyrel==0
+
+twoway (hist female  if Anyrel==1, lc(blue) fc(none)) ///
+(hist female if Anyrel==0, lc(red) fc(none)), legend(label(1 "Treated") label(2 "Control")) name(a)
+twoway (hist female [fw=watei] if Anyrel==1, lc(blue) fc(none)) ///
+(hist female [fw=watei] if Anyrel==0, lc(red) fc(none))
+
+
+twoway (kdensity age  if Anyrel==1, lc(blue) fc(none)) ///
+(kdensity age if Anyrel==0, lc(red) fc(none))
+twoway (kdensity age [fw=watei] if Anyrel==1, lc(blue) fc(none)) ///
+(kdensity age [fw=watei] if Anyrel==0, lc(red) fc(none))
+
+twoway (kdensity coninc  if Anyrel==1, lc(blue) fc(none)) ///
+(kdensity coninc if Anyrel==0, lc(red) fc(none))
+twoway (kdensity coninc [fw=watei] if Anyrel==1, lc(blue) fc(none)) ///
+(kdensity coninc [fw=watei] if Anyrel==0, lc(red) fc(none))
+
+
+* No adjustment
+reg Veryhap Anyrel, nohead
+
+* Stratification by propensity scores?
+xtile pt = pscore, nq(20)
+tab pt, gen(strats)
+
+reg Veryhap Anyrel i.pt, nohead
+
+* weighted regression
+reg Veryhap Anyrel [pw=watt], nohead
+reg Veryhap Anyrel [pw=watc], nohead
+reg Veryhap Anyrel [pw=wate], nohead
+
+reg Veryhap Anyrel Anyrel16 female age agesq coninc US14 black hisp raceoth educ [pw=watt], nohead
+reg Veryhap Anyrel Anyrel16 female age agesq coninc US14 black hisp raceoth educ [pw=watc], nohead
+reg Veryhap Anyrel Anyrel16 female age agesq coninc US14 black hisp raceoth educ [pw=wate], nohead
+
+
+
+
+
+
+
+
+
+
+
+/** Three wave panel data models **/
+
+clear all
+
+
+* read in data
+insheet using panel06.csv
+* keep only variables that we need
+keep satfin* wrkstat* coninc* id_1
+
+
+* reshape to long format
+reshape long satfin_ wrkstat_ coninc_, i(id_1) j(wave)
+
+* rename variables
+rename satfin_ satfin
+rename wrkstat_ wrkstat
+rename id_1 id
+rename coninc_ coninc
+
+* recode
+recode satfin 3=1 1=3, gen(fsat)
+*recode wrkstat 4=1 9=. 0=. .=. else=0, gen(out)
+gen out=wrkstat==4 if !missing(wrkstat)
+bysort id: egen numout = total(out) if !missing(out)
+bysort id: gen everout = numout > 0 if !missing(numout) 
+
+* check recoding
+tab numout everout, m
+
+* Fit models
+
+* GLS
+xtreg fsat out i.wave##everout, i(id) re
+* FIML
+xtreg fsat out i.wave##everout, i(id) re mle
+* REML
+xtmixed fsat out i.wave##everout || id:, reml
+
+
+
+
+/**
+* generate log-income
+gen lninc = log(coninc)
+* GLS
+xtreg fsat out i.wave##everout lninc, i(id) re 
+* FIML
+xtreg fsat out i.wave##everout lninc, i(id) re mle
+* REML
+xtmixed fsat out i.wave##everout lninc || id:, reml
+* Fixed effects
+xtreg fsat out i.wave##everout lninc, i(id) fe
+**/

@@ -58,10 +58,10 @@ collections:
       layout: post
     output: true
     permalink: /news/:path/
-  #projects:
-    #output: true
-    #permalink: /projects/:path/
-
+  teaching:
+    output: true
+    permalink: /teaching/:path/
+    
 news_limit: 5
 
 # -----------------------------------------------------------------------------

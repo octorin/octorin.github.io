@@ -1,0 +1,152 @@
+**************************************
+** Lab 6                            **
+** Weighting                        **
+**************************************
+
+* SETUP 
+clear all
+set maxvar 20000
+use gss7214.dta
+
+* look at marital status and sex
+tab marital sex if year >= 2012, col nofreq
+/* 
+      marital |    respondents sex
+       status |      male     female |     Total
+--------------+----------------------+----------
+      married |     47.53      44.12 |     45.65 
+      widowed |      5.04      10.87 |      8.25 
+     divorced |     15.22      16.91 |     16.15 
+    separated |      3.06       3.50 |      3.31 
+never married |     29.15      24.60 |     26.64 
+--------------+----------------------+----------
+        Total |    100.00     100.00 |    100.00 
+*/
+
+* set up sampling desing (Treiman)
+svyset sampcode [pw=wtssnr], strata(year) singleunit(scale)
+svy: tab marital sex if year >= 2012, col
+
+/*
+Number of strata   =         2                  Number of obs      =      4508
+Number of PSUs     =       152                  Population size    = 4509.8176
+                                                Design df          =       150
+
+----------------------------------
+marital   |    respondents sex    
+status    |   male  female   Total
+----------+-----------------------
+  married |  .5421   .5127   .5262
+  widowed |  .0306   .0735   .0538
+ divorced |  .1088   .1362   .1236
+ separate |  .0242   .0314   .0281
+ never ma |  .2943   .2462   .2682
+          | 
+    Total |      1       1       1
+----------------------------------
+  Key:  column proportions
+
+  Pearson:
+    Uncorrected   chi2(4)         =   58.6516
+    Design-based  F(3.64, 546.12) =   13.2570     P = 0.0000
+*/	
+
+** Set up survey design (NORC)
+svyset, clear
+svyset vpsu [pw=wtssnr], strata(vstrat) singleunit(scale)
+svy: tab marital sex if year >= 2012, col
+
+/*
+Number of strata   =       131                  Number of obs      =      4508
+Number of PSUs     =       262                  Population size    = 4509.8176
+                                                Design df          =       131
+
+----------------------------------
+marital   |    respondents sex    
+status    |   male  female   Total
+----------+-----------------------
+  married |  .5421   .5127   .5262
+  widowed |  .0306   .0735   .0538
+ divorced |  .1088   .1362   .1236
+ separate |  .0242   .0314   .0281
+ never ma |  .2943   .2462   .2682
+          | 
+    Total |      1       1       1
+----------------------------------
+  Key:  column proportions
+
+  Pearson:
+    Uncorrected   chi2(4)         =   58.6516
+    Design-based  F(3.72, 487.06) =   12.8667     P = 0.0000
+*/
+
+gen pid = partyid - 3 if partyid < 7
+* log income
+gen lbinc = ln(coninc)/ln(2)
+* female
+gen female = sex ==2 if sex < .
+
+* race (this is a little bit more complex)
+gen lat=hispanic>1 if hispanic<.
+replace lat = 1 if hispanic>=. & ethnic==17
+replace lat = 1 if hispanic>=. & ethnic==22
+replace lat = 1 if hispanic>=. & ethnic==25
+replace lat = 1 if hispanic>=. & ethnic==28
+replace lat = 1 if hispanic>=. & ethnic==38
+replace lat = 1 if hispanic>=. & eth1==17
+replace lat = 1 if hispanic>=. & eth1==22
+replace lat = 1 if hispanic>=. & eth1==25
+replace lat = 1 if hispanic>=. & eth1==28
+replace lat = 1 if hispanic>=. & eth1==38
+replace lat = 1 if hispanic>=. & eth2==17
+replace lat = 1 if hispanic>=. & eth2==22
+replace lat = 1 if hispanic>=. & eth2==25
+replace lat = 1 if hispanic>=. & eth2==28
+replace lat = 1 if hispanic>=. & eth2==38
+replace lat = 1 if hispanic>=. & eth3==17
+replace lat = 1 if hispanic>=. & eth3==22
+replace lat = 1 if hispanic>=. & eth3==25
+replace lat = 1 if hispanic>=. & eth3==28
+replace lat = 1 if hispanic>=. & eth3==38
+lab var lat "Hispanic Heritage"
+lab def lat 0 "Other" 1 "Hispanic"
+lab val lat lat
+
+recode race 1=1 2=2 3=4
+replace race = 3 if lat==1 & race!=2
+lab var race "Racial ancestry"
+lab def race 1 White 2 Black 3 Latino 4 Other, modify
+lab val race race
+
+
+* let us look into the post-2008 years 
+keep if year > 2008
+
+* now let us run some regressions
+* unweighted
+reg pid educ lbinc age i.race female
+estimates store noweights
+* weighted (no sampling design incorporated)
+reg pid educ lbinc age i.race female [pweight=wtssnr]
+estimates store pweights
+* weighted with sampling design
+svy: reg pid educ lbinc age i.race female
+estimates store svy
+
+* compare results
+estimates table noweights pweights svy,  b(%7.4f) se(%7.4f)
+
+
+/*
+svyset, clear
+svyset vpsu [pw=wtssnr], strata(vstrat)
+svy: tab marital sex if year >= 2012, col
+
+
+svyset, clear
+reg polviews if year>=2012
+reg polviews [pweight=wtssnr] if year>=2012
+reg polviews [pweight=wtssnr] if year>=2012, vce(cluster vpsu)
+
+svyset vpsu [pw=wtssnr], strata(vstrat)
+svy: reg polviews if year>=2012

@@ -1,0 +1,241 @@
+rm(list=ls())
+
+wd <- 'PUT PATH TO DATA HERE!'
+setwd(wd)
+
+# load libraries
+library(lme4)
+library(dplyr)
+library(data.table)
+library(ggplot2)
+
+# read data
+acs <- fread("cleaned_acs16.txt")
+mturk <- fread("cleaned_mturk_jun18_data.txt")
+pew <- fread("pew_Apr17_benchmarks.txt")
+names(pew) <- c('vars','y')
+
+# create vector of outcome names
+i.vars <- names(mturk)[7:41]
+# vector of post-stratification vars
+d.vars <- c('sex','age_cat','race','region')
+# drop unnecessary varaiebls
+mturk <- mturk[,-c('attention1','educ','ideology','party1','party2')]
+
+
+## Raw Means --------------------------------------------------------------
+
+# calculate means of outcomes
+raw.means <- colMeans(mturk[,..i.vars],na.rm=T) %>% 
+   data.table(vars=names(.), yhat.raw=.)
+
+# create list of ggplot options common across plots to follow
+gg.theme <- list(
+         scale_x_continuous(name='Estimated',
+                            limits=c(0,1), 
+                            expand=c(0,0)),
+         scale_y_continuous(name='Benchmark',
+                            limits=c(0,1), 
+                            expand=c(0,0)),
+         theme_bw(),
+         coord_fixed()
+)
+   
+# merge means with pew data
+raw.means.df <- merge(pew, raw.means, by = 'vars', all.x=T)
+# check for missing values
+stopifnot(sum(is.na(raw.means.df))==0)
+# calculate mse
+raw.means.mse <- raw.means.df[,(y-yhat.raw)^2] %>% mean 
+# plot
+g1 <- ggplot(raw.means.df, aes(x=yhat.raw, y=y)) + 
+   geom_point(shape=1, col='blue') + 
+   geom_abline(intercept=0,slope=1, col='red') + 
+   gg.theme + 
+   labs(title='Raw MTurk Estimates',
+        subtitle=paste0('mse: ',raw.means.mse %>% round(3)))
+g1
+
+## Post Stratified Subgroup Means -----------------------------------------
+
+# reshape data into long format
+mturk.long <- melt(mturk, 
+                   id.vars=d.vars, 
+                   variable.name='issue',
+                   value.name='response') 
+# calculate subgroup means
+sub.means <- mturk.long[,
+                        mean(response, na.rm=T), 
+                        by=c(d.vars,'issue')] %>%
+   setnames('V1','means')
+
+# get grand means
+g.means <- mturk[,lapply(.SD, mean, na.rm=T), .SDcols=i.vars] 
+# create post-stratification weights
+acs[,weights:=POP/sum(POP)]
+
+# calculate post-stratified means
+w.sub.means <- sapply(i.vars, function(ii) {
+   # subset data
+   d <- sub.means[issue==ii, c(d.vars,'means'), with=F]
+   # merge with ACS
+   d1 <- merge(acs, d, by=d.vars, all.x=T)
+   # get grand means
+   gg <- g.means[[ii]]
+   # substitute grand mean for missing values
+   d1[is.na(means),means:=gg]
+   # weight by post-stratification weights
+   d1[,w.res:=weights*means]
+   # sum results (Horvitz-Thopson Estimator)
+   return(sum(d1$w.res))
+   })
+w.sub.means <- data.table(vars=i.vars, yhat.sub=w.sub.means)   
+
+# merge with pew
+w.sub.means.df <- merge(pew, w.sub.means, by = 'vars', all.x=T)
+# check missings
+stopifnot(sum(is.na(w.sub.means.df))==0)
+# mse
+w.sub.means.mse <- w.sub.means.df[,(y-yhat.sub)^2] %>% mean 
+# plot
+g2 <- ggplot(w.sub.means.df, aes(x=yhat.sub, y=y)) + 
+   geom_point(shape=1, col='blue') + 
+   geom_abline(intercept=0,slope=1, col='red') + 
+   gg.theme + 
+   labs(title='Poststratified MTurk Estimates',
+        subtitle=paste0('mse: ',w.sub.means.mse %>% round(3)))
+g2
+
+## Model-Based Poststratification -----------------------------------------
+
+# generate predicted probabilities from logistic regression
+logit.pred <- sapply(i.vars,  function(ii) {
+   # generate formula
+   f <- as.formula(paste0(ii,'~',paste0(d.vars,collapse='+')))
+   # fit logit
+   fit <- glm(f, data=mturk, family=binomial(link='logit'))
+   # predicted probabilities using ACS categories
+   # note: this works as RHS variable names are the same in 
+   #       mturk and acs datasets
+   pred <- predict(fit, newdata=acs[,..d.vars], type='response')
+   # post-stratify
+   # note: row-order is the same as we used "newdata=acs[,..d.vars]"
+   w.pred <- pred*acs$weights
+   # predicted sub-group means
+   return(sum(w.pred))
+}) 
+logit.pred <- data.table(vars=i.vars, yhat.logit=logit.pred)
+
+# merge with pew
+logit.df <- merge(pew,logit.pred, by='vars')
+# check missings
+stopifnot(sum(is.na(logit.df))==0)
+# mse
+logit.mse <- logit.df[,(y-yhat.logit)^2] %>% mean
+# plot
+g3 <- ggplot(logit.df, aes(x=yhat.logit, y=y)) + 
+   geom_point(shape=1, col='blue') + 
+   geom_abline(intercept=0,slope=1, col='red') + 
+   gg.theme + 
+   labs(title='Poststratified Logit Estimates',
+        subtitle=paste0('mse: ',logit.mse %>% round(3)))
+g3 
+
+## Mr. P (Multilevel Regression with Post-Stratification)-----------------
+
+# predicted probs. from multilevel logistic
+mrp.pred <- sapply(i.vars,  function(ii) {
+   # formula
+   f <- as.formula(paste0(ii,'~ sex + ',
+                          paste0('(1|',d.vars[d.vars!='sex'],')',
+                                 collapse='+')
+                          )
+                   )
+   # MLM fit
+   fit <- glmer(f, data=mturk, family=binomial(link='logit'))
+   # predictions using acs categories
+   pred <- predict(fit, newdata=acs[,..d.vars], type='response')
+   # post-stratify
+   w.pred <- pred*acs$weights
+   # predicted sub-group means
+   return(sum(w.pred))
+}) 
+mrp.pred <- data.table(vars=i.vars, yhat.mrp=mrp.pred)
+
+# merge with pew
+mrp.df <- merge(pew,mrp.pred, by='vars')
+# check for missings
+stopifnot(sum(is.na(mrp.df))==0)
+# mse
+mrp.mse <- mrp.df[,(y-yhat.mrp)^2] %>% mean
+# plot
+g4 <- ggplot(mrp.df, aes(x=yhat.mrp, y=y)) + 
+   geom_point(shape=1, col='blue') + 
+   geom_abline(intercept=0,slope=1, col='red') + 
+   gg.theme + 
+   labs(title='Mr.P Estimates',
+        subtitle=paste0('mse: ',mrp.mse %>% round(3)))
+g4
+
+## Combine Plots ----------------------------------------------------------
+
+# merge all results
+merged.all <- Reduce(function(x,y) merge(x,y, by=c('vars','y')), 
+            list(raw.means.df, w.sub.means.df, logit.df, mrp.df))
+
+# reshape into long format
+z <- melt(merged.all, id.vars=c('y','vars'),
+          variable.name='model',
+          value.name='y.hat')
+# calculate squared deviations
+z <- z[,sq.dev:=(y-y.hat)^2]
+# transform model var into factor (to control order of plotting)
+z <- z[,model:=factor(model, 
+                         levels=c('yhat.raw',
+                                  'yhat.sub',
+                                  'yhat.logit',
+                                  'yhat.mrp'),
+                         labels=c('Unadjusted Means',
+                                  'Poststratified Means',
+                                  'Poststratified Logit',
+                                  'Mr. P'))]
+# plot fits
+ggplot(z, aes(y=y,x=y.hat)) + 
+   geom_segment(aes(xend=y.hat,
+                    y=y.hat, 
+                    yend=y),
+                col='blue',
+                linetype=2)+
+   geom_abline(intercept=0,slope=1, col='red') + 
+   geom_point() +
+   facet_wrap(~model) +
+   gg.theme
+
+# get RMES vars
+mse <- grep('\\.mse$',ls(),value=T)
+mse.df <- data.table(model=mse,
+                      mse=unlist(mget(mse)))
+mse.df[, model:=factor(model,
+                        levels=c('raw.means.mse',
+                                 'w.sub.means.mse',
+                                 'logit.mse',
+                                 'mrp.mse'),
+                        labels=levels(z$model)
+                        )
+        ]
+                   
+# plot squared deviations from benchmark
+ggplot(z, aes(x=sq.dev)) + 
+   geom_histogram(col='white', fill='black', bins=20) +
+   geom_text(data=mse.df, 
+             aes(x=.15, y=15, 
+                 label=paste0('mse = ',round(mse,4)),
+                 hjust=1),
+             size=7) +
+   theme_bw() +
+   facet_wrap(~model) +
+   labs(title='Distribution of Squared Deviations from Benchmark',
+        y='Frequency',
+        x='Squared Deviations from Benchmark')
+
+

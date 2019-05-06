@@ -1,0 +1,656 @@
+
+/** MEASUREMENT ERROR SIMULATION **/
+
+clear all 
+set obs 10000
+set seed 1984
+
+* generate predictor (no measurement error, E[x]=0 Var[x]=1)
+* note: invnorm(uniform()) generates a standard normal variate
+gen x_true = invnorm(uniform())
+
+* generate outcome variable 
+* true beta = 1.5
+* standard error of regression (Root MSE) = 1.25
+* note: If X ~ normal(0,1), then cX ~ normal(0,c^2),
+*       i.e., a normal variable with variance c^2 
+gen y = 2 + 1.5*x_true + 1.25*invnorm(uniform())
+
+* regression without measurement error
+reg y x_true
+
+* add some random noise to x_true 
+gen x1 = x_true + .5*invnorm(uniform())
+
+* Now we have
+*
+* E[x1] = x_true 
+* Var[x1] = Var[x1] + Var[.5*z] = 1.25
+*
+* which is an increase of .25% in the variance
+
+reg y x1
+
+* add more random noise to x_true (E[x2]=0, Var[x2]=2)
+gen x2 = x_true + invnorm(uniform())
+reg y x2
+
+* add even more noise to x_true (E[x3]=0, Var[x3] = 3)
+gen x3 = x_true + sqrt(2)*invnorm(uniform())
+reg y x3
+
+* even more noise (E[x4]=0, Var[x4] = 5)
+gen x4 = x_true + 2*invnorm(uniform())
+reg y x4
+
+* compare fit of x1 (100% error added) and x_true on y
+#delimit ;
+twoway (scatter y x2, m(oh) mc(red*.7) msize(vsmall)) 
+	(scatter y x_true, m(oh) mc(blue*.7) msize(vsmall)) 
+	(lfit y x2, lc(red)) 
+	(lfit y x_true, lc(blue)), 
+	legend(label(1 "Error added") 
+			label(3 "OLS (with error)") 
+			label(2 "True score") 
+			label(4 "OLS (True)")
+		   pos(3))
+	title("Regression with Measurement Error")
+	subtitle("Variance ratio of signal to noise is equal to 1")
+	xlabel(-5(2.5)5, angle(horizontal))
+;
+
+* just regression lines
+
+# delimit;
+twoway (lfit y x1, lc(red)) 
+	   (lfit y x2, lc(green))
+	   (lfit y x3, lc(blue))
+	   (lfit y x4, lc(gray))
+	   (lfit y x_true), 
+	legend(label(1 "Error Var: .25") 
+			label(2 "Error Var: 1") 
+			label(3 "Error Var: 2") 
+			label(4 "Error Var: 4")
+			label(5 "True Relationship")
+		   pos(3))
+	xtitle("") ytitle("")
+;
+
+
+
+/** USING MULTIPLE MEASURES TO REDUCE BIAS **/
+
+* let us consider x2 (which had signal to noise ratio 1)
+* Recall that E[x2]=E[x_true] but that Var[x2] = 2*Var[x_true]
+
+* Let's generate 10 such x2's
+
+forvalues v=1/10 {
+	gen x2_`v' = x_true + invnorm(uniform())
+}
+
+* take the mean
+egen x2_mean = rowmean(x2_*)
+
+* compare variances
+sum x2_*
+
+* Let's look at what happens at the slope
+
+* true regression
+reg y x_true, nohead
+* result from using one item
+reg y x2_1, nohead
+* result from using mean
+reg y x2_mean, nohead
+
+#delimit;
+twoway (scatter y x2_1, m(oh) mc(red*.7) msize(vsmall)) 
+	(scatter y x2_mean, m(oh) mc(green*.7) msize(vsmall)) 
+	(scatter y x_true, m(oh) mc(blue*.7) msize(vsmall)) 
+	(lfit y x2_1, lc(red)) 
+	(lfit y x2_mean, lc(green)) 
+	(lfit y x_true, lc(blue)), 
+	legend(label(1 "Error added (100%)") 
+			label(4 "OLS (with error)") 
+			label(2 "Average of 10 items")
+			label(5 "OLS (average)")
+			label(3 "True score") 
+			label(6 "OLS (True)")
+		   pos(3))
+	title("Regression with Measurement Error")
+	xlabel(,angle(horizontal))
+;
+
+
+
+/** Why DOES MEAUREMENT ERROR REDUCE THE REGRESSION SLOPE? (only for the curious)
+
+Let us focus on a bivariate regression of y on x. 
+The equation for the regression slope is given as
+
+beta = cov(x,y)/var(x)
+
+Now, consider what would happen if we add some random noise to x. Define
+
+z = x + e
+
+where E[e]=0 and Var[e] = sigma^2 and e is distributed independently of x and y.
+This is basically assuming that e is pure "white noise," uncorrelated with everything.
+
+The new coeffient of the regression is defined as
+
+beta_star = cov(z,y)/var(z)
+
+Further, cov(z,y) = cov(x+e,y) = cov(x,y) + cov(e,y) = cov(x,y),
+the same as before. However, now we have,
+
+var(z) = var(x+e) = cov(x+e,x+e) = var(x) + var(e) > var(x).
+
+That is, while the numberator does not change, the denominator is 
+increased by var(e). It follows that
+
+beta* = cov(z,y)/var(z) < cov(x,y)/var(x) = beta.
+
+We might show this also with the simulation above. Recall that the 
+regression slope is getting smaller the more error we add to the predictor.
+Now, looking at the covariance by running:
+
+cor y x_true x4, cov
+
+we see that the covariance between x_true and y, on the one hand, and
+x4 and y is essentially the same (except some differences that can be attributed
+to random noise).
+
+
+
+
+WHY DO MULTIPLE MEASURE REDUCE BIAS? (again, only for the curious) 
+
+The reason is quite simple: suppose you are interested in a "true score" (x_true).
+Suppose further that whenever measuring x_true, we measure it with some error.
+So, when we try to measure x_true, what we get is not x_true but instead
+
+x = x_true + e          (eq. 1)
+
+where "e" is some error term with E[e]=0 and Var[e]=sigma^2. Note that the variance
+of "e" is the "measurement error" (if E[e] = 0 and Var[e] = 0, then x_true = x).
+
+The first condition E[e] means intuitively that
+"although the measurement has some error, on average we hit the mark!"
+people sometimes call this "validity". 
+If, on the other, hand E[e]!=0, our measures would be "biased" 
+in the sense that, on average, we are not measuring "x_true" but "something else."
+
+For simplicity, assume in addition that our "data" are the population. 
+This means that x_true "is not a random variable". It is fixed. 
+Intuitively speaking, every individual in the population has a score "x_true" and
+if our measurement is perfect, we could just observe this score; there is
+no "uncertainty" at all.
+
+You can also think of this assumption in another way: suppose you want to measure
+x_true for "a single individual". In this scenario, x_true is a "single number" 
+which is fixed. Yet, as our measurement of x_true is not perfect, every time
+we try to measure x_true, we will slightly different results. The source of this
+variability is not x_true (which, again, is fixed) but the random noise cause by "e".
+
+Thus, the "randomness of x" (not to be confused with "x_true") comes only from
+the "measurement error" that is caused by the imperfect way to measure "x_true".
+
+It is immediately clear that under this scenario that
+
+E[x] = E[x_true + e] = x_true + E[e] = x_true,
+
+i.e., on average, we measure the right thing. The variance, on the other hand, is
+
+Var[x] = Var[x_true + e] = Var[x_true] + Var[e] = Var[e] = sigma^2,
+
+where Var[x_true] is zero as we are assuming that x_true is fixed.
+(recall that the only randomness comes from the imprecise measurement, 
+which is captured by the "e" term). 
+
+Now, suppose that we have multiple measures of "x_true", call them (x1,x2,x3), 
+all of them unbiased and with the same amount of measurement error, sigma^2. 
+
+That is
+
+x1 = x_true + e1
+x2 = x_true + e2
+x3 = x_true + e3
+
+where Var[e1]=Var[e2]=Var[e3] = sigma^2. Also, we require that the (e1,e2,e3) are
+uncorrelated with one another (i.e., they are "white noise")
+
+Let us take the mean of these meausurements and look at what happens. The average is simply
+
+x_bar = (x1 + x2 + x3)/3 
+      = [ (x_true + e1) + (x_true + e2) + (x_true + e3) ] / 3
+	  = x_true + (e1 + e2 + e3)/3
+	  
+The expected value of x_bar is therefore
+
+E[x_bar] = x_true + (1/3)*E[e1 + e2 + e3] = x_true 
+
+as all the error terms have expected value zero. 
+So, x_bar is unbiased.
+
+Next, when we look at the variance, we see that 
+
+Var[x_bar] = Var[ x_true ] + Var[ (e1 + e2 + e3)/3 ]  
+		   = (1/3)^2 * Var[e1 + e2 + e3]
+		   = (1/9) * (3* sigma^2)
+		   = (sigma^2)/3
+		   
+which shows that the measurement error is reduced by a factor of 3! Indeed,
+if we had used K items that satisfy our conditions, the measurement error would be
+sigma^2/K. So the more items we use to measure the same thing (x_true) the less the 
+measurement error will be.
+
+
+
+ 
+WHY DOES invnorm(uniform()) GENERATE STANDARD NORMAL VARIATES (only for the curious)
+
+Let U ~ Uniform(0,1). Let Q and F be the quantile function and the CDF, respectively,
+of a standard Normal distribution. As the quantile function is the inverse function of
+the CDF, the following holds: for all x, we have Q^{-1}(x) = F(x).
+  
+Next, consider the distribution of Q(U). In particular, let us consider its CDF, which 
+we denoty by G. Let c be any real number, then G(c) = Pr[Q(U) < c]. So,
+
+G(c) = Pr[Q(U) < c] = Pr[U < Q^{-1}(c)] = Pr[ U < F(c)] = F(c)
+
+Thus G = F, implyig that Q(U) is distributed according to a standard Normal distribution.
+This way of generating random variates is known as the "inverse probability transform".
+
+If the last step is not clear. Here are the details. Let Z follow a U(a,b) distribution.
+A uniform distribution defined over the intervale [a,b] has PDF f(z) = 1/(b-a). 
+Note that this expression does not depend on "z"; the PDF is thus constant.
+
+Now, the CDF of Z, G(z), is
+
+G(c) = \integral_{a}^{c} 1/(b-a) dz = (c-a)/(b-a).
+
+Thus, for a U(0,1) random variable, G(c) = c. It follows that G(F(c)) = F(c).
+
+**/
+		   
+
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+
+/** INSTRUMENTAL VARIABLE ESTIMATION SIMULATION **/
+
+clear all
+set seed 1987
+
+* set observations
+set obs 10000
+
+*** Generate two correlated Normal variates ***
+
+* You don't have to understand how these variabtes are created
+* What you DO NEED to understand is the following:
+
+* we are trying to generate two variables that will be the "error terms"
+* of two separate regressions 1) a regression of the endogenous variable
+* on the instrument and 2) a regression of the outcome variable on the
+* endogenous variable. It is THIS CORRELATION BETWEEN THE ERROR TERMS
+* which induces the bias when we run a OLS regression of the outcome
+* on the endogenous predictor.
+
+* Simulation setup 
+
+* means : [0,0]
+* standard deviations : [2,2]
+* and correlation : .5
+
+* correlation matrix
+mat Rho = (1,.5\.5,1)
+* get cholesky factor 
+mat L_Rho = cholesky(Rho)
+* cholesky factor for covariance matrix
+mat L_Sigma = diag((2,2))*L_Rho
+* two standard normal variates
+gen u1 = invnorm(uniform())
+gen u2 = invnorm(uniform())
+* transform e1 and e2 by L_Sigma to obtain correlated normal variates
+gen e1 = L_Sigma[1,1]*u1 + L_Sigma[1,2]*u2
+gen e2 = L_Sigma[2,1]*u1 + L_Sigma[2,2]*u2
+
+* check results
+sum e1 e2
+cor e1 e2
+
+* drop unnecessary variables
+drop u1 u2
+
+*** Generate data with IV structure ***
+
+* generate IV
+* Note: the most important point here is that
+*		z is UNCORRELATED with e1 and e2 
+gen z = invnorm(uniform())
+
+* the regression we want to simulate is of the form
+*
+*       x = gamma_0 + gamma_1*z + e1  (first stage)
+* 		y = beta_0 + beta_1*x + e2    (second stage)
+*
+* Note that the first equation induces a correlation between
+* x and z. Also, note that x is endogenous in the second equation
+* precisely because cov(e1,e2) != 0
+
+* Generate x and y according to the equations
+gen x = .75 + .8*z + e1
+gen y = .5 + .6*x + e2
+* Note that the "true" beta coefficient is .6
+scalar TRUE = .6
+
+* check correlation structure (e1 and e2 are unobserved in reality)
+cor x y e1 e2 z
+
+*** OLS regression (inconsistent estimator) ***
+reg y x, nohead
+mat temp = e(b)
+scalar OLS = temp[1,1]
+
+*** 2SLS regression (consistent estimator by hand) ***
+* Note: the standard errors are inconsistent as we do not incorporate
+*       the fact that xhat are "estimated" and not "observed" variables
+
+reg x z
+predict xhat
+reg y xhat, nohead
+
+mat temp = e(b)
+scalar IV_1 = temp[1,1]
+
+
+*** two-stage least-squares (2SLS) estimator ***
+* Note: this estimator has the same coefficients as those calculated by hand
+*       but now the standard error differs from the previous ones
+ivregress 2sls y (x=z)
+mat temp = e(b)
+scalar IV_2 = temp[1,1]
+
+* compare results
+mat comp = [TRUE, OLS, IV_1,IV_2]
+mat colnames comp = TRUE OLS IV_1 IV_2
+mat list comp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** MISSING VALUES **/
+
+* load data
+clear all
+set seed 54321
+
+set maxvar 10000
+use gss7214.dta
+
+* subset dataset
+keep if year > 2010
+keep if age > 24
+
+* generate log income
+gen lninc = log(coninc)
+* recode sex
+recode sex (1=0) (2=1), gen(female)
+* recode happyness
+recode happy (1=3) (2=2) (3=1)
+
+* look at missing patterns
+misstable patterns happy lninc educ female polviews
+
+* take snapshot of data
+snapshot save, label("original data")
+
+* generate dummies for missing rows
+misstable sum happy lninc educ female polviews, gen(m_)
+
+* use only complete observations
+keep if m_happy!=1 & m_lninc!=1 & m_educ!=1 & m_polviews!=1
+
+* check results
+misstable patterns happy lninc educ female polviews
+
+* keep only variables we use (for clarity)
+keep happy lninc educ female polviews
+* order dataset
+order happy lninc educ female polviews
+
+
+* run TRUE regression and save coefficients
+reg happy lninc educ female polviews 
+matrix true_coef = e(b)
+
+
+* take snapshot of complete data set
+snapshot save, label("complete data")
+
+
+
+
+
+/* generate 400 missing values under MCAR */
+
+* generate random number
+gen u = runiform()
+* sort by this number (effect: randomly reordering rows)
+sort u
+* create dummy for missing rows
+gen misrow = 1 in 1/400
+* next, we create a random integer between 1 and 5 
+* that indicates which column is missing
+gen miscol = floor(5*runiform() + 1) in 1/400
+
+* Note: we have selected the rows and columns "completely" at random.
+*       the missing values should be correlated with "nothing".
+*       this is what is meant by missing completely at random (MCAR)
+
+local vlist "happy lninc educ female polviews"
+forvalues i=1/400 {
+	
+	local which_col = miscol in `i'/`i'
+	local which_var : word `which_col' of `vlist'
+	replace `which_var'=. in `i'/`i'
+	
+}
+
+* browse data
+bro
+
+* run a regression under MCAR
+reg happy lninc educ female polviews 
+matrix noimp_mcar = e(b)
+
+* compare results
+mat list true_coef
+mat list noimp_mcar
+
+* drop created variables
+drop u misrow miscol
+
+
+/* missing under MAR */
+
+* restore complete data
+snapshot restore 2
+
+* MAR basically states that we can predict, probabilistically,
+* the missing pattern with a set of observed variables 
+
+* probability of missing
+gen pm_lninc = invlogit(.2*educ + .9*female - .5*polviews + invnorm(uniform()))
+gen pm_educ = invlogit(.6*lninc - .95*female - 1*polviews+ invnorm(uniform()))
+gen pm_female = invlogit(-.5*lninc + .61*educ - .5*polviews+ invnorm(uniform()))
+gen pm_polviews = invlogit(.2*lninc - .6*educ - 1.2*female+ invnorm(uniform()))
+* as the total number of observations with missings is set to 400
+* we create 100 missings for each variable
+
+local vlist = "lninc educ female polviews"
+foreach v of local vlist {
+	gsort -pm_`v'
+	replace `v'=. in 1/100
+}
+sort happy	
+drop pm_*
+
+* we first run a regression by list-wise deletion
+reg happy lninc educ female polviews 
+mat noimp_mar = e(b)
+mat list noimp_mar
+mat list true_coef
+
+
+/* Multiple imputation */
+
+mi set flong
+mi register imputed lninc educ female polviews 
+mi register regular happy
+
+* start imputation
+# delimit;
+mi impute chained (logit) female 
+				  (regress) lninc 
+				  (truncreg, ll(0)) educ 
+				  (ologit) polviews = happy, 
+	add(10) rseed (53421) dots burnin(20)
+	savetrace(trace,replace)
+;
+
+snapshot save, label("imputed_mar")
+
+
+/* Check Convergence of Chains */
+use trace, clear
+desc
+reshape wide *mean *sd, i(iter) j(m)
+tsset iter
+
+graph drop _all
+local vlist = "lninc educ female polviews"
+foreach v of local vlist  {
+	tsline `v'_mean*, legend(off) nodraw ///
+	ytitle(`v') scheme(s2color) name(g_`v')
+}
+graph combine g_lninc g_educ g_female g_polviews, ///
+	title("Traceplot of Imputed Means")
+	
+snapshot restore 3
+
+/* Fit regression with imputed values */
+
+mi estimate: reg happy lninc educ female polviews 
+mat imp_mar = e(b_mi)
+
+* compare results
+mat list noimp_mar
+mat list imp_mar
+mat list true_coef
+
+
+
+
+/* missing values under MNAR */
+
+* restore complete data
+snapshot restore 2
+
+* generate a variable that is correlated with income
+* but not a function of other variables in the data
+
+qui reg lninc educ female happy polviews
+predict tmp1, resid
+gsort -tmp1
+replace lninc=. in 1/400
+
+qui reg polviews educ female happy lninc
+predict tmp2, resid
+gsort -tmp2
+replace polviews=. in 1/400
+
+* drop temporary variable and check correlations
+drop tmp*
+
+* note that because "tmp1" and "tmp2" are residuals,
+* they are likely not explained by the 
+* sort on "somevar" and take the first 300 observations as missing
+* whether income or polviews is missing is determined by a coinflip
+
+* run regression
+reg happy lninc educ female polviews 
+matrix noimp_mnar = e(b)
+
+mat list noimp_mnar
+mat list true_coef
+
+
+* impute missing values
+
+mi set flong
+mi register imputed lninc polviews 
+mi register regular happy educ female
+
+* start imputation
+# delimit;
+mi impute chained (regress) lninc 
+				  (ologit) polviews = happy educ female, 
+	add(10) rseed (53421) dots burnin(20)
+	savetrace(trace,replace)
+;
+
+snapshot save, label("imputed_mnar")
+
+
+* Again, check convergence
+use trace, clear
+desc
+reshape wide *mean *sd, i(iter) j(m)
+tsset iter
+
+graph drop _all
+local vlist = "lninc polviews"
+foreach v of local vlist  {
+	tsline `v'_mean*, legend(off) nodraw ///
+	ytitle(`v') scheme(s2color) name(g_`v')
+}
+graph combine g_lninc g_polviews, ///
+	title("Traceplot of Imputed Means")
+	
+snapshot restore 4
+
+* estimate model
+
+mi estimate: reg happy lninc educ female polviews 
+mat imp_mnar = e(b_mi)
+
+
+* compare results
+matrix comb = true_coef \ noimp_mcar \ noimp_mar \ ///
+			  imp_mar \ noimp_mnar \ imp_mnar
+mat rownames comb = TRUE MCAR_n MAR_n MAR_i MNAR_n MNAR_i
+mat list comb

@@ -14,7 +14,7 @@ profile:
 
 news: true
 social: true
-recent_posts: true
+recent_posts: false
 ---
 
 Welcome! I am a PhD candidate in the department of sociology at New York University. I work on topics in political sociology, social networks, social mobility, and quantitative methodology. 

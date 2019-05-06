@@ -1,0 +1,824 @@
+****************************************
+** Lab 5  							  **
+**									  **
+** 1) Imputation of Top-coded Income  **
+** 2) Smoothing (Lowess) 			  **
+** 3) Regression Splines			  **
+** 4) Information Criteria			  **
+**									  **
+****************************************
+
+
+* SETUP 
+set maxvar 20000
+use gss7214.dta
+
+
+/** Generate family income measure in constant 2014 dollars **/
+
+* assign mid points to scales and generate new vars
+recode income 1=.5 2=2 3=3.5 4=4.5 5=5.5 6=6.5 7=7.5 8=9 9=12.5 10=17.5 11=22.5 12=170 13=.a if year<1977, gen(incomemp)
+recode income72 1=1 2=3 3=5 4=7 5=9 6=11.25 7=13.75 8=16.25 9=18.75 10=22.5 11=27.5 12=170 13=.a, gen(income72mp)
+recode income77 1=.5 2=2 3=3.5 4=4.5 5=5.5 6=6.5 7=7.5 8=9 9=11.25 10=13.75 11=16.25 12=18.75 13=21.25 14=23.75 15=37.5 16=170 17=.a, gen(income77mp)
+recode income82 1=.5 2=2 3=3.5 4=4.5 5=5.5 6=6.5 7=7.5 8=9 9=11.25 10=13.75 11=16.25 12=18.75 13=21.25 14=23.75 15=30 16=42.5 17=170 18=.a, gen(income82mp)
+recode income86 1=.5 2=2 3=3.5 4=4.5 5=5.5 6=6.5 7=7.5 8=9 9=11.25 10=13.75 11=16.25 12=18.75 13=21.25 14=23.75 15=27.5 16=32.5 17=37.5 18=45 19=55 20=170 21=.a, gen(income86mp)
+recode income91 1=.5 2=2 3=3.5 4=4.5 5=5.5 6=6.5 7=7.5 8=9 9=11.25 10=13.75 11=16.25 12=18.75 13=21.25 14=23.75 15=27.5 16=32.5 17=37.5 18=45 19=55 20=67.5 21=170 22=.a, gen(income91mp)
+recode income98 1=.5 2=2 3=3.5 4=4.5 5=5.5 6=6.5 7=7.5 8=9 9=11.25 10=13.75 11=16.25 12=18.75 13=21.25 14=23.75 15=27.5 16=32.5 17=37.5 18=45 19=55 20=67.5 21=82.5 22=100 23=170 24=.a, gen(income98mp)
+recode income06 1=.5 2=2 3=3.5 4=4.5 5=5.5 6=6.5 7=7.5 8=9 9=11.25 10=13.75 11=16.25 12=18.75 13=21.25 14=23.75 15=27.5 16=32.5 17=37.5 18=45 19=55 20=67.5 21=82.5 22=100 23=120 24=140 25=170 26=.a, gen(income06mp)
+* stack all values into "incomemp" for the corresponding years
+replace incomemp = income72mp if year==1972
+replace incomemp = income77mp if year>=1977
+replace incomemp = income82mp if year>=1982
+replace incomemp = income86mp if year>=1986
+replace incomemp = income91mp if year>=1991
+replace incomemp = income98mp if year>=1998
+replace incomemp = income06mp if year>=2006
+lab var incomemp "Family income (current $)"
+
+* estimate top income code using Pareto distribution
+* The Pareto distribution is defined by the CDF
+*
+*  P(X \le x) = 1 - (x_c / x )^\alpha
+*
+* where x is a given value (assumed to be greater or equal to x_c),
+* x_c is the cut-off parameter, and \alpha is the shape parameter.
+*
+* An interesting property of the Pareto distribution is that the 
+* mean above any threshold y is given as
+*
+* I = E[X|X \ge y] = [ \alpha / (\alpha - 1) ] * y
+*
+* This property makes the Pareto distribution, together with 
+* the belief that income at the top can be 
+* approximated by a Pareto distribution, especially useful for 
+* imputing top-coded income variables.
+* 
+* There are two complications, however. First, as Mike argued,
+* it turns out that the imputed values consistently overestimate the 
+* income of the top category (according to Mike). To remedy this problem,
+* he suggests to weight down the imputed income by using the formula
+*
+* \hat\income = y + (1/2)[I + y]
+*
+* The second difficulty lies in estimating the shape parameter \alpha.
+* The most common approach is to assume that the income distribution is Pareto
+* above a threshold j and use a second threshold k to estimate \alpha.
+* In the current code we use k as the top-coded cutoff and j as the second-last income estimate.
+* Then the estimate for \alpha is given as
+* 
+* \hat\alpha = [\ln (C_j/C_k)]/[\ln(k/j)] = [\ln C_j - \ln C_k] / [\ln k - \ln j]
+*
+* where C_j is the number of individuals with earnings above the first threshold,
+* C_k the number of individuals with earnings above the second threshold,
+* and j and k the corresponding income.
+* Note that the numerator in this expression is simply the number of individuals
+* which have earnings between the first and the second threshold, and that
+* the denominator is the difference in the income corresponding to the thresholds.
+* (This estimate of \alpha is actually the MLE of \alpha.)
+*
+* With this estimate of \alpha, we obtain the predicted income of the top category, i.e.,
+*
+* Imputed income of top-cat = k * [\hat\alpha / (\hat\alpha - 1 ) ]
+*
+* For example, let us look at the year 1972.
+* You can see the income intervals by typing
+*
+* STATA CODE: tab income72 if year==1972
+*
+* The second highest threshold is        j = 20 (in thousands) 
+* and the top-coded threshold is         k = 25
+* The number of individuals above j is C_j = 33 + 32 = 65
+* The number of individuals above k is C_k = 32
+* So, our estimate of \alpha is 
+*
+* \hat \alpha = [\ln C_j - \ln C_k]/[\ln k - \ln j] = [\ln 65 - \ln 32] / [\ln 25 - \ln 20]
+*
+* which might be coded as
+
+gen V72=(ln(65) - ln(32))/(ln(30)-ln(25))
+
+* Next, the imputed value of income is 
+*
+* \hat\income = k + (1/2)[I - k] = (1/2) * [k + I] = (1/2)*[k + k(\hat\alpha)/(\hat\alpha -1)] 
+*             = (1/2) * k * [1 + \hat\alpha/ (\hat\alpha - 1)]
+*
+* (If these expressions look complicated, I encourage you to write them down on paper...
+*  There is a limit to writing equations in a do-file...)
+* 
+* As we have coded \hat\alpha as V72, the imputed income can be calculated as
+
+gen M72=30/2 * (1 + V72/(V72-1))
+
+* where the 30/2 is simply (1/2) * k, as k=30.
+*
+* Lastly, we save our estimates of alpha and the impluted income for the top-category
+gen V=V72 if year==1972
+gen M=M72 if year==1972
+* and replace the income of the top category for the year 1972
+replace incomemp=M72 if income72==12 & year==1972
+drop V72 M72
+
+/** The chunk of code that follows repeats this for every year **/
+
+gen V73=(ln(195) - ln(92))/(ln(25)-ln(20))
+gen M73=25/2 * (1 + V73/(V73-1))
+replace V=V73 if year==1973
+replace M=M73 if year==1973
+replace incomemp=M73 if income==12 & year==1973
+drop V73 M73
+
+gen V74=(ln(218)-ln(115))/(ln(25)-ln(20))
+gen M74=25/2 * (1 + V74/(V74-1))
+replace V=V74 if year==1974
+replace M=M74 if year==1974
+replace incomemp=M74 if income==12 & year==1974
+drop V74 M74
+
+gen V75=(ln(239)-ln(128))/(ln(25)-ln(20))
+gen M75=25/2 * (1 + V75/(V75-1))
+replace V=V75 if year==1975
+replace M=M75 if year==1975
+replace incomemp=M75 if income==12 & year==1975
+drop V75 M75
+
+gen V76=(ln(276) - ln(148))/(ln(25)-ln(20))
+gen M76=25/2 * (1 + V76/(V76-1))
+replace V=V76 if year==1976
+replace M=M76 if year==1976
+replace incomemp=M76 if income==12 & year==1976
+drop V76 M76
+
+gen V77=(ln(208) - ln(38))/(ln(50)-ln(25))
+gen M77=50/2 * (1 + V77/(V77-1))
+replace V=V77 if year==1977
+replace M=M77 if year==1977
+replace incomemp=M77 if income77==16 & year==1977
+drop V77 M77
+
+gen V78=(ln(214) - ln(33))/(ln(50)-ln(25))
+gen M78=50/2 * (1 + V78/(V78-1))
+replace V=V78 if year==1978
+replace M=M78 if year==1978
+replace incomemp=M78 if income77==16 & year==1978
+drop V78 M78
+
+gen V80=(ln(330) - ln(61))/(ln(50)-ln(25))
+gen M80=50/2 * (1 + V80/(V80-1))
+replace V=V80 if year==1980
+replace M=M80 if year==1980
+replace incomemp=M80 if income77==16 & year==1980
+drop V80 M80
+
+gen V82=(ln(244) - ln(83))/(ln(50)-ln(35))
+gen M82=50/2 * (1 + V82/(V82-1))
+replace V=V82 if year==1982
+replace M=M82 if year==1982
+replace incomemp=M82 if income82==17 & year==1982
+drop V82 M82
+
+gen V83=(ln(142+153) - ln(142))/(ln(50)-ln(35))
+gen M83=50/2 * (1 + V83/(V83-1))
+replace V=V83 if year==1983
+replace M=M83 if year==1983
+replace incomemp=M83 if income82==17 & year==1983
+drop V83 M83
+
+gen V84=(ln(288) - ln(120))/(ln(50)-ln(35))
+gen M84=50/2 * (1 + V84/(V84-1))
+replace V=V84 if year==1984
+replace M=M84 if year==1984
+replace incomemp=M84 if income82==17 & year==1984
+drop V84 M84
+
+gen V85=(ln(347) - ln(162))/(ln(50)-ln(35))
+gen M85=50/2 * (1 + V85/(V85-1))
+replace V=V85 if year==1985
+replace M=M85 if year==1985
+replace incomemp=M85 if income82==17 & year==1985
+drop V85 M85
+
+gen V86=(ln(156) - ln(99))/(ln(60)-ln(50))
+gen M86=60/2 * (1 + V86/(V86-1))
+replace V=V86 if year==1986
+replace M=M86 if year==1986
+replace incomemp=M86 if income86==20 & year==1986
+drop V86 M86
+
+gen V87=(ln(228) - ln(130))/(ln(60)-ln(50))
+gen M87=60/2 * (1 + V87/(V87-1))
+replace V=V87 if year==1987
+replace M=M87 if year==1987
+replace incomemp=M87 if income86==20 & year==1987
+drop V87 M87
+
+gen V88=(ln(197) - ln(120))/(ln(60)-ln(50))
+gen M88=60/2 * (1 + V88/(V88-1))
+replace V=V88 if year==1988
+replace M=M88 if year==1988
+replace incomemp=M88 if income86==20 & year==1988
+drop V88 M88
+
+gen V89=(ln(269) - ln(164))/(ln(60)-ln(50))
+gen M89=60/2 * (1 + V89/(V89-1))
+replace V=V89 if year==1989
+replace M=M89 if year==1989
+replace incomemp=M89 if income86==20 & year==1989
+drop V89 M89
+
+gen V90=(ln(254) - ln(172))/(ln(60)-ln(50))
+gen M90=60/2 * (1 + V90/(V90-1))
+replace V=V90 if year==1990
+replace M=M90 if year==1990
+replace incomemp=M90 if income86==20 & year==1990
+drop V90 M90
+
+gen V91=(ln(166) - ln(80))/(ln(75)-ln(60))
+gen M91=75/2 * (1 + V91/(V91-1))
+replace V=V91 if year==1991
+replace M=M91 if year==1991
+replace incomemp=M91 if income91==21 & year==1991
+drop V91 M91
+
+gen V93=(ln(268) - ln(160))/(ln(75)-ln(60))
+gen M93=75/2 * (1 + V93/(V93-1))
+replace V=V93 if year==1993
+replace M=M93 if year==1993
+replace incomemp=M93 if income91==21 & year==1993
+drop V93 M93
+
+gen V94=(ln(454) - ln(271))/(ln(75)-ln(60))
+gen M94=75/2 * (1 + V94/(V94-1))
+replace V=V94 if year==1994
+replace M=M94 if year==1994
+replace incomemp=M94 if income91==21 & year==1994
+drop V94 M94
+
+gen V96=(ln(529) - ln(329))/(ln(75)-ln(60))
+gen M96=75/2 * (1 + V96/(V96-1))
+replace V=V96 if year==1996
+replace M=M96 if year==1996
+replace incomemp=M96 if income91==21 & year==1996
+drop V96 M96
+
+gen V98=(ln(243) - ln(136))/(ln(110)-ln(90))
+gen M98=90/2 * (1 + V98/(V98-1))
+replace V=V98 if year==1998
+replace M=M98 if year==1998
+replace incomemp=M98 if income98==23 & year==1998
+drop V98 M98
+
+gen V00=(ln(264) - ln(174))/(ln(110)-ln(90))
+gen M00=90/2 * (1 + V00/(V00-1))
+replace V=V00 if year==2000
+replace M=M00 if year==2000
+replace incomemp=M00 if income98==23 & year==2000
+drop V00 M00
+
+gen V02=(ln(344) - ln(230))/(ln(110)-ln(90))
+gen M02=90/2 * (1 + V02/(V02-1))
+replace V=V02 if year==2002
+replace M=M02 if year==2002
+replace incomemp=M02 if income98==23 & year==2002
+drop V02 M02
+
+gen V04=(ln(447) - ln(295))/(ln(110)-ln(90))
+gen M04=90/2 * (1 + V04/(V04-1))
+replace V=V04 if year==2004
+replace M=M04 if year==2004
+replace incomemp=M04 if income98==23 & year==2004
+drop V04 M04
+
+gen V06=(ln(302) - ln(213))/(ln(150)-ln(130))
+gen M06=130/2 * (1 + V06/(V06-1))
+replace V=V06 if year==2006
+replace M=M06 if year==2006
+replace incomemp=M06 if income06==25 & year==2006
+drop V06 M06
+
+gen V08=(ln(167) - ln(123))/(ln(150)-ln(130))
+gen M08=130/2 * (1 + V08/(V08-1))
+replace V=V08 if year==2008
+replace M=M08 if year==2008
+replace incomemp=M08 if income06==25 & year==2008
+drop V08 M08
+
+gen V10=(ln(172) - ln(115))/(ln(150)-ln(130))
+gen M10=130/2 * (1 + V10/(V10-1))
+replace V=V10 if year==2010
+replace M=M10 if year==2010
+replace incomemp=M10 if income06==25 & year==2010
+drop V10 M10
+
+gen V12=(ln(189) - ln(144))/(ln(150)-ln(130))
+gen M12=130/2 * (1 + V12/(V12-1))
+replace V=V12 if year==2012
+replace M=M12 if year==2012
+replace incomemp=M12 if income06==25 & year==2012
+drop V12 M12
+
+
+/** Inflation Adjustments **/
+
+* As the value of the dollar falls with rising inflation,
+* Income is not directly comparable over long runs of time.
+* The standard way to use income in a longitudinal analysis is, therefore,
+* to transform income into constant dollars (an alternative is to use percentiles)
+* To do so, we need the Consumer Prince Index 
+* (usually the CPI-U-RS, which can be found on BLS.)
+* (Mike used the CPI-U-RS less food and energy, so we will use the same series)
+
+* Now, I could not find the numbers that Mike enters in his do-file. 
+* This is probably because the BLS updates their estimates of the CPI when new 
+* methodologies are developed or new information becomes available.
+* On the other hand, the published indices by the BLS start from the year 1977. 
+* So, let us use Mike's estimates for pre 1977 years and use the new estimates from the BLS
+* for the post 1977 years
+* A last thing to note is that the GSS asks about income in the previous year,
+* so, we'll assign the CPI of year t to that of year t+1
+* (If you have to do recodings like these, consider generating the code in excel..)
+gen cpi_urs = .
+* for example 61.9 is the CPI for year 1971, but as the GSS in 1972 asks for income in 
+* the previous (1971) year, we'll assign its value to the year 1972
+replace cpi_urs = 61.9 if year ==1972
+replace cpi_urs = 63.9 if year ==1973
+replace cpi_urs = 67.9 if year ==1974
+replace cpi_urs = 75.4 if year ==1975
+replace cpi_urs = 82.3 if year ==1976
+replace cpi_urs = 87 if year ==1977
+replace cpi_urs = 100 if year ==1978
+replace cpi_urs = 103.5 if year ==1979
+replace cpi_urs = 111 if year ==1980
+replace cpi_urs = 120.9 if year ==1981
+replace cpi_urs = 132.2 if year ==1982
+replace cpi_urs = 142.4 if year ==1983
+replace cpi_urs = 150.4 if year ==1984
+replace cpi_urs = 158.1 if year ==1985
+replace cpi_urs = 165 if year ==1986
+replace cpi_urs = 171.7 if year ==1987
+replace cpi_urs = 178.1 if year ==1988
+replace cpi_urs = 185.2 if year ==1989
+replace cpi_urs = 192.6 if year ==1990
+replace cpi_urs = 201.4 if year ==1991
+replace cpi_urs = 209.9 if year ==1992
+replace cpi_urs = 216.4 if year ==1993
+replace cpi_urs = 222.5 if year ==1994
+replace cpi_urs = 227.7 if year ==1995
+replace cpi_urs = 233.4 if year ==1996
+replace cpi_urs = 239.1 if year ==1997
+replace cpi_urs = 244.4 if year ==1998
+replace cpi_urs = 249.6 if year ==1999
+replace cpi_urs = 254.6 if year ==2000
+replace cpi_urs = 260.9 if year ==2001
+replace cpi_urs = 267.9 if year ==2002
+replace cpi_urs = 274.1 if year ==2003
+replace cpi_urs = 278.1 if year ==2004
+replace cpi_urs = 283.1 if year ==2005
+replace cpi_urs = 289.2 if year ==2006
+replace cpi_urs = 296.4 if year ==2007
+replace cpi_urs = 303.4 if year ==2008
+replace cpi_urs = 310.3 if year ==2009
+replace cpi_urs = 315.6 if year ==2010
+replace cpi_urs = 318.6 if year ==2011
+replace cpi_urs = 323.9 if year ==2012
+replace cpi_urs = 330.8 if year ==2013
+replace cpi_urs = 336.6 if year ==2014
+lab var cpi_urs "Inflation Adjustment Factor"
+
+* Now as you can see, the CPI is 100 for the year 1978, this means that the index
+* is standardized for the value of the dollar in 1977 
+* (again, because GSS asks about the previous year's income)
+* To rescale the index to 2014 dollars, we simly divide all its values by the value of the year 2015 
+* (here, the value for 2014 because of income question)
+
+gen CPI_u14=cpi_u/336.6
+
+* Thereafter we divide the nominal income "by" the CPI, to obtain constant 2014 dollars
+* Note that the income in 2014 will not change as the index is 336.6/336.6 = 1 in year 2014
+* On the other hand, the income of all previous years will be scaled up as the renormalized CPI 
+* is smaller than 1 for these years
+gen income14 = incomemp/CPI_u14
+lab var income14 "Family Income (2014$)"
+
+
+*** WE ARE DONE **
+
+
+/** Smoothing **/
+
+* Let us generate some variables:
+* party identification: -3 =strong Democrat up to 3 =strong Republican
+gen pid = partyid - 3 if partyid < 7
+* log income
+gen lbinc = ln(income14)/ln(2)
+* female
+gen female = sex ==2 if sex < .
+
+* race (this is a little bit more complex)
+gen lat=hispanic>1 if hispanic<.
+replace lat = 1 if hispanic>=. & ethnic==17
+replace lat = 1 if hispanic>=. & ethnic==22
+replace lat = 1 if hispanic>=. & ethnic==25
+replace lat = 1 if hispanic>=. & ethnic==28
+replace lat = 1 if hispanic>=. & ethnic==38
+replace lat = 1 if hispanic>=. & eth1==17
+replace lat = 1 if hispanic>=. & eth1==22
+replace lat = 1 if hispanic>=. & eth1==25
+replace lat = 1 if hispanic>=. & eth1==28
+replace lat = 1 if hispanic>=. & eth1==38
+replace lat = 1 if hispanic>=. & eth2==17
+replace lat = 1 if hispanic>=. & eth2==22
+replace lat = 1 if hispanic>=. & eth2==25
+replace lat = 1 if hispanic>=. & eth2==28
+replace lat = 1 if hispanic>=. & eth2==38
+replace lat = 1 if hispanic>=. & eth3==17
+replace lat = 1 if hispanic>=. & eth3==22
+replace lat = 1 if hispanic>=. & eth3==25
+replace lat = 1 if hispanic>=. & eth3==28
+replace lat = 1 if hispanic>=. & eth3==38
+lab var lat "Hispanic Heritage"
+lab def lat 0 "Other" 1 "Hispanic"
+lab val lat lat
+
+recode race 1=1 2=2 3=4
+replace race = 3 if lat==1 & race!=2
+lab var race "Racial ancestry"
+lab def race 1 White 2 Black 3 Latino 4 Other, modify
+lab val race race
+
+
+* let us look into the post-2008 years 
+keep if year > 2008
+
+* we might explore the association between pid and education by using loess
+tw lowess pid educ, bw(1) 
+* so it seems that up to 6 years, pid remains stable at -.6 (slightly Democratic leaning),
+* then from 6 to 15 years, individuals become, on average, more Republican,
+* and after a BA, they become more Democrat
+
+* overall the association between education and pid is relative weak considering that
+* pid ranges from -3 to 3
+tw (scatter pid educ, m(oh) mc(blue) msize(small)) ///
+	(lowess pid educ, bw(1)), ylabel(-3(1)3) xlabel(0(4)20)
+* note that the scatterplot doesn't really show what's going on in the data
+* this is because pid and educ are both actually "discrete" variables (although we treat them as continuous)
+* so no matter how many points are concentrated in one spot, STATA will show only one point
+
+* to remedy this, we might use the jitter option	
+tw (scatter pid educ, m(oh) mc(blue) msize(vsmall) jitter(4)) ///
+	(lowess pid educ, bw(1)), ylabel(-3(1)3) xlabel(0(4)20)
+* now, we see that most of the points are concentrated at education year 12 and 16	
+
+* you can also save the smoothed curve using the "gen" option
+lowess pid educ, bw(1) gen(spid)
+
+* Let us compare the nonparametric smooth with parametric curves	
+reg pid c.educ // linear fit
+predict yhat_linear if e(sample)
+reg pid c.educ##c.educ // quadratic fit 
+predict yhat_quad if e(sample)
+reg pid c.educ##c.educ##c.educ // cubic fit
+predict yhat_cubic if e(sample)
+reg pid c.educ##c.educ##c.educ##c.educ // quartic fit, not significant
+
+* comparing these models to the nonparametric smooth, we get
+# delimit
+tw  (line yhat_linear educ, sort) 
+	(line yhat_quad educ, sort lc(blue)) 
+	(line yhat_cubic educ, sort lc(green)) 
+	(line spid educ if e(sample), lc(red) sort), 
+	legend(pos(3) 
+		   label(1 "linear") 
+		   label(2 "quadratic") 
+		   label(3 "cubic")
+		   label(4 "smoothed")
+	)
+;
+
+lab def pid -3 "Strong Democrat" -2 "Democrat" -1 "Democrat Leaning" 0 "Independent" ///
+		1 "Republican Leaning" 2 "Republican" 3 "Strong Republican"
+lab val pid pid
+
+# delimit
+tw  (scatter pid educ, m(oh) mc(blue*.25) msize(vsmall) jitter(4)) 
+	(line yhat_linear educ, sort) 
+	(line yhat_quad educ, sort lc(blue)) 
+	(line yhat_cubic educ, sort lc(green)) 
+	(line spid educ if e(sample), lc(red) sort), 
+	legend(pos(6) row(2) symxsize(small) size(small) holes(4)
+		   label(1 "Observed (Jittered)")
+		   label(2 "Linear Fit") 
+		   label(3 "Quadratic Fit") 
+		   label(4 "Cubic Fit")
+		   label(5 "Lowess")
+		  )
+	ylabel(-3(1)3, labels)
+	xlabel(0(4)20, angle(horizontal))
+;
+
+	
+
+/** Controling for other variables **/
+
+* We might do the same exercise, but this time while controling for other variables
+* first we drop the predicted values
+drop yhat_*
+
+* Next we run the regressions with age, gender, income, and race as controls
+reg pid c.educ c.age female lbinc i.race // linear fit
+* Let's store these estimates
+estimates store linear
+
+* To get predictions for education we have to hold constant other variables at certain values
+* here we set race to "white," gender to "male" and the rest to their mean
+* (the choice of these categories is because they are the baseline categories for the dummies)
+*
+* THE FOLLOWING CODE MIGHT BE A LITTLE BIT COMPLEX. BUT BECOMING USED TO THESE KIND OF THINGS
+* WILL BE VERY HELPFUL, WHEN YOU ARE PROGRAMMING IN STATA (AND ANY OTHER CODING LANGUAGE)
+
+* So, first we save the coefficients into a matrix
+mat B = e(b)
+* we might look into the saved matrix
+mat list B
+
+* next we define some "local variables"
+* local variables are variables (which hold usualy only a number or a string) that disappear after the execution of a command
+* Thus the next chunk of code has to be executed in one run.
+
+* If you want to refer to a local variable in the code, you have to enclose the name of the variable in ` and '.
+* for example if you want refer to the local variable x, you have to use `x' in your code.
+* Also, some commands in stata work only for strings. So, if you want to convert a number that is stored in a
+* local variable into a string, you will need to write "`x'".
+* you can search "help local" in stata for more details
+
+* Lastly, after you run the command "summarize" in STATA, STATA automatically saves some values such as the mean, min, and max
+* into local variables, which you can access after running the command.
+* For example, you might type
+*
+* 		sum age
+*		return list
+*
+* to see which values are saved under what names. The list will also show that the mean of "age" is saved in a scalar
+* named r(mean). After running the summaize command, you can therefore use these values for other computations.
+* From the example above, you might type
+*
+*		sum age
+*		display r(mean)
+*
+* which will show you the mean of age
+*
+*
+* OKAY, now, here is the code we want to run:
+
+* first we define a local variable "cons_sum" and set its value to zero
+local cons_sum = 0
+* The "foreach" command is a looping command:
+* at each iteration of the loop, age and lbinc (in turn) are substituted into the local variable `v'
+foreach v of varlist age lbinc {
+	* first we quietely summarize `v' (the "mean" option tells STATA to summarize only the mean)
+	qui sum `v', mean
+	* we define a new local variable that contains the mean of `v' 
+	* the name of this local variable will be mean_`v', e.g., if v is "age", the name of the local 
+	* variable is thus "mean_age"
+	local mean_`v' = r(mean)
+	* we display the mean
+	di "mean of variable `v' : `mean_`v''"
+	* (note that we have used `mean_`v'' to refer to the new local variable)
+	* we extract the column number of B that corresponds to the variable `v' and save into `z'
+	* This is simply the coefficient for `v' in the previous regression
+	local z = colnumb(B, "`v'")
+	* we multiply this coefficient by the mean of `v'
+	local cons_sum = `cons_sum' + B[1,`z'] * `mean_`v''
+}
+* lastly, we add the constant to `cons_sum'
+local z = colnumb(B, "_cons")
+local cons_sum = `cons_sum' + B[1,`z']
+
+* Now, what is contained in `cons_sum' is the follwing:
+*
+* cons_sum = constant + coef_age * mean_age + coef_lbinc * mean_lbinc + coef_female * 0 + coef_race * 0
+*
+* In other words, cons_sum contains the predicted outcome for individuals with
+* average age, average income, who are male, and who are white (and for which educ is zero)
+*
+* Now, the last step is to let education vary to get predictions of how the outcome changes with education
+* we generate the prediction of the outcome (yhat_linear),
+* by generating the variable
+gen yhat_linear = `cons_sum' + B[1,1]*educ if e(sample)
+
+* This variable represents, therefore, the predicted change in the outcome (pid) when 
+* age and income is hold constant at their mean, and female and race is set, respectively, to "male" and "white"
+
+
+
+** quadratic fit **
+reg pid c.educ##c.educ age female lbinc i.race // quadratic fit 
+* again we store the estimates
+estimates store quadratic
+* and use the same routine to get predictions
+mat B = e(b)
+mat list B
+
+local cons_sum = 0
+foreach v of varlist age lbinc {
+	qui sum `v', mean
+	local mean_`v' = r(mean)
+	local z = colnumb(B, "`v'")
+	local cons_sum = `cons_sum' + B[1,`z'] * `mean_`v''
+}
+local z = colnumb(B, "_cons")
+local cons_sum = `cons_sum' + B[1,`z']
+* NOTE: now we have to use both the linear term and the quadratic term!!
+local l = colnumb(B, "educ")
+local q = colnumb(B, "c.educ#c.educ")
+gen yhat_quadratic = `cons_sum' + B[1,`l']*educ + B[1, `q']*educ^2 if e(sample)
+
+** cubic fit **
+reg pid c.educ##c.educ##c.educ age female lbinc i.race // cubic fit
+estimates store cubic
+
+mat B = e(b)
+mat list B
+
+local cons_sum = 0
+foreach v of varlist age lbinc {
+	qui sum `v', mean
+	local mean_`v' = r(mean)
+	local z = colnumb(B, "`v'")
+	local cons_sum = `cons_sum' + B[1,`z'] * `mean_`v''
+}
+local z = colnumb(B, "_cons")
+local cons_sum = `cons_sum' + B[1,`z']
+* NOW WE NEED THE LINEAR, QUADRATIC, AND CUBIC TERM
+local l = colnumb(B, "educ")
+local q = colnumb(B, "c.educ#c.educ")
+local c = colnumb(B, "c.educ#c.educ#c.educ")
+gen yhat_cubic = `cons_sum' + B[1,`l']*educ + B[1, `q']*educ^2 + B[1,`c']*educ^3 if e(sample)
+
+* comparing these models, we get
+# delimit
+tw  (line yhat_linear educ, sort) 
+	(line yhat_quad educ, sort lc(blue)) 
+	(line yhat_cubic educ, sort lc(green)), 
+	legend(pos(3) 
+		   label(1 "linear") 
+		   label(2 "quadratic") 
+		   label(3 "cubic")
+	) 
+;
+
+
+* To get a "feeling" of how the pattern in the data look like after controlling for a set of variables,
+* we might also use lowess on two sets of residuals: 
+* 1) residuals after regressing pid on the controls, and
+* 2) residuals after regressing educ on the controls
+
+* The procedure is as follows:
+
+reg pid age female lbinc i.race // regress outcome on controls
+predict e_cont if e(sample), res // save residuals
+reg educ age female lbinc i.race // regress education on controls
+predict e_educ if e(sample), res // save residuals
+lowess e_cont e_educ, bw(1) nograph gen(res_smooth) // Run Lowess
+
+* Now, looking at the pattern ...
+tw line res_smooth e_educ,sort
+tw (scatter e_cont e_educ, mc(blue*.25) m(oh) msize(vsmall)) ///
+	(line res_smooth e_educ, sort)
+* it seems that the first part of the lowess curve is estimated with only a few observations.
+
+* (I HAVE ADDED A SHORT DISCUSSION AT THE END OF THE DO-FILE TO EXPLAIN, INTUITIVELY, WHY THIS PROCEDURE WORKS)
+
+* Notice that both the x and the y-axis are residuals and not the original scales.
+* So, let us also look how the smoothed residuals relate to education
+tw scatter res_smooth educ, mc(blue*.5) m(oh) msize(vsmall) jitter(2)
+* This plot is only "suggestive" and "might" be misleading since it does not take into account
+* the correlation between educ and the control variables
+* Still, it let's us guess where the major changes happens
+
+* It appears that the major change in the relationship between pid and education occurs
+* either at 12 or 16 of the education scale
+* Let's try out splines to mimic the curvature of the function
+* first we start with an additional `boost' for those who have more a hs diploma
+gen educ_from12 = 0
+replace educ_from12 = educ - 11 if educ > 11 & educ <.
+* a look how the additional variable is defined
+scatter educ_from12 educ
+
+* Now, let's run the regression and look at the results
+reg pid educ educ_from12 age female lbinc i.race 
+* the slope for education is .0197374 for those with education lower than 12
+* for those with more than a hs diploma the slope is .0197374 + ( -.0814923)* (educ - 11)
+* The significant coefficient on from_12 shows us that there is indeed an additional (negative) boost
+* after 12 years of education.
+
+* lastly, let us store the estimates of the models
+estimates store from_12
+
+* Next, we run the same model for a change in the slopes after obtaining a BA
+gen educ_from16 = 0
+replace educ_from16 = educ - 15 if educ > 15 & educ < .
+* run regression
+reg pid educ educ_from16 age female lbinc i.race
+estimates store from_16
+
+* We can also get the predictions of the model using the code from above:
+mat B = e(b)
+mat list B
+
+local cons_sum = 0
+foreach v of varlist age lbinc {
+	qui sum `v', mean
+	local mean_`v' = r(mean)
+	local z = colnumb(B, "`v'")
+	local cons_sum = `cons_sum' + B[1,`z'] * `mean_`v''
+}
+local z = colnumb(B, "_cons")
+local cons_sum = `cons_sum' + B[1,`z']
+
+local base = colnumb(B, "educ")
+local boost = colnumb(B, "educ_from16")
+gen yhat_spline16 = `cons_sum' + B[1,`base']*educ + B[1, `boost']*educ_from16 if e(sample)
+
+* The prediction looks something like...
+
+tw line yhat_spline16 educ, sort ylabel(-.5(.25).5) 
+
+
+* A last complication when running all these models is to decide which model to choose as the final model
+* For the models that we've run so far, these might be some guidelines ...
+* 1) note that the linear model and the splines are "nested". 
+*    Thus a significant coefficient on the "boosting" term indicates that
+*    its inclusion is statistically justified.
+*    Also, the linear, quadratic, and cubic functions are nested as well.
+*    So, again, a significance test is a good way to go.
+* 2) models with different spline functions, or with the cubic term
+*    are, however, not nested. In these situations,
+*    information criteria such as BIC or AIC are often used.
+
+* So, as both spline functions are significant, 
+* and the cubic term in the cubic regression is significant as well, 
+* we can rule out the linear and the quadratic model
+
+* To select a model among the remaining ones, we might use
+estimates stats cubic from_12 from_16
+* Lower AIC and BIC values are "better". So, it seems that the spline with BA-boost seems to be prefered 
+
+
+** WHY RUNNING REGRESSIONS OF RESIDUALS ON RESIDUALS?
+
+* To get a "feeling" of how the pattern in the data look like after controlling for a set of variables,
+* we might use lowess two sets of residuals.
+* The procedure is as follows:
+
+reg pid age female lbinc i.race if !missing(educ) // regress outcome on controls
+* we have to specify !missing(educ) so that we use the same observations in both regressions
+predict e_cont if e(sample), res // save residuals
+reg educ age female lbinc i.race if !missing(pid) // regress education on controls
+predict e_educ if e(sample), res // save residuals
+lowess e_cont e_educ, bw(1) gen(res_smooth) // run loess on both residuals and save predictions
+
+tw line res_smooth e_educ,sort
+tw (scatter e_cont e_educ, mc(blue*.25) m(oh) msize(vsmall)) ///
+	(line res_smooth e_educ, sort)
+
+
+/** Why does this work? **/
+
+* Intuitively, the very concept of "controlling for" or "holding constant" control variables
+* is nothing else than "partialling out" the effect of these variables 
+* from "both" 1) the focal predictor and 2) the outcome
+* 
+* The residual of a regression, on the other hand, "is" the variation of the outcome that remains
+* after the "effect" of the predictors are paritalled out
+* 
+* Hence, if we residualize both the outcome and the focal predictor
+* and regressing these residuals on one another, we recover the origian regression coefficient
+* from a multiple regression!
+*
+* Or, at least, this is the intuition...
+* For a more detailed explanation, you might search for the Frisch-Waugh Theorem.
+* (The theorem should not be too technical if you are familiar with basic linear algebra..)
+
+* Just to demonstrate that it works, you might try the following:
+* regress pid on education and controls, and save coefficient in a scalar
+reg pid educ age female lbinc i.race
+mat B = e(b)
+scalar educ_b = B[1,1]
+
+* regress pid on controls, save residuals 
+qui reg pid age female lbinc i.race if !missing(educ)
+predict e1 if e(sample), res
+* regress education on controls, save residuals
+qui reg educ age female lbinc i.race if !missing(pid)
+predict e2 if e(sample), res
+* regress residuals of pid on residuals on education, save coefficient in scalar
+qui reg e1 e2
+mat B=e(b)
+scalar educ_res = B[1,1]
+* compare the two coefficients
+di educ_b
+di educ_res
+* Voila!
+
+
+

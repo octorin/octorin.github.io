@@ -8,6 +8,16 @@ a {
     }
 }
 
+.teaching-posts a {
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+        color: $theme-color;
+        text-decoration: underline;
+    }
+}
+
 article a, .news a {
     color: $theme-color;
     font-weight: 100;
