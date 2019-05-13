@@ -589,7 +589,7 @@ using namespace Rcpp;
 //' @param x point at which target should be evaluated
 //' @return log-density of target (plus a constant)
 
-double log_p(double x) {
+inline double log_p(double x) {
 
     return log(5.0) + R::dbeta(x, 2.0, 5.0, true) ;
     
@@ -605,7 +605,7 @@ double log_p(double x) {
 //'              sampling step
 //' @return      true if proposal is in the slice and false otherwise
 
-bool check_slice(double (*log_p)(double x), 
+inline bool check_slice(double (*log_p)(double x), 
                  double x, 
                  double log_y) 
 {

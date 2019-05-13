@@ -30,3 +30,13 @@ body {
     padding-left: $horizontal-spacing-unit;
     @extend .clearfix;
 }
+
+.abstract-wrapper {
+    max-width: -webkit-calc(1000px - (#{$horizontal-spacing-unit} * 2));
+    max-width:         calc(1000px - (#{$horizontal-spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $horizontal-spacing-unit;
+    padding-left: $horizontal-spacing-unit;
+    @extend .clearfix;
+}
