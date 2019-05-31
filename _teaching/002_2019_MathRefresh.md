@@ -9,7 +9,7 @@ year: 2019
 "Instead we shall have to describe this kind of relationship in ordinary language, and here we are at once in trouble, because this is just the kind of relationship that ordinary language&mdash;at least any of the Western languages&mdash;is least well equipped to describe. Ordinary language, with its subject to predicates, is geared to handling only one independent factor and one dependent factor at a time: someone is always doing something to somebody. Cause-and-effect thinking, rather than mutual-dependence thinking, is built into speech. Yet a situation that can accurately be described in cause-and-effect terms is just the kind that is encountered least often in sociology. Here the cause produces an effect, but the effect reacts upon the cause. In these circumstances, the very first effort to use ordinary language shows how crude a tool it is. Yet we shall do what we can with it, as we have nothing else."
 </p>
 
-George Casper Homans. 1992[1951]. <em>The Human Group</em>, Transaction, p. 98.
+George Casper Homans. 1992[1951]. <em>The Human Group</em>, NJ: Transaction, p. 98.
 
 <hr>
 
@@ -22,10 +22,10 @@ Siegfried Frederick Nadel. 1957. <em>The Theory of Social Structure</em>, IL: Fr
 <hr>
 
 <p align = "justify" >
-Logic, properly used, does not shackle thought. It gives freedom and, above all, boldness. Illogical thought hesitates to draw conclusions, because it never knows either what it means, or what it assumes, or how far it trusts its own assumptions, or what will be the effect of any modification of assumptions ... Youth is not defined by years, but by the creative impulse to make something. The aged are those who, before all things, desire not to make a mistake. Logic is the olive branch from the old to the young, the want which in the hands of youth has the magic property of creating science.
+Common-sense deduction probably moves by blind instinct from concrete proposition to concrete proposition, guided by some habitual association of ideas. Thus common sense fails in the presence of a wealth of material ... Logic, properly used, does not shackle thought. It gives freedom and, above all, boldness. Illogical thought hesitates to draw conclusions, because it never knows either what it means, or what it assumes, or how far it trusts its own assumptions, or what will be the effect of any modification of assumptions.
 </p>
 
-Alfred North Whitehead. 1916. "Organization of Thought," <em>Science</em>, Vol. XLIV, No. 1134, p. 419.
+Alfred North Whitehead. 1916. "Organization of Thought," <em>Science</em>, Vol. XLIV, No. 1134, p. 417-419.
 
 
 
