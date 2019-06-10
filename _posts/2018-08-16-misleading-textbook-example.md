@@ -129,9 +129,9 @@ title('Prior, (Scaled) Likelihood, and Posterior', cex.main = .9)
 <img src="/assets/img/misleading3.png" width="500" height="400" />
 </center>
 
-I think that this plot is quite misleading in two different ways: the first reason was mentioned above, i.e., the curve representing the likelihood function is in fact representing something else. So, it creates the false impression that $ p(y\vert\theta)  $ is a density function of $ \theta  $ and not $ y  $.
+I think that this plot is quite misleading, since the curve representing the likelihood function is in fact representing something else. So, it creates the false impression that $ p(y\vert\theta)  $ is a density function of $ \theta  $ and not $ y$.
 
-Second, in most applications, you'll never get such a plot. This is because we have often $ n \gg 500  $, at least in sociological research. Even with $ n= 500  $, the likelihood will dominate the posterior, so that the influence of the prior on the posterior will be minimal: the prior will provide only 1/500 of the information that the likelihood provides.
+A second note, although not a "misleading" one, is that most of the time in sociological research, you'll never observe such a plot. This is because we have often $ n \gg 500  $. Even with $ n= 500  $, the likelihood will dominate the posterior, so that the influence of the prior on the posterior will be minimal: the prior will provide only 1/500 of the information that the likelihood provides.
 
 To demonstrate this, consider a set of prior densities with different means. We might generate such a set of priors by reparameterizing the Beta distribution with a mean parameter $ \mu = \alpha/(\alpha + \beta)  $ and a "precision" parameter $ \nu = \alpha + \beta  $. Then, $ \alpha = \mu\nu  $ and $ \beta = (1-\mu)\nu  $.
 
@@ -270,6 +270,6 @@ print(post.intervals, digits = 4)
     ##  [8,] 0.1829 0.2171 0.2541
     ##  [9,] 0.1857 0.2200 0.2572
 
-As we can see, the posterior median <em>is</em> moved towards the prior median (or mode). However, even with this set of strong priors, the smallest and largest posterior median differ only by about $ .02  $ and the 95% credible intervals are all overlapping with one another. The well-known textbook example plot gives, thus, the misleading impression that the prior will influence our posterior much more than is often true. Of course, textbooks also explain that the likelihood will dominate when $ n  $ is large. But, given the small differences in the posterior, it is hardly understandable why "applied" sociologists would be skeptical of weakly informative priors, as even strong priors lead to similar conclusions with sample sizes as large as $ n > 1,000  $.
+As we can see, the posterior median <em>is</em> moved towards the prior median (or mode). However, even with this set of strong priors, the smallest and largest posterior median differ only by about $ .02  $ and the 95% posterior intervals are all overlapping with one another. Of course, textbooks also explain that the likelihood will dominate when $ n  $ is large. But, given the small differences in the posterior, it is hardly understandable why "applied" sociologists would be skeptical of weakly informative priors, as even strong priors lead to similar conclusions with moderately large sample sizes.
 
 Thus, it is true that Bayesians with different priors will disagree (in a quite technical sense) with one another, even if they have nearly infinite data. Yet, it is probably true as well that the difference will not be very meaningful in applied settings if the sample is large and weakly informative priors are used. An exception would be the case in which the priors assign zero probability to a region within the support of the parameter. But if so, these priors could be hardly called ``weakly'' informative.
