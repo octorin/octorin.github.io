@@ -202,14 +202,14 @@ The plot on the right-hand side shows why it might not possible to represent the
 
 Notice that both of the distributions from which we are sampling are *conditional distributions* and that we accept the samples with probability one, which shows that the slice sampler can be thought of as a particular case of Gibbs sampling. Further, it turns out this sampling scheme let's our target, i.e., the uniform distribution over the set $\mathcal U = \\{(x,y): 0 \le y \le p^\ast(x)\\}$, invariant. 
 
-Illustrating this point is straightforward. First, we note that the distribution of $x^{(s)}$ depends only on $y^{(s-1)}$ and that of $y^{(s)}$ only on $x^{(s-1)}$. Hence, the sampling scheme indeed forms a Markov chain. We have to show that the Markov transitions leave the joint distribution $p(x,y)$ and, thus, marginal distribution $p(x)$, invariant. Let us abuse notation a little bit and denote all realized values as well as random variables with lower-case letters. Suppose that $x\_t \sim p$. Then, $y\_{t+1}\, \vert \, x\_{t} \sim \text{Uniform}(0,p^\ast(x\_t))$ and the joint distribution of $(x\_t, y\_{t+1})$ is
+Illustrating this point is straightforward. First, given that we start from $y^{(s-1)}$, the distribution of $x^{(s)}$ depends only on $y^{(s-1)}$ and that of $y^{(s)}$ only on $x^{(s)}$. Hence, the sampling scheme indeed forms a Markov chain. We have to show that the Markov transitions leave the joint distribution $p(x,y)$ and, thus, marginal distribution $p(x)$, invariant. Let us abuse notation a little bit and denote all realized values as well as random variables with lower-case letters. Suppose that $x\_t \sim p$. Then, $y\_{t+1}\, \vert \, x\_{t} \sim \text{Uniform}(0,p^\ast(x\_t))$ and the joint distribution of $(x\_t, y\_{t+1})$ is
 
 $$
 \begin{aligned}
- p(x_{t}, y_{t+1}) &= p(x_{t})p(y_{t+1}\, \vert \, x_{t}) \\
- &=  k^{-1} p^\ast(x_t) \frac{\mathbb I_{\{0\le y_{t+1}\le p^\ast(x_t)\}}(y_{t+1})}{p^\ast(x_t)} \\
- &\propto \mathbb I_{\{ 0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t, y_{t+1}).
- \end{aligned}
+p(x_{t}, y_{t+1}) &= p(x_{t})p(y_{t+1}\, \vert \, x_{t}) \\
+&=  k^{-1} p^\ast(x_t) \frac{\mathbb I_{\{0\le y_{t+1}\le p^\ast(x_t)\}}(y_{t+1})}{p^\ast(x_t)} \\
+&\propto \mathbb I_{\{ 0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t, y_{t+1}).
+\end{aligned}
 $$
 
 Next, the conditional distribution of $x\_{t+1}$ depends only on $y\_{t+1}$ and is uniform over the slice $S\_{y\_{t+1}} = \\{x: y\_{t+1}\le p^\ast(x)\\}$. So,
@@ -217,8 +217,7 @@ Next, the conditional distribution of $x\_{t+1}$ depends only on $y\_{t+1}$ and 
 $$
 \begin{aligned}
 p(y_{t+1}, x_t, x_{t+1}) &= p( y_{t+1}, x_t)p( x_{t+1}\, \vert \, y_{t+1}, x_t) = p( y_{t+1}, x_t)p( x_{t+1}\, \vert \, y_{t+1}) \\
-&\propto \mathbb I_{\{0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t,y_{t+1}) \frac{\mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})}{\mu(S_{y_{t+1}})} \\
-&\propto \mathbb I_{\{0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t,y_{t+1}) \mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})
+&\propto \mathbb I_{\{0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t,y_{t+1}) \frac{\mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})}{\mu(S_{y_{t+1}})} 
 \end{aligned}
 $$
 
@@ -226,18 +225,21 @@ To obtain the distribution of $(y\_{t+1}, x\_{t+1})$, we have to integrate $x\_t
 
 $$
 \begin{aligned}
- \int \mathbb I_{\{0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t,y_{t+1})\,\text{d} x_t &= \int \mathbb I_{\{0 \le y_{t+1}\}}(y_{t+1}) \mathbb I_{\{y_{t+1} \le  p^\ast(x_t)\}}(x_t) \,\text{d} x_t \\
- &= \mathbb I_{\{0\le y_{t+1}\}}(y_{t+1})\int \mathbb I_{\{y_{t+1} \le  p^\ast(x_t)\}}(x_t) \,\text{d} x_t \\
- &= \mathbb I_{\{0\le y_{t+1}\}}(y_{t+1}) \mu(\{x: y_{t+1} \le p^\ast(x)\}).
- \end{aligned}
+\int \mathbb I_{\{0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t,y_{t+1})\,\text{d} x_t 
+&= \mathbb I_{\{0\le y_{t+1}\}}(y_{t+1})\int \mathbb I_{\{y_{t+1} \le  p^\ast(x_t)\}}(x_t) \,\text{d} x_t \\
+&= \mathbb I_{\{0\le y_{t+1}\}}(y_{t+1}) \mu(\{x: y_{t+1} \le p^\ast(x)\}) \\
+&= \mathbb I_{\{0\le y_{t+1}\}}(y_{t+1}) \mu(S_{y_{t+1}})
+\end{aligned}
 $$
 
 It follows that 
 
 $$
 \begin{aligned}
-p(x_{t+1},y_{t+1} ) &= C\int \mathbb I_{\{0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t,y_{t+1}) \mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})\,\text{d} x_t \\
-&\propto  \mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})\mathbb I_{\{0\le y_{t+1}\}}(y_{t+1}) \\
+p(x_{t+1},y_{t+1} ) &= \int p(y_{t+1}, x_t, x_{t+1})\,\text{d} x_t\\
+&\propto \frac{\mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})}{\mu(S_{y_{t+1}})}\int \mathbb I_{\{0 \le y_{t+1}\le  p^\ast(x_t)\}}(x_t,y_{t+1})  \,\text{d} x_t \\
+&= \frac{\mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})}{\mu(S_{y_{t+1}})}\mathbb I_{\{0\le y_{t+1}\}}(y_{t+1}) \mu(S_{y_{t+1}})\\
+&=  \mathbb I_{\{y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1})\mathbb I_{\{0\le y_{t+1}\}}(y_{t+1}) \\
 &= \mathbb I_{\{0\le y_{t+1}\le  p^\ast(x_{t+1})\}}(x_{t+1}, y_{t+1})
 \end{aligned}
 $$

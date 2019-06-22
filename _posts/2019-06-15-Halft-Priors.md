@@ -1,6 +1,6 @@
 ---
 title : Half-t Priors, Conjugacy, and Prior Predictive Distributions
-date : 2019-06-10 14:15:07
+date : 2019-06-15 14:40:33
 author : baruuum
 comments : true
 ---
@@ -42,7 +42,7 @@ p(\sigma^2) &= \int p(\sigma^2, \omega) \text{d} \omega= \int p(\sigma^2\,\vert\
 \end{aligned}$$
 
 
-where the last step follows from the fact that the integrand is just the unnormalized inverse-Gamma density with parameters $(\nu\_0 + 1)/2$ and $\eta\_0^{-2} + \nu\_0\sigma^{-2}$. 
+where the last step follows from the fact that the integrand is just the unnormalized inverse-Gamma density with parameters $(\nu\_0 + 1)/2$ and $\eta\_0^{-2} + \nu\_0\sigma^{-2}$. Notice that this is the F-distribution with degrees of freedom parameters $\text{df}\_1 = 1$ and  $\text{df}\_2 = \nu\_0$ if we set $\eta\_0=1$.
 
 Now, this is the density of $\sigma^2$ but what we are interested in is the density of $\sigma$. As the square-root function is bijective and its inverse is continuously differentiable and non-zero on $\mathbb R\_+$, we might use the [change of variable formula]({{ site.baseurl }}{% post_url 2019-05-15-Jacobian-Adjustments %}) to obtain
 
@@ -405,4 +405,4 @@ abline(v = q.95, col = "grey60", lty = 2)
 {% endhighlight %}
 
 <img src="/assets/img/halft_ppd-1.png" title="plot of chunk halft_ppd" alt="plot of chunk halft_ppd" width="700" style="display: block; margin: auto;" />
-We see that the $\sigma \sim \text{half-t}(3,5)$ prior is consistent with  values of $\text{sd}(\bar y\_i)$ as large as 20, or even larger values, while the $\text{half-t}(50,5)$ prior puts more probability on smaller values of $\sigma$. Whether these priors are "reasonable" will depend on the specific application. Had we strong contextual knowledge that that $\sigma$ is quite small, say $\sigma < 2$, the $\text{half-t}(3,5)$ prior would be unnecessarily wide. Similarly, if you analyze a typical survey and find a logistic regression coefficient to be estimated $\beta \approx 50$ (assuming that the variance of the corresponding is not too small), you'd check your code for errors, how missing values were coded, and so on, rather than taking this point estimate as the truth, because you know that this estimate is simply too large (and you'll probably find that something was coded incorrectly). Thus, a prior that puts significant weight on $\beta = 50$, say $\beta \sim \text{Normal}(0, 50^2)$, might be considered to be unrealistically wide. To reiterate, in large datasets, quite any prior (even improper ones) will lead to similar conclusions (given that the posterior is proper, of course); but for smaller datasets or parameters for which the data contains only limited information, the choice of the prior can be quite important. Plotting out the implications of the prior via the prior predictive distribution can be very helpful in these situations.
+We see that the $\sigma \sim \text{half-t}(3,5)$ prior is consistent with  values of $\text{sd}(\bar y\_i)$ as large as 20, or even larger values, while the $\text{half-t}(50,5)$ prior puts more probability on smaller values of $\sigma$. Whether these priors are "reasonable" will depend on the specific application. Had we strong contextual knowledge that that $\sigma$ is quite small, say $\sigma < 2$, the $\text{half-t}(3,5)$ prior would be unnecessarily wide. Similarly, if you analyze a typical survey and find a logistic regression coefficient to be estimated $\beta \approx 50$ (assuming that the variance of the corresponding predictor is not too small), you'd check your code for errors, how missing values were coded, and so on, rather than taking this point estimate as the truth, because you know that this estimate is simply too large (and you'll probably find that something was coded incorrectly). Thus, a prior that puts significant weight on $\beta = 50$, say $\beta \sim \text{Normal}(0, 50^2)$, might be considered to be unrealistically wide. To reiterate, in large datasets, quite any prior (even improper ones) will lead to similar conclusions (given that the posterior is proper, of course); but for smaller datasets or parameters for which the data contains only limited information, the choice of the prior can be quite important. Plotting out the implications of the prior via the prior predictive distribution can be very helpful in these situations.
