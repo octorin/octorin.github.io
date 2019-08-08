@@ -6,7 +6,7 @@ description: PhD Candidate, Department of Sociology, New York University
 
 profile:
   align: right
-  image: img.jpg
+  image: img.JPG
   # address: >
     # <p>Department of Sociology</p>
     # <p>295 Lafayette Street</p>
