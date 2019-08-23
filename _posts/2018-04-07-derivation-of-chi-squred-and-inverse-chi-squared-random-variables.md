@@ -21,7 +21,7 @@ $$ \begin{aligned}
 f(x) = \frac{d}{dx} F_X(x) = \frac{d}{dx}[\Phi(\sqrt{x}) - \Phi(0)] = 2\phi(\sqrt{x}) \frac{d\sqrt x}{dx} = \frac{1}{2^{1/2}\Gamma(1/2)} x^{-1/2} e^{-x/2}, \quad x>0
 \end{aligned}$$
 
-where $ \Gamma(\cdot) $ is gamma function and $ \Gamma(1/2)=\sqrt \pi $. Note that this distribution is a special case of the Gamma distribution with shape and rate parameter equal to 1/2 and 1/2, respectively. In general, the Gamma distribution with shape parameter $ \alpha $ and rate parameter $ \beta $ is given as
+where $ \Gamma(\cdot) $ is gamma function and $ \Gamma(1/2)=\sqrt \pi $. Note that this pdf is a special case of the Gamma distribution with shape and rate parameter equal to 1/2 and 1/2, respectively. In general, the Gamma distribution with shape parameter $ \alpha $ and rate parameter $ \beta $ has pdf 
 
 $$  g(w; \alpha,\beta) = \frac{\beta^\alpha}{\Gamma(\alpha)} w^{\alpha - 1} e^{-\beta w}, \quad w>0. $$
 
@@ -39,9 +39,9 @@ $$  f_Y(y ; \nu) = \frac{1}{2^{\nu/2}\Gamma(\nu/2)} y^{\nu/2 - 1} e^{-y/2}, \qua
 
 which is known as the pdf of the Chi-squared distribution with $ \nu $ degrees of freedom. It is immediately clear that what we've so far called *the* Chi-squared distribution is a Chi-squared distribution with one degree of freedom.
 
-Finally, we derive the distribution of $ V = 1/Y $, where $ Y \sim \text{Chi-sqaured}(\nu) $. As $ Y $ has support for strictly positive values, the following holds
+Finally, we derive the distribution of $ V = 1/Y $, where $ Y \sim \text{Chi-sqaured}(\nu) $. As $ Y $ has support on strictly positive reals, the following holds
 
-$$  F_V(v) = \Pr[V \le v ] = \Pr[1/Y \le v] = \Pr[Y > 1/v] = 1- F_Y(1/v) $$
+$$  F_V(v) = \Pr[V \le v ] = \Pr[1/Y \le v] = \Pr[Y \ge 1/v] = 1- F_Y(1/v) $$
 
 Thus, the pdf of $ V $ is given by the derivative
 
@@ -50,4 +50,4 @@ f_V(v ; \nu) &= \frac{d}{dv}\Big[1-F_Y(1/v)\Big] = -\frac{d}{dv}F_Y(1/v) = \frac
 &=\frac{(1/2)^{\nu/2}}{\Gamma(\nu/2)} v^{-\nu/2 - 1} e^{-\frac{1}{2v}}.
 \end{aligned}.$$
 
-The distribution with pdf $ f_V(\cdot\, ;\, \nu) $ is known as the inverse Chi-squared distribution with $ \nu $ degrees of freedom. 
+The distribution with pdf $ f_V(\cdot\, ;\, \nu) $ is known as the **inverse Chi-squared distribution** with $ \nu $ degrees of freedom. 
