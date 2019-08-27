@@ -10,11 +10,11 @@ description: Publications and Working Papers. * Indicates equal authorship.
 
 <h3 class="year"> &nbsp; </h3>
 
-- "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks"
+- "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks" Conditionally accepted for publication at *Sociological Science*
 
     - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
 
-- \* "Flows and Boundaries:  A Network Approach to Intragenerational Occupational Mobility" (with Siwei Cheng)
+- \* "Flows and Boundaries:  A Network Approach to Intragenerational Occupational Mobility" (with Siwei Cheng) *Under Review*
 
     - [Abstract]({% link misc_pages/abstracts/2019_abstract_flows.md %})
 
