@@ -6,7 +6,7 @@ comments : true
 ---
 
 
-So, I'm the TA for the Introduction to Statistics class for the incoming PhD cohort. So far, every statistics course that I've taken in sociology departments introduced a random variable as "a variable that is random." In the the class I am TAing for, on the other hand, the concept of a (real-valued) random variable was introduced quite rigorously, namely as a mapping from the sample space to the real line. I loved it, but the students seemed to be lost. After preparing [a document]({{ site.baseurl }}{% link _teaching/002_2019_MathRefresh.md %}) to help students to walk through the definitions and some examples, I thought that it was not quite complete. So, in this post, I cram together my rusty knowledge of probability theory to summarize what a random variable is.
+So, I'm the TA for the Introduction to Statistics class for the incoming PhD cohort. So far, every statistics course that I've taken in sociology departments introduced a random variable as "a variable that is random." In the the class I am TAing for, on the other hand, the concept of a (real-valued) random variable was introduced quite rigorously, namely as a mapping from the sample space to the real line. I loved it, but the students seemed to be lost. After preparing [a document]({{ site.baseurl }}{% link _teaching/002_2019_MathRefresh.md %}) to help students to walk through the definitions and some examples, I thought that it was not quite complete. So, in this post, I cram together my rusty and limited knowledge of probability theory to summarize what a random variable is.
 
 ----
 
