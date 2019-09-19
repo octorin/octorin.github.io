@@ -2,7 +2,7 @@
 layout: page
 permalink: /teaching/
 title: Teaching
-description: Teaching Materials - Lab Instructions, Codes, and Slides
+description: Links to Teaching Materials - Lab Instructions, Codes, and Slides
 ---
 
 <ul class="teaching-posts">

@@ -14,6 +14,8 @@ Lab instructions and assignments. Rmarkdown files that were used to create the l
 {:.teaching-posts}
 - [Lab 1: Rstudio projects, `data.table` objects, working directories, subsetting, descriptive statistics, ggplot, sampling distributions](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/lab1/lab1.html)
 
+- [Lab2: Basic Debugging, Standard Errors and Confidence Intervals, Central Limit Theorem, Population as a DGP, Unbiasedness and Consistency](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/lab2/lab2.html)
+
 <hr>
 
 **Assignments**
