@@ -5,16 +5,19 @@ description: Introduction to Statistics and R
 year: 2019
 ---
 
-Lab instructions and assignments. Rmarkdown files that were used to create the lectures are freely available [here](https://github.com/baruuum/intro_to_stats_2019). LaTeX scripts for the assignments cannot be shared as the solutions to the problems would be exposed.
+Lab instructions and assignments.
 
 <hr>
 
 **Labs**
 
 {:.teaching-posts}
-- [Lab 1: Rstudio projects, `data.table` objects, working directories, subsetting, descriptive statistics, ggplot, sampling distributions](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/lab1/lab1.html)
+- [Lab 1: Rstudio projects, `data.table` objects, working directories, subsetting, descriptive statistics, ggplot, sampling distributions](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab1/Lab1.html)
 
-- [Lab2: Basic Debugging, Standard Errors and Confidence Intervals, Central Limit Theorem, Population as a DGP, Unbiasedness and Consistency](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/lab2/lab2.html)
+- [Lab2: Basic Debugging, Standard Errors and Confidence Intervals, Central Limit Theorem, Population as a DGP, Unbiasedness and Consistency](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab2/Lab2.html)
+
+- [Lab3: Recoding and Saving Data, One-sample and Two-sample t-tests, Crosstables and Pearson's Chi-squared Tests](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab3/Lab3.html)
+
 
 <hr>
 
