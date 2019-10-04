@@ -5,7 +5,7 @@ description: Introduction to Statistics and R
 year: 2019
 ---
 
-Lab instructions and assignments.
+Lab instructions and assignments. All Rmarkdown codes for the teaching materials are freely available [here](https://github.com/baruuum/intro_to_stats_2019). 
 
 <hr>
 
@@ -25,3 +25,4 @@ Lab instructions and assignments.
 
 {:.teaching-posts}
 - [Assignment I](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment1/assignment1.pdf)
+- [Assignment II](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment2/assignment2.pdf)
