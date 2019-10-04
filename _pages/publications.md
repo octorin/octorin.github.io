@@ -14,7 +14,7 @@ description: Publications and Working Papers. * Indicates equal authorship.
 
     - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
 
-- \* "Flows and Boundaries:  A Network Approach to Intragenerational Occupational Mobility" (with Siwei Cheng) Revise and Resubmit at *American Journal of Sociology*
+- \* "Flows and Boundaries:  A Network Approach to Intragenerational Occupational Mobility" (with Siwei Cheng) Revise and Resubmit 
 
     - [Abstract]({% link misc_pages/abstracts/2019_abstract_flows.md %})
 
