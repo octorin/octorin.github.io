@@ -18,6 +18,7 @@ Lab instructions and assignments. All Rmarkdown codes for the teaching materials
 
 - [Lab3: Recoding and Saving Data, One-sample and Two-sample t-tests, Crosstables and Pearson's Chi-squared Tests](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab3/Lab3.html)
 
+- [Lab4: Conditional Means, Simple Linear Regression, and Fitting Regression Models in R](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab4/Lab4.html)
 
 <hr>
 
