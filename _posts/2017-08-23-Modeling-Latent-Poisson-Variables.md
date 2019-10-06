@@ -11,7 +11,7 @@ Suppose we are interested in a random variable $$Y^*$$ which follows a Poiosson 
 
 $$ Y^* \sim \text{Poisson}({\lambda}).$$
 
-Obviously, we are not able to observed $$\lambda$$. To make things even worse, suppose that can't observe $$Y$$ either, but rather observe a categorized form of $$ Y^* $$, which we denote by $$Y$$, defined as $$ Y = 1 $$ if $$ Y^* = 0$$, $$Y = 2$$ if $$Y^* = 1$$, $$ Y = 3 $$ if $$ Y^* \in \{2,3,4\} $$, and $$ Y = 4 $$ if $$ Y^* > 5 $$.
+Obviously, we are not able to observed $$\lambda$$. To make things even worse, suppose that can't observe $$Y^*$$ either, but only a categorized form of $$ Y^* $$, which we denote by $$Y$$, defined as $$ Y = 1 $$ if $$ Y^* = 0$$, $$Y = 2$$ if $$Y^* = 1$$, $$ Y = 3 $$ if $$ Y^* \in \{2,3,4\} $$, and $$ Y = 4 $$ if $$ Y^* > 5 $$.
 
 We have a data vector $$ \mathbf{y} = [y_1,y_2,...,y_n], y_i \in \{1,2,3,4\}, $$ of length $$n$$. Now, how to estimate $$\lambda$$?
 
@@ -19,7 +19,7 @@ If we were able to observe $$Y^*$$, then the likelihood can be easily formed. Gi
 
 $$ L(\lambda; \mathbf{y}^*) = \prod_{i=1}^n \frac{\lambda^{y_i^*}}{y_i^*!}\exp(-\lambda). $$
 
-Let us translate this into the likelihood of $$\lambda$$ given $$ \mathbf y $$. $$Y^* $$ can fall into any of the four interals defined above. The probability that $$Y^* $$ falls in to the first category ($$Y^* = 0$$) is $$\exp(−\lambda)$$ (simply plug in 0 into the Poisson PMF). Similarly, the porbability of $$Y^*$$ falling into the third category is $$\sum_{k=2}^4 (\lambda^k/k!)\exp(-\lambda)$$. In general, therefore, we can define the likelihood of $$\lambda$$ as
+Let us translate this into the likelihood of $$\lambda$$ given $$ \mathbf y $$. $$Y^* $$ can fall into any of the four intervals defined above. The probability that $$Y^* $$ falls in to the first category ($$Y^* = 0$$) is $$\exp(−\lambda)$$ (simply plug in 0 into the Poisson PMF). Similarly, the probability of $$Y^*$$ falling into the third category is $$\sum_{k=2}^4 (\lambda^k/k!)\exp(-\lambda)$$. In general, therefore, we can define the likelihood of $$\lambda$$ as
 
 $$
 L(\lambda ; \mathbf{y}) = \prod_{i=1}^n \left[ \sum_{l=1}^K \sum_{y_i^*\in I_l} \frac{\lambda^{y_i^*}}{y_i^*!}\exp(-\lambda)\times \mathbb I_{I_l}(y_i^*)\right]

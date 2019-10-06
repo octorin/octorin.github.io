@@ -28,11 +28,11 @@ $$ \min\{a,b\} = \frac{1}{2}(a+b - |a-b|). $$
 
 So rewriting $$ OVL(f,g) $$ using this formula, we obtain
 
-$$ OVL(f,g) = \int_X \frac{1}{2}\Big(f(x)+g(x)-|f(x)-g(x)|\Big)dx = 1 - \int_X|f(x)-g(x)|dx, $$
+$$ OVL(f,g) = \int_X \frac{1}{2}\Big(f(x)+g(x)-|f(x)-g(x)|\Big)dx = 1 - \frac{1}{2}\int_X|f(x)-g(x)|dx, $$
 
 with discrete analog
 
-$$ OVL(f,g) = 1-\sum_{x\in X}|f(x)-g(x)|. $$
+$$ OVL(f,g) = 1-\frac{1}{2}\sum_{x\in X}|f(x)-g(x)|. $$
 
 Thus, it turns out that $$ D(f,g) = 1-OVL(f,g) $$.
 
