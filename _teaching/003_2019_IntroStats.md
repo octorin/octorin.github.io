@@ -9,6 +9,14 @@ Lab instructions and assignments. All Rmarkdown codes for the teaching materials
 
 <hr>
 
+**Assignments**
+
+{:.teaching-posts}
+- [Assignment I](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment1/assignment1.pdf)
+- [Assignment II](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment2/assignment2.pdf)
+
+<hr>
+
 **Labs**
 
 {:.teaching-posts}
@@ -20,10 +28,5 @@ Lab instructions and assignments. All Rmarkdown codes for the teaching materials
 
 - [Lab4: Conditional Means, Simple Linear Regression, and Fitting Regression Models in R](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab4/Lab4.html)
 
-<hr>
+- [Lab5: Multiple Regression, Interpretation of Regression Coefficients, Frisch-Waugh Theorem](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab5/Lab5.html)
 
-**Assignments**
-
-{:.teaching-posts}
-- [Assignment I](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment1/assignment1.pdf)
-- [Assignment II](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment2/assignment2.pdf)
