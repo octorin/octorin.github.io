@@ -30,3 +30,4 @@ Lab instructions and assignments. All Rmarkdown codes for the teaching materials
 
 - [Lab5: Multiple Regression, Interpretation of Regression Coefficients, Frisch-Waugh Theorem](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab5/Lab5.html)
 
+-[Lab6: Multiple Regression II (under construction...)](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab6/Lab6.html)
