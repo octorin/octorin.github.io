@@ -36,3 +36,5 @@ Lab instructions and assignments. All Rmarkdown codes for the teaching materials
 - [Lab 7: Multiple Linear Regression III: Fitting Multiple Regression Models to Data, Interaction Effects, Huber-White Covariance Matrix Estimator](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab7/Lab7.html)
 
 - [Lab 8: Binary Outcomes, Maximum Likelihood Estimation, Linear Probability Model, Logistic Regression, Predicted Probabilities](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab8/Lab8.html)
+
+- [Lab 9: Latent Variable Formulation of the Logit/Probit Model, Ordered and Multinomial Logistic Regression, Simulation-based Confidence Intervals for Predicted Probabilities](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab9/Lab9.html)
