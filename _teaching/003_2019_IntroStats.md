@@ -15,6 +15,7 @@ Lab instructions and assignments. All Rmarkdown codes for the teaching materials
 - [Assignment I](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment1/assignment1.pdf)
 - [Assignment II](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment2/assignment2.pdf)
 - [Assignment III](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment3/assignment3.pdf)
+- [Assignment IV](https://github.com/baruuum/intro_to_stats_2019/blob/master/assignments/assignment4/assignment4.pdf)
 
 <hr>
 
