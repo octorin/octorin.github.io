@@ -44,7 +44,7 @@ $$\begin{aligned}
 &= \Pr[\tau_{k-1} < Y_i^\ast \le \tau_k\,\vert\, \mathbf X_i = \mathbf x_i] \\
 &= \Pr[\tau_{k-1}< \mathbf x_i'\boldsymbol\beta + \epsilon_i^\ast\le \tau_k]\\
 &= \Pr[\tau_{k-1} - \mathbf x_i'\boldsymbol\beta <  \epsilon_i^\ast \le \tau_{k} - \mathbf x_i'\boldsymbol\beta ]\\
-&= \Lambda_{0,1}(\tau_k - \mathbf x_i'\boldsymbol\beta; 0, 1) - \Lambda_{0,1}(\tau_{k-1} - \mathbf x_i'\boldsymbol\beta) \\
+&= \Lambda_{0,1}(\tau_k - \mathbf x_i'\boldsymbol\beta) - \Lambda_{0,1}(\tau_{k-1} - \mathbf x_i'\boldsymbol\beta) \\
 &= \Lambda_{\mathbf x_i'\boldsymbol\beta, 1}(\tau_k) - \Lambda_{\mathbf x_i'\boldsymbol\beta, 1}(\tau_{k-1}),
 \end{aligned}$$
 

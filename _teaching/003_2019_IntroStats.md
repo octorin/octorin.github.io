@@ -39,3 +39,5 @@ Lab instructions and assignments. All Rmarkdown codes for the teaching materials
 - [Lab 8: Binary Outcomes, Maximum Likelihood Estimation, Linear Probability Model, Logistic Regression, Predicted Probabilities](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab8/Lab8.html)
 
 - [Lab 9: Latent Variable Formulation of the Logit/Probit Model, Ordered and Multinomial Logistic Regression, Simulation-based Confidence Intervals for Predicted Probabilities](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab9/Lab9.html)
+
+- [Lab 10: Very Brief Introduction to Longitudinal Data Analysis](https://htmlpreview.github.com/?https://github.com/baruuum/intro_to_stats_2019/blob/master/Lab10/Lab10.html)
