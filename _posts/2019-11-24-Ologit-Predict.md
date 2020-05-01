@@ -95,12 +95,10 @@ where $R(\hat{\boldsymbol\theta}, \boldsymbol\theta)$ is the remainder. As $\hat
 $$\hat\pi(\hat{\boldsymbol\theta}; \mathbf x_\ast) \longrightarrow \pi(\boldsymbol\theta; \mathbf x_\ast) + \nabla \pi(\boldsymbol\theta; \mathbf x_\ast)'(\hat{\boldsymbol\theta} - \boldsymbol\theta)$$
 
 
-in distribution as $n\rightarrow\infty$. But as $\sqrt{n}(\hat{\boldsymbol\theta} - \boldsymbol\theta)$ converges to a $\text{Normal}(0, \mathcal I(\boldsymbol\theta)^{-1})$ distribution, $\hat\pi(\hat{\boldsymbol\theta}; \mathbf x\_\ast)$ converges in distribution to the random variable 
+in distribution as $n\rightarrow\infty$. But as $\sqrt{n}(\hat{\boldsymbol\theta} - \boldsymbol\theta)$ converges to a $\text{Normal}(0, \mathcal I(\boldsymbol\theta)^{-1})$ distribution, it follows that the asymptotic distribution $\hat\pi(\hat{\boldsymbol\theta}; \mathbf x\_\ast)$ is
 
 
-$$W \sim \text{Normal}\Big(\pi(\boldsymbol\theta; \mathbf x_\ast),\; \nabla \pi(\boldsymbol\theta; \mathbf x_\ast)' [\mathcal I(\boldsymbol\theta)^{-1}/n]\nabla \pi(\boldsymbol\theta; \mathbf x_\ast)\Big)$$
-
-as $n\rightarrow\infty$.
+$$W \sim \text{Normal}\Big(\pi(\boldsymbol\theta; \mathbf x_\ast),\; \nabla \pi(\boldsymbol\theta; \mathbf x_\ast)' [\mathcal I(\boldsymbol\theta)^{-1}/n]\nabla \pi(\boldsymbol\theta; \mathbf x_\ast)\Big).$$
 
 
 
