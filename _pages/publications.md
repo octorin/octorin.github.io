@@ -26,7 +26,7 @@ description: Publications and Working Papers. * Indicates equal authorship.
 <h4> <strong>Publications</strong> </h4> 
 
 <h3 class="year">{{20209}}</h3>
-- \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion" (with Delia Baldassarri), forthcoming in _Journal of Politics_
+- \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion" (with Delia Baldassarri), *The Journal of Politics*, Volume 83, Issue 2, pp. 809-827.
 
     1. [Abstract]({% link misc_pages/abstracts/2019_abstract_wtcw.md %})
     1. <a href="https://www.journals.uchicago.edu/doi/full/10.1086/707306?casa_token=1aBciPVIHosAAAAA:GmSvWkEbhQ_uo-deQLIE4ffoEegHq75lCWjYJdt2oOj7n3j6jojgwzL0ZhQVNtyap0TxqSsUwEdy"> Article </a>
