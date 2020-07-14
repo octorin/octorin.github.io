@@ -29,7 +29,7 @@ description: Publications and Working Papers. * Indicates equal authorship.
 - \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion" (with Delia Baldassarri), forthcoming in _Journal of Politics_
 
     1. [Abstract]({% link misc_pages/abstracts/2019_abstract_wtcw.md %})
-    1. <a href="{{ '/assets/pdf/CultureWar.pdf' | prepend: site.baseurl | prepend: site.url }}"> Accepted Manuscript </a>
+    1. <a href="https://www.journals.uchicago.edu/doi/full/10.1086/707306?casa_token=1aBciPVIHosAAAAA:GmSvWkEbhQ_uo-deQLIE4ffoEegHq75lCWjYJdt2oOj7n3j6jojgwzL0ZhQVNtyap0TxqSsUwEdy"> Article </a>
     1. <a href="https://github.com/baruuum/Replication_Code/tree/master/2019_WTCW">Replication Code</a>
     2. <a href="https://doi.org/10.7910/DVN/UFZTYU"> Data </a>
 
