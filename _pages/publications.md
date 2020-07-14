@@ -25,7 +25,7 @@ description: Publications and Working Papers. * Indicates equal authorship.
 
 <h4> <strong>Publications</strong> </h4> 
 
-<h3 class="year">{{2019}}</h3>
+<h3 class="year">{{20209}}</h3>
 - \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion" (with Delia Baldassarri), forthcoming in _Journal of Politics_
 
     1. [Abstract]({% link misc_pages/abstracts/2019_abstract_wtcw.md %})
