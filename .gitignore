@@ -6,6 +6,7 @@ _site
 Gemfile.lock
 .Rhistory
 Rmarkdown/*
+vendor/*
 
 # exceptions
 !Rmarkdown/.keep
