@@ -7,6 +7,7 @@ Gemfile.lock
 .Rhistory
 Rmarkdown/*
 vendor/*
+.bundle
 
 # exceptions
 !Rmarkdown/.keep
