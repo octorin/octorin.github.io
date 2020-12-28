@@ -4,8 +4,7 @@
 name: Barum Park
 email: b.park@cornell.edu
 description: > # this means to ignore newlines until "url:"
-    Personal webpage of Barum Park, PhD Candidate at the department of sociology, New York University
-    295 Lafayette Street, New York, NY 10012
+    Personal webpage of Barum Park, Assistant Professor of Sociology, Cornell University
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
