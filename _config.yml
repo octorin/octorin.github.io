@@ -28,7 +28,7 @@ google_analytics: UA-130591619-1
 # Blog
 # -----------------------------------------------------------------------------
 blog_name:
-blog_description: This blog is a result of a time-consuming habit of mine to write down notes on quantitative methods that I find difficult to understand (which includes quite everything). Equations that appear in the posts are often unnecessarily lengthy. This is intentional, since what is deemed to be "clear," "obvious," and "easily shown" by statisticians or mathematicians is often not at all easy to grasp for sociologists like myself. I hope that these materials will be helpful for students who are as confused by these topics as I am/was when writing these notes.
+blog_description: This blog is a result of a time-consuming habit of mine to write notes on quantitative methods that I found difficult to understand (which includes quite everything) during my graduate school years. Equations that appear in the posts are often unnecessarily lengthy. This is intentional, since what is deemed to be "clear," "obvious," and "easily shown" by statisticians or mathematicians is often not at all easy to grasp for sociologists like myself. I hope that these materials will be helpful for students who are as confused by these topics as I was when writing these notes.
 
 # Pagination
 paginate: 10
