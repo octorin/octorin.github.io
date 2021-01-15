@@ -14,9 +14,7 @@ description: Publications and Working Papers. * Indicates equal authorship.
 
     - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
 
-- \* "Flows and Boundaries:  A Network Framework for Understanding Occupational Mobility in the Labor Market" (with Siwei Cheng) Conditionally accepted for publication at *American Journal of Sociology*
 
-    - [Abstract]({% link misc_pages/abstracts/2019_abstract_flows.md %})
 
 
 &nbsp;
@@ -24,6 +22,18 @@ description: Publications and Working Papers. * Indicates equal authorship.
 &nbsp;
 
 <h4> <strong>Publications</strong> </h4>
+
+<h3 class="year">{{2021}}</h3>
+- \* "Flows and Boundaries:  A Network Framework for Understanding Occupational Mobility in the Labor Market" (with Siwei Cheng) forthcoming in *American Journal of Sociology*
+
+    1. [Abstract]({% link misc_pages/abstracts/2019_abstract_flows.md %})
+    2. <a href="https://github.com/baruuum/Replication_Code/tree/master/2021_FB">Replication Code</a>
+
+- "Still a Small World? University Course Enrollment Networks before and during the COVID-19 Pandemic" (with Kim Weeden and Ben Cornwell) forthcoming in *Sociological Science*
+
+    1. [Abstract]({% link misc_pages/abstracts/2021_abstract_stillasmallworld.md %})
+    2. <a href="https://github.com/baruuum/Replication_Code/tree/master/2021_SSW">Replication Code</a>
+
 
 <h3 class="year">{{2020}}</h3>
 - \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion" (with Delia Baldassarri), *The Journal of Politics*, Volume 83, Issue 2, pp. 809-827.
