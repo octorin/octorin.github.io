@@ -5,22 +5,6 @@ title: Research
 description: Publications and Working Papers. * Indicates equal authorship.
 ---
 
-<h4> <strong>Working Papers</strong> </h4>
-<h5 class="note">( Full draft available upon request )</h5>
-
-<h3 class="year"> &nbsp; </h3>
-
-- "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks" Conditionally accepted for publication at *Sociological Science*
-
-    - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
-
-
-
-
-&nbsp;
-&nbsp;
-&nbsp;
-
 <h4> <strong>Publications</strong> </h4>
 
 <h3 class="year">{{2021}}</h3>
@@ -52,3 +36,18 @@ description: Publications and Working Papers. * Indicates equal authorship.
     1. <a href="https://academic.oup.com/sf/article/96/4/1757/4781058?guestAccessKey=f1e6062d-22ab-44a9-9b0c-be03e631d786">Article</a> (free access)
     2. <a href="https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/sf/96/4/10.1093_sf_sox093/2/onlineappendix.pdf?Expires=2147483647&Signature=LJ32nHkDlVpYYe~bykJPxphcyee1YzYpSvwyNYTPVUQpvuEDmhOjbXxwAc2VC1muK~XEaHUsiwpBwNhJBYOPrPmkUHK0K~S9ilipY70-fPW-LhQ0ykv9vamoWDPUX7Po9~d08Uy6CUcyADXVE1lUEe4M1HAdHs5PTj0C3elyFzbwCLJ1Z6uHCBt4Ug4z-TUl5phhG3E9AmItJXDxYAOi2v5l90NlPgFdE420WPHv0gPbeXMApHJJiUH4~yIB8LZxTcCZfSAEo97uSvEFuHGqeCO0ZmZygdg45qyq7GRs9zas7Bj9jK1Xw-ieY3XXFxd2oTx0pvBuTc7yMmXDb2-eag__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA">Methodological Appendix (Online Supplement)</a>
     3. <a href="https://github.com/baruuum/Replication_Code/tree/master/2018_HAWA">Replication Code</a>
+
+
+    &nbsp;
+    &nbsp;
+    &nbsp;
+
+
+    <h4> <strong>Working Papers</strong> </h4>
+    <h5 class="note">( Full draft available upon request )</h5>
+
+    <h3 class="year"> &nbsp; </h3>
+
+    - "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks" Conditionally accepted for publication at *Sociological Science*
+
+        - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
