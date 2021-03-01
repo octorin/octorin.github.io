@@ -8,19 +8,23 @@ description: Publications and Working Papers. * Indicates equal authorship.
 <h4> <strong>Publications</strong> </h4>
 
 <h3 class="year">{{2021}}</h3>
-- \* "Flows and Boundaries:  A Network Framework for Understanding Occupational Mobility in the Labor Market" (with Siwei Cheng) forthcoming in *American Journal of Sociology*
 
-    1. [Abstract]({% link misc_pages/abstracts/2019_abstract_flows.md %})
-    2. <a href="https://github.com/baruuum/Replication_Code/tree/master/2021_FB">Replication Code</a>
-
-- "Still a Small World? University Course Enrollment Networks before and during the COVID-19 Pandemic" (with Kim Weeden and Ben Cornwell) forthcoming in *Sociological Science*
+- "Still a Small World? University Course Enrollment Networks before and during the COVID-19 Pandemic" (with Kim Weeden and Ben Cornwell) *Sociological Science* 8: 73-82.
 
     1. [Abstract]({% link misc_pages/abstracts/2021_abstract_stillasmallworld.md %})
+    1. <a href="https://sociologicalscience.com/download/vol-8/january/SocSci_v8_73to82.pdf"> Article </a>
     2. <a href="https://github.com/baruuum/Replication_Code/tree/master/2021_SSW">Replication Code</a>
 
 
 <h3 class="year">{{2020}}</h3>
-- \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion" (with Delia Baldassarri), *The Journal of Politics*, Volume 83, Issue 2, pp. 809-827.
+
+- \* "Flows and Boundaries:  A Network Framework for Understanding Occupational Mobility in the Labor Market" (with Siwei Cheng), *American Journal of Sociology* 126(3): 577–631.
+
+    1. [Abstract]({% link misc_pages/abstracts/2019_abstract_flows.md %})
+    2. <a href="https://www.journals.uchicago.edu/doi/full/10.1086/712406?casa_token=N4Ef_L9zFekAAAAA%3AG7rN0V751pc1SUkyyU4t_FYkgQfFcMWdDb3B19Ni9-UJ5nvTvTTZyzyvR-AST8umulRepJm9H5Lj0"> Article </a>
+    2. <a href="https://github.com/baruuum/Replication_Code/tree/master/2021_FB">Replication Code</a>
+
+- \* "Was There a Culture War? Partisan Polarization and Secular Trends in U.S. Public Opinion" (with Delia Baldassarri), *The Journal of Politics* 83(2): 809-827.
 
     1. [Abstract]({% link misc_pages/abstracts/2019_abstract_wtcw.md %})
     1. <a href="https://www.journals.uchicago.edu/doi/full/10.1086/707306?casa_token=1aBciPVIHosAAAAA:GmSvWkEbhQ_uo-deQLIE4ffoEegHq75lCWjYJdt2oOj7n3j6jojgwzL0ZhQVNtyap0TxqSsUwEdy"> Article </a>
@@ -28,7 +32,7 @@ description: Publications and Working Papers. * Indicates equal authorship.
     2. <a href="https://doi.org/10.7910/DVN/UFZTYU"> Data </a>
 
 <h3 class="year">{{2018}}</h3>
-- "How Are We Apart? Continuity and Change in the Structure of Ideological Disagreement in the American Public, 1980-2012," <em>Social Forces</em>, Volume 96, Issue 4, pp. 1757-1784.
+- "How Are We Apart? Continuity and Change in the Structure of Ideological Disagreement in the American Public, 1980-2012," <em>Social Forces</em> 96(4): 1757-1784.
 
     - Winner of the _Dennis Wrong Graduate Student Prize_ for the best graduate student paper written or published in 2018, Department of Sociology, NYU
 
@@ -43,11 +47,11 @@ description: Publications and Working Papers. * Indicates equal authorship.
     &nbsp;
 
 
-    <h4> <strong>Working Papers</strong> </h4>
-    <h5 class="note">( Full draft available upon request )</h5>
+<h4> <strong>Working Papers</strong> </h4>
+<h5 class="note">(Full draft available upon request)</h5>
 
-    <h3 class="year"> &nbsp; </h3>
+<h3 class="year"> &nbsp; </h3>
 
-    - "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks" Conditionally accepted for publication at *Sociological Science*
+- "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks" Conditionally accepted for publication at *Sociological Science*
 
-        - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
+    - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
