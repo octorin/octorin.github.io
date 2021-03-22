@@ -182,7 +182,7 @@ While Theorem 3 shows that a consistent sequence of roots exist for uncountable 
 
 **Assumption (Regularity Conditions, cont.)**
 - **R5** For almost all $x\_i$, $f(x\_i;\theta)$ is twice differentiable with respect to $\theta\in \mathcal O$, and the second derivative is continuous in $\theta$.
-- **R6** The integral $\int f(x\_i;\theta)d \mu(x\_i)$ can be differentiated twice under the integral sign with respect to $\theta\in \mathcal O$.
+- **R6** The integral $\int f(x\_i;\theta)d x\_i$ can be differentiated twice under the integral sign with respect to $\theta\in \mathcal O$.
 
 
 
@@ -256,10 +256,10 @@ Lastly, we need three additional assumptions to obtain the asymptotic distributi
 - **R7** *The density $f(x_i;\theta)$ is three times differentiable with respect to $\theta \in \mathcal O$.*
 - **R8** *The Fisher information satisfies $0 < \mathcal I(\theta) < \infty$ on $\mathcal O$.*
 - **R9** *For all $\theta$, there exists a constant $c$ and a function $M(x)$ (that may depend on $\theta$) such that*
- $$\left\vert\frac{\partial^3 \log f(x_i;\theta)}{\partial\theta^3}\right\vert< M(x),$$
- *with*
- $$\text{E}_{\theta_0}[M(X_i)] < \infty,$$
- *for all $\theta_0 - c < \theta < \theta_0+c$ and almost all $x_i$.*
+$$ \left\vert \frac{\partial^3 \log f(x_i; \theta)}{\partial \theta^3}\right\vert < M(x),$$
+*with*
+$$\text{E}_{\theta_0}[M(X_i)] < \infty,$$
+*for all $\theta_0 - c < \theta < \theta_0+c$ and almost all $x_i$.*
 
 
 As before, **R7** implies its weaker counterpart **R5**. **R7** provides the conditions to Taylor-expand the first derivative of the log-likelihood around $\theta\_0$, truncate it after the first term, and ensure that the mean-value form (sometimes called the Lagrange form) of the remainder term is well-defined (See Theorem A1 and Corollary A1). As it will be clear from the statement of the following theorem, **R8** is assumed as its violation would lead to limiting distributions that have infinite variance or that degenerate to a single point (and if the second derivative is unbounded, the third derivative would not exist). The importance of condition **R9** will become apparent in the prove of our final theorem.
