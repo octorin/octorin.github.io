@@ -19,8 +19,8 @@ We consider a family of probability distributions $\mathcal P =\\{P\_\theta : \t
 
 We will assume that the distributions in $\mathcal P$ meet the following conditions:
 
-**Assumption 1**  
-- **A1** *The distributions $P\_\theta$, $\theta\in \Theta$, are absolutely continuous with respect to a sigma-finite measure $\mu$.*  
+**Assumption 1**
+- **A1** *The distributions $P\_\theta$, $\theta\in \Theta$, are absolutely continuous with respect to a sigma-finite measure $\mu$.*
 - **A2** *The parameter space is a subset of $\mathbb R$, i.e., $\Theta \subseteq \mathbb R$.*
 
 I remember that it was intimidating to find out that the very first assumption started with some measure-theoretic technicalities. But the essence of **A1** is quite straightforward: the requirement that the distribution is absolutely continuous with respect to a sigma-finite measure $\mu$ is, by the Radon-Nikodym Theorem, a necessary and sufficient condition for a density $f\_\theta$ corresponding to $P\_\theta$ to exist. So, we can understand **A1** as saying that for each $\theta \in \Theta$, the density $f\_\theta$ exists. Also, in what follows, we will simply write $\int f\_\theta(x) dx$ instead of $\int f\_\theta \mu$ or $\int f\_\theta(x) d\mu(x),$ while keeping in mind that the density $f\_\theta$ is defined always with respect to some base or dominating measure $\mu$. Compared to **A1**, assumption **A2** is very simple and just says that we consider only one-dimensional real-valued parameters. The case in which $\Theta$ is multidimensional, as in the case of the Normal distribution, will require similar but slightly different sets of regularity conditions not discussed in this document.
@@ -31,19 +31,19 @@ Next, we define the likelihood function:
 
 We will switch back and forth between the notation $f\_\theta(x)$ and $f(x;\theta)$ when denoting a density with parameter $\theta$. Also, from now on, $\theta\_0$ will always denote the "true'' parameter that has generated the data. The first set of regularity conditions for maximum likelihood estimation are the following:
 
-**Assumption 2 (Regularity Conditions)**  
+**Assumption 2 (Regularity Conditions)**
 - **R0** *The distributions $P\_\theta$ of the observations are distinct*
 - **R1** *The distributions $P\_\theta$ have common support*
 - **R2** *The observations are $\mathbf X\_n = \\{X\_1,...,X\_n\\}$, where $X\_i$ are iid with probability density $f\_\theta$ with respect to $\mu$.*
 
-Condition **R0** means that $\theta\ne \theta'$ implies $P\_\theta \ne P\_{\theta'}.$ This condition is necessary to identify the true parameter that generated the data. Suppose, for example, that two different parameters, $\theta\_1$ and $\theta\_2$, lead to the exact same distribution $P$. Then, even if we figure out that the data came from the distribution $P$, we would not be able to tell which of $\theta\_1$ and $\theta\_2$ is the "true'' parameter value. **R1** states that the region on which the distributions are supported does not depend on $\theta$. As we are assuming that the distributions admit a density, this is equivalent to the statement that the set $\\{x: f\_\theta(x) > 0\\}$ is the same for all $\theta\in \Theta$. Hence, we rule out the case in which, for example, an event $\\{X\_i \le x\_i\\}$ can occur with positive probability when $\theta = \theta\_1$ but not when $\theta = \theta\_2$---i.e., regardless of the value of $\theta$, the random variable $\mathbf X\_n$ will take on the same set of values with positive probability (although what these positive probabilities are will differ according to the value of $\theta$). **R3** says that $\mathbf X\_n$ consists of random variables that are independent and come from the same distribution (iid). The reason why this is important will become clear in the proof of our first theorem.
+Condition **R0** means that $\theta\ne \theta'$ implies $P\_\theta \ne P\_{\theta'}.$ This condition is necessary to identify the true parameter that generated the data. Suppose, for example, that two different parameters, $\theta\_1$ and $\theta\_2$, lead to the exact same distribution $P$. Then, even if we figure out that the data came from the distribution $P$, we would not be able to tell which of $\theta\_1$ and $\theta\_2$ is the "true'' parameter value. **R1** states that the region on which the distributions are supported does not depend on $\theta$. This could be roughly understood as saying that the set $\\{x: f\_\theta(x) > 0\\}$ is the same for all $\theta\in \Theta$. Hence, we rule out the case in which, for example, an event $\\{X\_i \le x\_i\\}$ can occur with positive probability when $\theta = \theta\_1$ but not when $\theta = \theta\_2$---i.e., regardless of the value of $\theta$, the random variable $\mathbf X\_n$ will take on the same set of values with positive probability (although what these positive probabilities are will differ according to the value of $\theta$). **R3** says that $\mathbf X\_n$ consists of random variables that are independent and come from the same distribution (iid). The reason why this is important will become clear in the proof of our first theorem.
 
 **Theorem 1** *Under conditions **R0** to **R2**,*
 
 $$P_{\theta_0}[L(\theta_0; \mathbf X_n) > L(\theta; \mathbf X_n)] \longrightarrow 1\text{ as } n\rightarrow\infty$$
 
 *for any fixed $\theta\ne\theta_0$.*
- 
+
 ---
 We need **R2** to factor the likelihood as
 
@@ -81,13 +81,13 @@ in probability as $n\rightarrow\infty$. But the expectation on the right is a co
 $$\lim_{n\rightarrow\infty} P_{\theta_0}[L(\theta_0; \mathbf X_n) > L(\theta; \mathbf X_n)]  = \lim_{n\rightarrow\infty} P_{\theta_0}\left[\frac{1}{n}\sum_{i=1}^n \log\left(\frac{f(X_i;\theta)}{f(X_i; \theta_0)} \right)< 0\right] =  1,$$
 
 which proves the theorem.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 This theorem establishes that the likelihood will be strictly larger at the true parameter value than any other value in the parameter space with probability tending to one. Hence, choosing the value $\theta$ that maximizes the likelihood function for any observed dataset seems to be a reasonable choice for a good estimator.
 
 **Definition 2** *Let $\hat\theta(\mathbf x\_n)$ be the value that maximizes the likelihood at the observed $\mathbf X\_n = \mathbf x\_n$. If $\hat\theta(\mathbf X\_n)$ is unique, we call it the **maximum likelihood estimator (MLE)** of $\theta\_0$.*
- 
+
 While Theorem 1 establishes that the likelihood evaluated at $\theta\_0$ will exceed that of any other $\theta\in\Theta$ in the limit, $\hat\theta(\mathbf X\_n)$ might not be unique or might not even exist for finite $n$. In these cases, the MLE is undefined. It turns out that there is a unique condition under which assumptions **R0** to **R2** are sufficient to ensure that the maximum likelihood estimator will be consistent. This is summarized in the following theorem.
 
 **Theorem 2** *If conditions **R0** to **R2** are met and if, in addition, the parameter space is finite, then the MLE exists, is unique with probability tending to one, and is consistent.*
@@ -118,14 +118,14 @@ In other words, $\theta_0$ is the unique value at which the likelihood function 
 $$P_{\theta_0}[\hat\theta(\mathbf X_n) = \theta_0] \rightarrow 1$$
 
 as $n\rightarrow\infty$. Thus, $\hat\theta(\mathbf X_n)$ is consistent.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 It turns out that we need stronger assumptions to ensure consistency of the MLE if $\Theta$ is at least countably infinite. While Lehman and Casella show an example in which consistency breaks down when $\Theta$ is countable, I couldn't find a in general proof of this claim (of course, one counter-example suffices to show that a claim is wrong). So, we'll take this assertion as a fact and proceed with infinite parameter spaces.
 
 We add two more regularity conditions
 
-**Assumption 3 (Regularity Conditions, cont)**  
+**Assumption 3 (Regularity Conditions, cont)**
 - **R3** *The parameter space $\Theta$ contains an open set $\mathcal O$ of which the true parameter value $\theta\_0$ is an interior point.*
 - **R4** *For almost all $x\_i$, $f(x\_i;\theta)$ is differentiable with respect to $\theta \in \mathcal O$, with derivative $f'(x\_i;\theta)$.*
 
@@ -138,7 +138,7 @@ Throughout, we will denote derivatives of the log-likelihood with respect to the
 $$\ell'(\theta; \mathbf X_n) = 0$$
 
 *has a root $\hat\theta_n = \hat\theta(\mathbf X_n)$ such that $\hat\theta(\mathbf X_n)$ tends to the true value $\theta_0$ in probability.*
- 
+
 ---
 By **R3**, there exists $\epsilon>0$ such that $(\theta_0 - \epsilon, \theta_0 + \epsilon) \subset \mathcal O$. Let
 
@@ -163,7 +163,7 @@ The only problem that remains is that the sequence of roots depend on $\epsilon$
 $$\lim_{n\rightarrow\infty}P_{\theta_0}[\vert\hat\theta_n^{*} - \theta_0\vert<\epsilon] \rightarrow 1$$
 
 and we are done.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 Notice that this theorem establishes only the existence of a sequence of roots to the likelihood equations that converge to the true parameter; it doesn't tell us which sequence of roots to choose as $\theta\_0$ is unknown (we don't know what is the "closest'' root, only that it exists). Of course, if the likelihood equations have a unique root, the MLE will be consistent. Hence, we have the following corollary.
@@ -175,12 +175,12 @@ There is also a weaker counter-part:
 **Corollary 2** *Assume conditions **R0** to **R4** hold. If, in addition, the probability of the likelihood equation having multiple roots tends to zero as $n\rightarrow\infty$, then the MLE , $\hat\theta\_n^{\*}$, exists for sufficiently large $n$ and is a consistent estimator of $\theta\_0$.*
 
 
- 
+
 While Theorem 3 shows that a consistent sequence of roots exist for uncountable parameter spaces, deriving its distribution requires additional regularity conditions.
 
 
 
-**Assumption (Regularity Conditions, cont.)**  
+**Assumption (Regularity Conditions, cont.)**
 - **R5** For almost all $x\_i$, $f(x\_i;\theta)$ is twice differentiable with respect to $\theta\in \mathcal O$, and the second derivative is continuous in $\theta$.
 - **R6** The integral $\int f(x\_i;\theta)d \mu(x\_i)$ can be differentiated twice under the integral sign with respect to $\theta\in \mathcal O$.
 
@@ -207,7 +207,7 @@ $$\text{E}_{\theta}\left[\frac{\partial}{\partial\theta} \ell(\theta; X_i)\right
 $$\text{E}_{\theta}\left\{\left[\frac{\partial}{\partial\theta}\log f(X_i; \theta)\right]^2\right\} = -\text{E}_{\theta}\left[\frac{\partial^2}{\partial\theta^2}\ell(\theta; X_i)\right]$$
 
 *for $\theta\in \mathcal O$.*
- 
+
 
 The first derivative of the log-likelihood function
 
@@ -239,7 +239,7 @@ So,
 
 $$\text{E}_{\theta}\left\{\left[\frac{\partial \ell(\theta; X_i)}{\partial\theta}\right]^2\right\} = -\text{E}_{\theta}\left[\frac{\partial^2 \ell(\theta; X_i)}{\partial\theta^2}\right].$$
 
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 A straight forward corollary gives us the variance of the score function:
@@ -248,11 +248,11 @@ A straight forward corollary gives us the variance of the score function:
 
 $$\text{Var}_{\theta}\left[\frac{\partial \ell(\theta; X_i)}{\partial\theta}\right] = \mathcal I(\theta).$$
 
- 
+
 
 Lastly, we need three additional assumptions to obtain the asymptotic distribution of the MLE.
 
-**Assumption (Regularity Conditions, cont)**  
+**Assumption (Regularity Conditions, cont)**
 - **R7** *The density $f(x_i;\theta)$ is three times differentiable with respect to $\theta \in \mathcal O$.*
 - **R8** *The Fisher information satisfies $0 < \mathcal I(\theta) < \infty$ on $\mathcal O$.*
 - **R9** *For all $\theta$, there exists a constant $c$ and a function $M(x)$ (that may depend on $\theta$) such that*
@@ -269,7 +269,7 @@ As before, **R7** implies its weaker counterpart **R5**. **R7** provides the con
 $$\sqrt n (\hat\theta_n - \theta) \rightarrow W$$
 
 *in distribution as $n\rightarrow\infty$,where $W \sim \text{Normal}(0, \mathcal I(\theta)^{-1})$, i.e.,  $\text{E}[W]= 0$ and $\text{Var}[W] = \mathcal I(\theta)^{-1}$.*
- 
+
 ---
 By **R7**, we can rely on Taylor's Reminder Theorem to expand the score function around $\theta_0$ for any fixed $\mathbf x_n \in \mathcal X$ as
 
@@ -340,17 +340,17 @@ converges in distribution to $V \sim \text{Normal}(0, \mathcal I(\theta_0))$ whi
 
 $$\sqrt n (\hat\theta_n - \theta_0) \rightarrow W $$
 
-in distribution, where $W$ is Normally distributed with mean 
+in distribution, where $W$ is Normally distributed with mean
 
 $$\text{E}\_{\theta_0}[W] =\mathcal I(\theta_0)^{-1} \text{E}\_{\theta_0}[V] = 0$$
 
-and variance 
+and variance
 
-$$\text{Var}\_{\theta_0}[W]= \mathcal I(\theta_0)^{-2}\text{Var}\_{\theta_0}[V] = \mathcal I(\theta_0)^{-1}.$$ 
+$$\text{Var}\_{\theta_0}[W]= \mathcal I(\theta_0)^{-2}\text{Var}\_{\theta_0}[V] = \mathcal I(\theta_0)^{-1}.$$
 
 We are done.
 
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 In sum, when we assume conditions **A1** to **A2** and **R0** to **R9**, the MLE will be consistent and has a Normal limiting distribution. In fact, the variance of the MLE will coincide with the **Rao-Cramer lower bound**, which is the smallest attainable variance among all asymptotically unbiased estimators.
@@ -401,7 +401,7 @@ Hence, if $h$ is constant, $h' = 0$ on $I$ and the theorem holds for any any val
 
 
 By the continuity of $h$, $h(a)$ has to be either a minimum or maximum of $h$ on $I$. First, suppose that $h(a) = h(b)$ is a minimum. Then, by the Extreme Value Theorem, there exists a point $\xi \in (a, b)$ at which $h$ attains a maximum and $h'(\xi) = 0$. Similarly, if $h(a)$ is a maximum, choose $\xi$ to be the point at which $h$ attains its minimum. This completes the proof.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 Notice what is called "the'' Mean Value Theorem is a special case of the Cauchy version with $g(x) = x$. Next, we prove the Theorem.
@@ -434,7 +434,7 @@ and rearranging yields
 $$R_k(x,x_0) = \frac{f^{(k+1)}(\xi)(x - \xi)^k}{k!}\frac{g(x) - g(x_0)}{g'(\xi)}$$
 
 as desired.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 **Corollary A1 (Lagrange Form of Remainder)** *Under the assumptions of Theorem A1,*
@@ -447,7 +447,7 @@ Take $g(u) = (x - u)^{k+1}$. Then
 $$\frac{g(x_0) - g(x)}{g'(\xi)} = \frac{(x- x_0)^{k + 1}}{(k + 1)(x - \xi)^k}$$
 
 and the result follows.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 Another theorem that was used in the derivation of the asymptotic distribution of the MLE was Slutsky's Theorem. This theorem appears in various forms in probability textbooks. Here, we'll state and prove the version that was used in the last proof.
@@ -456,11 +456,11 @@ Another theorem that was used in the derivation of the asymptotic distribution o
 We start with a lemma that will not be proven.
 
 **Lemma A2** *Let $\\{X\_n\\}\_{n\ge 1}$ be a sequence of real-valued random variables. $X\_n \rightarrow X$ in distribution if and only if $\lim\_{n\rightarrow\infty}\text{E}[g(x\_n)] = \text{E}[g(X)]$ for all bounded Lipschitz continuous functions $g$.*
- 
+
 In some text books, the following theorem is introduced as "the'' Slutsky's Theorem.
 
 **Theorem (Slutsky's Theorem)** *Let $\\{X\_n\\}\_{n\ge1}$ and $\\{Y\_n\\}\_{n\ge 1}$ be two sequences of$\mathbb R^d$ valued random variables, with $X\_n \rightarrow X$ in distribution and $\|X\_n - Y\_n\| \rightarrow 0$ in probability. Then $Y\_n \rightarrow X$ in distribution.*
- 
+
 ---
 By Lemma A2, it suffice to show that $\lim_{n\rightarrow\infty}\text{E}[f(Y_n)] = \text{E}[f(X)]$ for all Lipschitz continuous, bounded, $f$. Let $f$ have these properties. Then, there exist positive constants $k$ and $\alpha$ such that $\vert f(x) - f(y)\vert\le k \|x - y\|$ and $\sup_{x}\vert f(x)\vert < \alpha$. Hence
 
@@ -485,7 +485,7 @@ where the last step follows from $X_n \rightarrow Y_n$ in probability. As $\epsi
 $$\lim_{n\rightarrow\infty}\text{E}[f(Y_n)] = \lim_{n\rightarrow\infty}\text{E}[f(X_n)] = \text{E}[f(X)]$$
 
 for all Lipschitz continuous, bounded functions $f$. We are done.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
 
 Other textbooks introduce Slutsky's Theorem in a different form, which is more useful for many applications. As we have already proven the first version, proving the other version will be straightforward.
@@ -501,7 +501,7 @@ X_n/Y_n & \rightarrow X/c
 *in distribution.*
 
 ---
-We will first show that $(X_n , Y_n)$ converges in distribution to $(X, c)$. Let $f(x, y)$ be a bounded, Lipschitz continuous function and let $g: x\mapsto f(x, c)$. Clearly $g$ is bounded and Lipschitz as well. But as $X_n \rightarrow X$ in distribution, 
+We will first show that $(X_n , Y_n)$ converges in distribution to $(X, c)$. Let $f(x, y)$ be a bounded, Lipschitz continuous function and let $g: x\mapsto f(x, c)$. Clearly $g$ is bounded and Lipschitz as well. But as $X_n \rightarrow X$ in distribution,
 $$\lim_{n\rightarrow\infty}\text{E}[f(X_n, c)] = \lim_{n\rightarrow\infty}\text{E}[g(X_n)] = \text{E}[g(X)] = \text{E}[f(X, c)].$$
 
 Hence $(X_n, c) \rightarrow (X, c)$ in distribution.
@@ -510,5 +510,5 @@ Next, consider $\|(X_n, Y_n) - (X_n, c)\|_1 = \vert X_n - X_n\vert + \vert Y_n -
 $\|(X_n, Y_n) - (X_n, c)\| \rightarrow 0$ in probability and $(X_n, c) \rightarrow (X, c)$ in distribution. By (first version of) Slutsky's Theorem from above, this implies that $(X_n, Y_n) \rightarrow (X, c)$ in distribution.
 
 Lastly, we notice that the functions $h_1: (x, y) \mapsto x + y,$ $h_2:(x, y) \mapsto xy$, and $h_3: (x, y) \mapsto x/y$ are all continuous. Hence, by the Continuous Mapping Theorem, the desired results follow.
-<div style="text-align: right"> Q.E.D </div> 
+<div style="text-align: right"> Q.E.D </div>
 ---
