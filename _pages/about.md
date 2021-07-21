@@ -21,4 +21,4 @@ Welcome! I am an Assistant Professor of [Sociology](https://sociology.cornell.ed
 
 My current projects examine political polarization in the US, with a focus on both political beliefs and ideology-based network segregation, using data from surveys and online forums. In a separate line of research, I use network approaches to study the structure of worker flows in labor markets. I have received my PhD in 2020 from New York University.
 
-While my old blog from my graduate years is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}).
+<!-- While my old blog from my graduate years is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}). -->
