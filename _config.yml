@@ -57,9 +57,10 @@ collections:
       layout: post
     output: true
     permalink: /news/:path/
-  teaching:
-    output: true
-    permalink: /teaching/:path/
+
+# teaching:
+#   output: true
+#   permalink: /teaching/:path/
 
 news_limit: 5
 

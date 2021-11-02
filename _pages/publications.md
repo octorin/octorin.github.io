@@ -9,6 +9,11 @@ description: Publications and Working Papers. * Indicates equal authorship.
 
 <h3 class="year">{{2021}}</h3>
 
+- "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks"  forthcoming in *Sociological Science*
+    1. [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
+    2. [Accepted Manuscript]({% link assets/pdf/SSS_Manuscript.pdf %})
+    3. <a href="https://github.com/baruuum/Replication_Code/tree/master/2021_SSS">Replication Code</a>
+
 - "Still a Small World? University Course Enrollment Networks before and during the COVID-19 Pandemic" (with Kim Weeden and Ben Cornwell) *Sociological Science* 8: 73-82.
 
     1. [Abstract]({% link misc_pages/abstracts/2021_abstract_stillasmallworld.md %})
@@ -46,7 +51,7 @@ description: Publications and Working Papers. * Indicates equal authorship.
     &nbsp;
     &nbsp;
 
-
+<!--
 <h4> <strong>Working Papers</strong> </h4>
 <h5 class="note">(Full draft available upon request)</h5>
 
@@ -54,4 +59,4 @@ description: Publications and Working Papers. * Indicates equal authorship.
 
 - "Segregated in Social Space: The Spatial Structure of Acquaintanceship Networks" Conditionally accepted for publication at *Sociological Science*
 
-    - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
+    - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %}) -->
