@@ -108,7 +108,7 @@ So it seems to work. However, this approach is not very efficient. After all, we
 
 ### The Slice Sampler
 
-The slice sampler can be thought of as a special case of the [Gibbs sampler]({{ site.baseurl }}{% post_url 2018-03-15-gibbs-sampling %}). Starting from an initial point $x\_0$, we first uniformly draw $y\_1$ from the interval $[0,p^\ast(x\_0)]$. Thereafter, we draw $x\_1$ from the horizontal "slice" at $y\_1$, which is defined by the set $S\_{y\_1} = \\{x: y\_1 \le p^\ast(x)\\}$. If $S\_{y}$ is an interval, i.e., $S\_y = [a,b]$ then the uniform distribution is characterized by the density 
+The slice sampler can be thought of as a special case of the Gibbs sampler. Starting from an initial point $x\_0$, we first uniformly draw $y\_1$ from the interval $[0,p^\ast(x\_0)]$. Thereafter, we draw $x\_1$ from the horizontal "slice" at $y\_1$, which is defined by the set $S\_{y\_1} = \\{x: y\_1 \le p^\ast(x)\\}$. If $S\_{y}$ is an interval, i.e., $S\_y = [a,b]$ then the uniform distribution is characterized by the density 
 
 $$
 f(x) = \frac{1}{b-a} \mathbb I_{[a,b]}(x)

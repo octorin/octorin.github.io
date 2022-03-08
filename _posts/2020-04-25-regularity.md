@@ -36,7 +36,7 @@ We will switch back and forth between the notation $f\_\theta(x)$ and $f(x;\thet
 - **R1** *The distributions $P\_\theta$ have common support*
 - **R2** *The observations are $\mathbf X\_n = \\{X\_1,...,X\_n\\}$, where $X\_i$ are iid with probability density $f\_\theta$ with respect to $\mu$.*
 
-Condition **R0** means that $\theta\ne \theta'$ implies $P\_\theta \ne P\_{\theta'}.$ This condition is necessary to identify the true parameter that generated the data. Suppose, for example, that two different parameters, $\theta\_1$ and $\theta\_2$, lead to the exact same distribution $P$. Then, even if we figure out that the data came from the distribution $P$, we would not be able to tell which of $\theta\_1$ and $\theta\_2$ is the "true'' parameter value. **R1** states that the region on which the distributions are supported does not depend on $\theta$. This could be roughly understood as saying that the set $\\{x: f\_\theta(x) > 0\\}$ is the same for all $\theta\in \Theta$. Hence, we rule out the case in which, for example, an event $\\{X\_i \le x\_i\\}$ can occur with positive probability when $\theta = \theta\_1$ but not when $\theta = \theta\_2$---i.e., regardless of the value of $\theta$, the random variable $\mathbf X\_n$ will take on the same set of values with positive probability (although what these positive probabilities are will differ according to the value of $\theta$). **R3** says that $\mathbf X\_n$ consists of random variables that are independent and come from the same distribution (iid). The reason why this is important will become clear in the proof of our first theorem.
+Condition **R0** means that $\theta\ne \theta'$ implies $P\_\theta \ne P\_{\theta'}.$ This condition is necessary to identify the true parameter that generated the data. Suppose, for example, that two different parameters, $\theta\_1$ and $\theta\_2$, lead to the exact same distribution $P$. Then, even if we figure out that the data came from the distribution $P$, we would not be able to tell which of $\theta\_1$ and $\theta\_2$ is the "true'' parameter value. **R1** states that the region on which the distributions are supported does not depend on $\theta$. For continuous densities, this could be understood as saying that the set $\\{x: f\_\theta(x) > 0\\}$ is the same for all $\theta\in \Theta$. Hence, we rule out the case in which, for example, an event $\\{X\_i \le x\_i\\}$ can occur with positive probability when $\theta = \theta\_1$ but not when $\theta = \theta\_2$---i.e., regardless of the value of $\theta$, the random variable $\mathbf X\_n$ will take on the same set of values with positive probability (although what these positive probabilities are will differ according to the value of $\theta$). **R3** says that $\mathbf X\_n$ consists of random variables that are independent and come from the same distribution (the "with respect to $\mu$" is there because all densities are always defined with respect to a dominating measure). The reason why this is important will become clear in the proof of our first theorem.
 
 **Theorem 1** *Under conditions **R0** to **R2**,*
 
@@ -59,11 +59,11 @@ L(\theta_0; \mathbf x_n) > L(\theta; \mathbf x_n) &\iff  \log L(\theta_0;\mathbf
 \end{aligned}
 $$
 
-By **R1** the ratio $f(x;\theta)/f(x;\theta_0)$ is well-defined for all $x \in \mathcal X$, where $\mathcal X= \\{x : f_\theta(x) > 0, \theta\in \Theta \\}$ is the region of common support. Hence, we can write
+By **R1** the ratio $f(x;\theta)/f(x;\theta_0)$ is well-defined for all $x \in \mathcal X$, where $\mathcal X$ is the region of common support. Hence, we can write
 
 $$
 \begin{aligned}
-\text{E}_{\theta_0}\left[\frac{f(X_i;\theta)}{f(X_i;\theta_0)}\right] &= \int_{\mathcal X} (f_\theta/f_{\theta_0})dP_{\theta_0} \\ &= \int_{\mathcal X} \left[\frac{f(x_i;\theta)}{f(x_i;\theta_0)}\right] f(x_i;\theta_0) dx_i \\
+\text{E}_{\theta_0}\left[\frac{f(X_i;\theta)}{f(X_i;\theta_0)}\right] &= \int_{\mathcal X} \left[\frac{f(x_i;\theta)}{f(x_i;\theta_0)}\right] f(x_i;\theta_0) dx_i \\
 &=\int_{\mathcal X} f(x_i;\theta)dx_i\\ &= 1.
 \end{aligned}
 $$
@@ -97,7 +97,7 @@ As $\Theta$ is finite, we may write $\Theta = \\{\theta_0, \theta_1,...,\theta_K
 
 $$\hat\theta(\mathbf X_n) = \text{argmax}_{\theta\in \Theta}L(\theta; \mathbf X_n) = \text{argmax}_{\theta\in\Theta}\ell(\theta;\mathbf X_n)$$
 
-be the MLE. We want to show that there is a unique value $\hat\theta(\mathbf X_n)$ that maximizes the likelihood and that it tends to $\theta_0$ in probability as $n \rightarrow\infty$.
+be the MLE, where $\ell$ is the log-likelihood, i.e., $\ell (\theta; \mathbf X_n) = \log L(\theta; \mathbf X_n)$. We want to show that there is a unique value $\hat\theta(\mathbf X_n)$ that maximizes the likelihood and that it tends to $\theta_0$ in probability as $n \rightarrow\infty$.
 
 For each $1\le j\le K$, define the event $A_{jn} =\\{\mathbf X_n : L(\theta_0; \mathbf X_n)>L(\theta_j ; \mathbf X_n)\\}$. Then, Theorem 1 shows that $P_{\theta_0}[A_{jn}] \rightarrow 1$ as $n\rightarrow\infty$ for all $j$. What remains to be shown is that $P_{\theta_0}[A_{1n}\cap A_{2n}\cap \cdots \cap A_{Kn}] \rightarrow 1$ as $n\rightarrow\infty$ as well. It will suffice to show that this result holds for any $A_{jn}\cap A_{j'n}$, $j\ne j'$ (as we can repeatedly apply this result $K-1$ times).
 
@@ -121,7 +121,7 @@ as $n\rightarrow\infty$. Thus, $\hat\theta(\mathbf X_n)$ is consistent.
 <div style="text-align: right"> Q.E.D </div>
 ---
 
-It turns out that we need stronger assumptions to ensure consistency of the MLE if $\Theta$ is at least countably infinite. While Lehman and Casella show an example in which consistency breaks down when $\Theta$ is countable, I couldn't find a in general proof of this claim (of course, one counter-example suffices to show that a claim is wrong). So, we'll take this assertion as a fact and proceed with infinite parameter spaces.
+It turns out that we need stronger assumptions to ensure consistency of the MLE if $\Theta$ is at least countably infinite. While Lehman and Casella show counter-example in which consistency breaks down when $\Theta$ is countable, I couldn't find more general statement (of course, one counter-example suffices to make the case). So, we'll take this as a fact and proceed with infinite parameter spaces.
 
 We add two more regularity conditions
 
@@ -196,7 +196,7 @@ In general, this is possible if the following conditions are met
 2. For almost all $x\_i$, the second derivative $(\partial^2/\partial\theta^2)f(x\_i;\theta)$ exists for all $\theta\in\mathcal O$
 3. There exists a function $M:\mathbb R \rightarrow \mathbb R$ such that $\vert(\partial^2/\partial\theta^2)f(x\_i;\theta)\vert < M(x)$ for all $\theta\in\mathcal O$ and almost all $x\_i$, where $\text{E}_\theta[M(X\_i)] < \infty$.
 
-Out of these **R5** suffices to ensure Conditions 1. and 2., while Condition 3. states that the second partial derivative is bounded by an integrable function.
+Out of these **R5** suffices to ensure Conditions 1. and 2., while Condition 3. states that the second partial derivative is bounded by an integrable function (so we can use the Dominated Convergence Theorem).
 
 **Lemma 1** *Under condition **R0** to **R6**, the following results hold:*
 
@@ -256,10 +256,14 @@ Lastly, we need three additional assumptions to obtain the asymptotic distributi
 - **R7** *The density $f(x_i;\theta)$ is three times differentiable with respect to $\theta \in \mathcal O$.*
 - **R8** *The Fisher information satisfies $0 < \mathcal I(\theta) < \infty$ on $\mathcal O$.*
 - **R9** *For all $\theta$, there exists a constant $c$ and a function $M(x)$ (that may depend on $\theta$) such that*
-$$ \left\vert \frac{\partial^3 \log f(x_i; \theta)}{\partial \theta^3}\right\vert < M(x),$$
-*with*
-$$\text{E}_{\theta_0}[M(X_i)] < \infty,$$
-*for all $\theta_0 - c < \theta < \theta_0+c$ and almost all $x_i$.*
+
+    $$ \left \vert \frac{\partial^3 \log f(x_i; \theta)}{\partial \theta^3} \right \vert < M(x),$$  
+
+    *with*  
+
+    $$ \text{E}_{\theta_0}[ M(X_i) ] < \infty,$$  
+
+    *for all $\theta_0 - c < \theta < \theta_0+c$ and almost all $x_i$.*
 
 
 As before, **R7** implies its weaker counterpart **R5**. **R7** provides the conditions to Taylor-expand the first derivative of the log-likelihood around $\theta\_0$, truncate it after the first term, and ensure that the mean-value form (sometimes called the Lagrange form) of the remainder term is well-defined (See Theorem A1 and Corollary A1). As it will be clear from the statement of the following theorem, **R8** is assumed as its violation would lead to limiting distributions that have infinite variance or that degenerate to a single point (and if the second derivative is unbounded, the third derivative would not exist). The importance of condition **R9** will become apparent in the prove of our final theorem.
