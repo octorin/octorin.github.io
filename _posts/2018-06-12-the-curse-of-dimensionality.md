@@ -6,6 +6,9 @@ author: baruuum
 comments: true
 categories: [Curse of Dimensionality, MCMC, Monte Carlo Methods, Quant Stuff]
 ---
+
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
 High-dimensional spaces are often counterintuitive. A famous example is that the volume of the _ball_ in a high-dimensional Euclidean space is heavily concentrated within a thin "shell" near its boundary. To see this, define a ball of radius $ r  $ in a $ d  $-dimensional Euclidean space as the set of points that satisfy $ B_{r,d} = \\{\mathbf x \in \mathbb R^d: \mathbf x^\top \mathbf x \le r^2\\}  $. We might rewrite this set as
 
 $$B_{r,d} =\left\{r\left(\frac{\mathbf x}{r}\right) \in \mathbb R^d: (\mathbf x/r)^\top (\mathbf x/r) \le 1\right\}

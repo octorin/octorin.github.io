@@ -7,6 +7,9 @@ comments: true
 categories: [Graph Theory, R]
 ---
 
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
+
 I'm in the middle of moving my website from WordPress to Github Pages. I've exported my posts on WordPress into a `.xml` file and have used [this great program](https://github.com/theaob/wpXml2Jekyll) to transform the pages into Markdown documents. One problem that remains is translating equations from the blogs in Wordpress to those in Jekyll. So, I'm trying different things out. So, here is a test using the same post that I've used to test Wordpress when I started there (by the way, the reason for working on this weird mathematical problem, if I remember correctly, was the amazing <em>AJS</em> article by Peter Bearman, James Moody, and Katherine Stovel on the sexual network of high school students).
 
 <hr />

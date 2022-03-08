@@ -6,6 +6,10 @@ author: baruuum
 comments: true
 categories: [Logistic Regression, Odds Ratios, Quant Stuff]
 ---
+
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
+
 Logistic regression is probably one of the most often used models in sociology. The general logistic regression model might be written as
 
 $$  \ln\left(\frac{p(\mathbf{x})}{1-p(\mathbf{x})}\right) = \mathbf{x}^\top \boldsymbol{\beta} $$

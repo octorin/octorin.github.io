@@ -6,6 +6,10 @@ author: baruuum
 comments: true
 categories: [Bayesian, Method of Composition, Monte Carlo Methods, Posterior Predictive Distribution, Quant Stuff]
 ---
+
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
+
 The posterior predictive distribution (PPD) of unobserved (or future) data are of major importance in Bayesian model checking or imputation methods that rely on a Bayesian framework. At first sight, the connection between computationally obtaining samples from the PDD and the mathematical expression of it are not obvious. So here is why it works.
 
 Let $ y $ be a vector of observed data that come from a probability distribution $ p(y\vert\theta) $ and let $ \tilde y $ be a vector of future (or out-of-sample) values we want to predict. We assume that $ \tilde y $ comes from the same distribution as $ y $, so the distribution of interest is $ p(\tilde y \vert y) $, i.e., the distribution of out-of-sample values given our observed sample. It might be tempting to use our best estimate---such as the MLE or MAP estimate---to obtain information about the PPD of future data. However, doing so would inevitably ignore our uncertainty about $ \theta $. Thus, the appropriate way to procede is to average over the posterior distribution of $ \theta $, namely $ p(\theta\vert y) $. Notice also that $ \tilde y $ is independent of $ y $ given $ \theta $, as it is assumed to be an independent sample drawn from the same distribution as $ y $. Thus,

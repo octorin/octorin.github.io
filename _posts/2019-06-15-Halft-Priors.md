@@ -5,8 +5,7 @@ author : baruuum
 comments : true
 ---
 
-
-
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
 
 Prior distributions for scale parameters are often hard to choose. While, it is well-known that the inverse-Gamma distribution is the conditional conjugate prior for the variance of a Normal likelihood, the often used $\text{inverse-Gamma}(a,a)$ prior with small values of $a$, might generate some problems in studies with small sample sizes, as pointed out [here](http://www.stat.columbia.edu/~gelman/research/published/taumain.pdf). Indeed, the paper shows that the posterior is quite sensitive to the choice of $a$ if the number of data points is small; so, it is hardly "uninformative," which is the whole purpose of using this prior distribution.
 

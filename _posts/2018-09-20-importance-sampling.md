@@ -6,6 +6,10 @@ author: baruuum
 comments: true
 categories: [Importance Sampling, Monte Carlo Methods, PSIS-LOOCV, Quant Stuff]
 ---
+
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
+
 Suppose we want to calculate the integral
 
 $$  \text{E}_f[g(Y)] =\int_{\mathcal Y} g(y) f(y) dy < \infty,   $$

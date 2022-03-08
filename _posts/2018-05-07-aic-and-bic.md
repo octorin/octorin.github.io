@@ -6,6 +6,10 @@ author: baruuum
 comments: true
 categories: [AIC, BIC, Information Criteria, Information, Quant Stuff]
 ---
+
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
+
 Whenever several models are fitted to a dataset, the problem of model selection emerges. If the candidate models are nested the likelihood-ratio statistic or the F-test seems to be the preferred choice in the social science. For non-nested candidate models, on the other hand, the Akaike Information Criterion (AIC) and the Bayesian Information Criterion (BIC) are, by far, the most often used statistics. Both the AIC and the BIC are based on maximized likelihoods. Although it seems that the likelihood itself can be used to compare candidate models, it suffers from a similar problem as the R-squared statistics: namely, the the more parameters you fit to the data, the higher will be your likelihood, even if the model is wrong. Therefore, the likelihood itself is a bad choice for model comparison, except in the unique case where the ''dimensionality'' of the compared models are the same.
 
 AIC and BIC have the form

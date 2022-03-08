@@ -5,6 +5,9 @@ author : baruuum
 comments : true
 ---
 
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
+
 Suppose we want to sample from the distribution of a positive random variable $X$ with a random walk Metropolis-Hastings algorithm. There is nothing wrong with using a proposal distribution that might result in negative proposals in this situation. The negative proposals are simply rejected and the sampler will continue to sample from the correct target distribution. A shortcoming of this approach, however, is that, sometimes, too many of the proposals will be rejected, rendering the sampler inefficient. Therefore, it is often sensible to specify a proposal that has to be positive as well, such as the Gamma or the Pareto distribution, or to transform the variable into an unconstrained space and use Normally distributed proposals on the transformed space. It is the latter with which I am planning to deal in this post.
 
 The following example might illustrate the point. Say, we want to sample from a $\text{Gamma(3,1)}$ density (where we use the shape-rate parameterization) by using Normally distributed proposals with variance $\delta^2$, i.e., $x^\ast \sim \text{Normal}(x, \delta)$, where $x^\ast$ is the proposed value and $x$ is the current value at each iteration. The acceptance ratio is then 

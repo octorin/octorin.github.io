@@ -5,8 +5,7 @@ author : baruuum
 comments : true
 ---
 
-
-
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
 
 To my surprise, it turns out that sampling integers with unequal probabilities using the `RcppArmadillo` the package is more subtle than it appeared at first. To explain the problem, consider the following situation. We have a length-$K$ vector, $\mathbf p = [p\_1,p\_2,...,p\_K]^\top$ which satisfies $\sum\_{j=1}^K p\_j = 1$. In a `C++` code that uses the [Armadillo library](http://arma.sourceforge.net/), we want to sample an integer from $\mathcal X = \\{1,2,...,K\\}$ according to these probabilities, i.e., sample the integer $1$ with probability $p\_1$, $2$ with probability $p\_2$ and so on. In addition, after sampling, we need the vector $\mathbf p$ for some further calculations and the end result of the program is to be exported into `R`.
 

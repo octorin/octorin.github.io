@@ -5,6 +5,9 @@ author : baruuum
 comments : true
 ---
 
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+
+
 I was preparing materials for a lab session to the graduate students at NYU, when I realized that there is no straightforward way to calculate uncertainty estimates for predicted probabilities from ordered logit models in R. The `predict` method for `MASS::polr` objects, for example, returns the predicted probabilities but not the estimated standard errors (try using the `se = TRUE` option; it won't work.)
 
 This created a problem. Due to traveling, I was not able to prepare in advance; so, I was sitting in front of my labtop at 2 am the day before class thinking about what to do. In the end, I coded up a short function that calculates confidence intervals for predictions of ordered logit models based on Monte Carlo simulation and added it to the appendix of my teaching materials. The model, code, and a baby Monte Carlo study to check whether the coverage rate of the calculated confidence intervals are close to the nominal rate, will be the main topic of the current post.
