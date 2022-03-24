@@ -5,7 +5,7 @@ author : baruuum
 comments : true
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 
 I was preparing materials for a lab session to the graduate students at NYU, when I realized that there is no straightforward way to calculate uncertainty estimates for predicted probabilities from ordered logit models in R. The `predict` method for `MASS::polr` objects, for example, returns the predicted probabilities but not the estimated standard errors (try using the `se = TRUE` option; it won't work.)

@@ -7,7 +7,7 @@ comments: true
 categories: [Slice Sampling, Monte Carlo Methods, Quant Stuff]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 ### The Fundamental Theorem
 

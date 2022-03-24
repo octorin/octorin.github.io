@@ -5,7 +5,7 @@ author : baruuum
 comments : true
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 In my first year of graduate school, I set a couple of goals that I wanted to achieve before graduating. One of them was understanding Harrison C. White's *Identity and Control*, which felt, as Randall Collins put it somewhere, like an "IQ test for sociologists'' (6 years later, I am still not sure whether I understood that book). Another goal that I set for myself was understanding the method of maximum likelihood estimation (MLE). Using compiled packages to estimate GLMs via MLE or coding-up Newton-type algorithms was fairly easy, as both of these tasks are quite mechanical. But the method per se remained a mystery to me for quite long, mainly because I was not able to understand the **regularity conditions** that are always mentioned but not often explained. So, sometime ago, I started to write a document that summarizes the regularity conditions in my own words. Much of the details come from Lehmann and Casella (1998)'s [book on the theory of point estimation](https://link.springer.com/book/10.1007/b98854).
 

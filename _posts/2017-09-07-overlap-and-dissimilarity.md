@@ -7,7 +7,7 @@ comments: true
 categories: [Measurement, Overlap, Quant Stuff]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 An interesting measure that I've encountered in my research on polarization is the **coefficient of overlapping** defined as
 

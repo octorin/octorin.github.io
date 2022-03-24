@@ -7,7 +7,7 @@ comments: true
 categories: [Logistic Regression, Odds Ratios, Quant Stuff]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 
 Logistic regression is probably one of the most often used models in sociology. The general logistic regression model might be written as

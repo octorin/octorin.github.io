@@ -7,7 +7,7 @@ comments: false
 categories: [MLE, Quant Stuff]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 Suppose we are interested in a random variable $ Y^* $ which follows a Poisson distribution with parameter $ \lambda $, i.e.,
 

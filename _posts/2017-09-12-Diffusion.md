@@ -7,7 +7,7 @@ comments: true
 categories: [Diffusion, Formal Models, Quant Stuff, Quotes, Sociology]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 In a nice article written by Prof. Payton Young, he shows that a diffusion process where different subgroups adopt a new item at different rates will <em>not</em> show an S-shaped diffusion curve as long as the decisions to adopt the new idea are independent of one another. Following his work, this can be succinctly shown as follows. Consider the diffusion process
 

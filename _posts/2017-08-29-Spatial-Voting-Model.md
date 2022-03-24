@@ -7,7 +7,7 @@ comments: true
 categories: [Formal Theory, Political Science, Quant Stuff]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 One interesting model in the political science literature is the spatial voting model. The basic idea behind it is to assume that each voter (or legislator) has an "ideal point" in a (possibly multidimensional) policy space and votes for the policy proposal closest to this point. It turns out that if we assume that voters are have quadratic utility functions with Normally distributed stochastic errors, the resulting model is closely related to the two-parameter Normal ogive IRT model in the psychology literature.
 

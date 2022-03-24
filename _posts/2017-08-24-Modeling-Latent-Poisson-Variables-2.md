@@ -7,7 +7,7 @@ comments: true
 categories: [Bayesian, Quant Stuff, STAN]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 This is a continuation of the [previous post](/blog/2017/Modeling-Latent-Poisson-Variables) about estimating the rate parameter of a Poiosson random variable $Y^* $, which is only partially observed. This time we'll try to estimate $\lambda$ using Bayesian estimation in `STAN` via the `rstan` package in `R`. As before, let us fist consider a situation in which we can observe the latent variable $Y^* \sim \text{Poisson}(\lambda)$. In this case the estimation is simple.
 

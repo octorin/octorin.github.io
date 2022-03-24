@@ -7,7 +7,7 @@ comments: false
 categories: [Accept-Reject Sampling, Monte Carlo Methods, Quant Stuff, Sampling, von Neumann]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 Suppose we want to sample from a density $ p(\theta)  $, where $ \theta \in \Theta $ and $ \Theta $ is the parameter space (here assumed to be unidimensional). Suppose further that $ p  $ has two properties
 

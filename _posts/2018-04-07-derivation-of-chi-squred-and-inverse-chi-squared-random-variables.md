@@ -7,7 +7,7 @@ comments: true
 categories: [Chi-squared, Distributions, Inverse Chi-squared, Quant Stuff]
 ---
 
-**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos._
+**DISCLAIMER**: _This is a blog post from my graduate school years. The blog is no longer maintained and the material might include typos and errors._
 
 In a recent project, I had to simulate multivariate t-distributed random variates. To sample from a univariate t distribution with $ k $ degrees of freedom, we might first sample $ Z $ a from standard Normal distribution, then sample independently $ S $ from a Chi-squared distribution with $ k $ degrees of freedom, and calculate $ T = Z/\sqrt{S/k} $ which will be a sample from the desired distribution. The distribution of $1/S$, where $S \sim \text{Chi-squared}(\nu)$, is called an inverse Chi-squared distribution with $\nu$ degrees of freedom. It turned out that the derivation of the inverse Chi-squared distribution is quite straightforward. So, I use the spare time while my models are running to post about them.
 
