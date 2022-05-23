@@ -2,8 +2,20 @@
     img {
         box-shadow: 0 0 5px $grey-color;
         width: 100%;
+        margin-left: 35px;
+        // display: inline-block;
     }
 }
+
+.text {
+
+    width: 65%;
+    // display: inline-block;
+    text-align: justify;
+    text-justify: inter-word;
+
+}
+
 .address {
     font-family: monospace;
 
