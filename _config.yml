@@ -1,25 +1,26 @@
 # -----------------------------------------------------------------------------
 # Site settings
 # -----------------------------------------------------------------------------
-name: Barum Park
-email: b.park@cornell.edu
+name: Rin Yoon
+myfullname: Y. Rin Yoon
+email: yy878@cornell.edu
 description: > # this means to ignore newlines until "url:"
-    Personal webpage of Barum Park, Assistant Professor of Sociology, Cornell University
+    Personal webpage of Rin Yoon, PhD in Marketing, Cornell University
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
-url: https://baruuum.github.io # the base hostname & protocol for your site
+url: https://octorin.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
 last_updated: # leave blank if you don't want to display last updated
 
 # -----------------------------------------------------------------------------
 # Social integration
 # -----------------------------------------------------------------------------
-github_username: baruuum # your GitHub user name
-twitter_username: # your Twitter handle
-linkedin_username: # your LinkedIn user name
-scholar_userid: # your Google Scholar ID
+github_username: octorin # your GitHub user name
+twitter_username: rinyoon # your Twitter handle
+linkedin_username: yerinyoon # your LinkedIn user name
+scholar_userid: ofRZEUUAAAAJ # your Google Scholar ID
 orcid_id: # your ORCID ID
 contact_note:
 google_analytics: UA-130591619-1
@@ -28,7 +29,7 @@ google_analytics: UA-130591619-1
 # Blog
 # -----------------------------------------------------------------------------
 blog_name:
-blog_description: This blog is a result of a time-consuming habit of mine to write notes on quantitative methods that I found difficult to understand (which includes quite everything) during my graduate school years. Equations that appear in the posts are often unnecessarily lengthy. This is intentional, since what is deemed to be "clear," "obvious," and "easily shown" by statisticians or mathematicians is often not at all easy to grasp for sociologists like myself. I hope that these materials will be helpful for students who are as confused by these topics as I was when writing these notes.
+blog_description:
 
 # Pagination
 paginate: 10
@@ -98,7 +99,7 @@ plugins:
 # Jekyll-Scholar
 # scholar:
 
-  # last_name: Park
+  # last_name: Yoon
 
   # style: apa
   # locale: en
