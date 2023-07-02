@@ -17,10 +17,11 @@ last_updated: # leave blank if you don't want to display last updated
 # Social integration
 # -----------------------------------------------------------------------------
 github_username: octorin # your GitHub user name
-twitter_username: rinyoon # your Twitter handle
+twitter_username:  # your Twitter handle
 linkedin_username: yerinyoon # your LinkedIn user name
 scholar_userid: ofRZEUUAAAAJ # your Google Scholar ID
-orcid_id: # your ORCID ID
+orcid_id: 0000-0002-9220-2616 # your ORCID ID
+osf_id: 
 contact_note:
 google_analytics: UA-130591619-1
 
