@@ -1,7 +1,7 @@
 ---
 layout: About
 permalink: /
-title: <strong>Lorem</strong> Ipsum
+title: <strong>Y. Rin</strong> Yoon
 description: PhD Candidate in Marketing, Johnson Graduate School of Management, Cornell University
 
 profile:
