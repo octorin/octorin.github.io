@@ -71,10 +71,10 @@ $darken-2:          rgba(#000,.125) !default;
 $darken-3:          rgba(#000,.25) !default;
 $darken-4:          rgba(#000,.5) !default;
 
-$theme-color:       #00B0F0;
-$code-color:        #006EE6;
-$text-color:        $black;
-$background-color:  #F3EEE6;
+$theme-color:       $blue-1;
+$code-color:        black;
+$text-color:        black;
+$background-color:  white;
 
 // Links
 $link-color:        $theme-color;
