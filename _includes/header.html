@@ -2,10 +2,12 @@
 
   <div class="wrapper">
 
+    {% if page.layout != "About" %}
     <span class="site-title">
         {% assign name = site.name | split: ' ' %}
         <strong>{{ name | first }}</strong> {{ name | last }}
     </span>
+    {% endif %}
 
     <nav class="site-nav">
       <input type="checkbox" id="nav-trigger" class="nav-trigger" />
