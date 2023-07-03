@@ -8,21 +8,14 @@ layout: page
       <img class="one" src="{{ page.profile.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}" >
     {% endif %}
     {% if page.profile.address %}
-   <div class="address">
-        {{ content }}
+       <div class="address">
+        {{ page.profile.address }}
       </div>
-    
     {% endif %}
   </div>
 {% endif %}
 
-   <-- <div class="address">
-        {{ page.profile.address }}
-      </div> -->
-     
-         <--  <div class = "text">
+   <div class = "text">
   {{ content }}
-</div>  -->
-
-           
+</div>   
 </div>
