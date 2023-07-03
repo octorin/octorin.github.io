@@ -17,9 +17,10 @@ social: true
 recent_posts: false
 ---
 
-I am a Ph.D. student in [xxxx](https://sociology.cornell.edu/) at Cornell University. I work on topics in incentivization, social networks, social mobility, and quantitative and computational methods.
-Prior to joining Cornell, I worked for companies including Pfizer and Hyundai Motor Company, and hosted a Korean public radio show on behavioral science. I received my degrees from the University of California, Los Angeles (B.A. in Communication Studies with honors) and Korea University (M.S. in Marketing with the academic award of excellence).
+I am doing my Marketing PhD at [Johnson Graduate School of Management](https://www.johnson.cornell.edu/) at Cornell University. I specialize in consumer behavior and have a keen interest in studying how even the smallest payments that we receive, whether from vendors, organizations, or family, influence and shape consumer behavior. My current projects examine various factors that shape consumers' psychology of getting paid and their consequences. 
 
-My current projects examine examine how various factors shape consumers' psychology of getting paid to eventually shape behavior. I will be on the 2024-2025 job market.
+Before joining Cornell, I worked for Pfizer and Hyundai Motor Company HQs, and happily hosted a geeky local NPR [show]((https://jtr.mystrikingly.com/) on sciences and philosophy just south of Seoul. I received my bacherlor's degree from UCLA (Communication and Statistics, graduated with college and departmental honors), and my Master's in Marketing from Korea University Busincess School (graduated with distiction).
+
+I will be on next year's job market, 2024-25.
 
 <!-- While my old blog from my graduate years is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}). -->
