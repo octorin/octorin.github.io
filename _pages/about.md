@@ -7,11 +7,11 @@ description: PhD Candidate in Marketing, Johnson Graduate School of Management, 
 profile:
   align: right
   image: photo_square.png
-  address:
-     <p>201 Sage Hall</p>
-     <p>Cornell University</p>
-     <p>Ithaca, NY 14850</p>
-     <p>[yy878@cornell.edu](mailto:yy989@cornell.edu]</p>
+  # address:
+  #   <p>201 Sage Hall</p>
+  #   <p>Cornell University</p>
+  #   <p>Ithaca, NY 14850</p>
+  #   [yy878@cornell.edu](mailto:yy878@cornell.edu]
 
 news: false
 social: true
