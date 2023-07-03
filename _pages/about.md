@@ -13,7 +13,7 @@ profile:
   #   <p>Ithaca, NY 14850</p>
   #   [yy878@cornell.edu](mailto:yy878@cornell.edu]
 
-news: true
+news: false
 social: true
 recent_posts: false
 ---
