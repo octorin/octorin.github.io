@@ -14,18 +14,16 @@ I teach Graduate Management 4530/5530 Marketing Management. Click [here](https:/
 </details>
 <br>
 <details>
-    <summary>Memories</summary>
-    <p>A networking dinner with a guestspeaker from Netflix</p>
-  <br>
-  <img src="{{ site.baseurl }}/assets/img/guestspeaker.jpg" width="500px" alt="" title="sahil and my students"/>
-  <p>My first batch of students</p>
-  <br>
-  <img src="{{ site.baseurl }}/assets/img/myfirstclass" width="500px" alt="" title="my first class"/>
-</details>
-<br>
-<details>
     <summary>Teaching details</summary>
     <p>Instructor rating: 4.8 / 5.0 (college average: 4.3 / 5.0)
       <li> undergraduate ratings: 5.0/5.0 (about 50% of the class)
 </details>
 
+<details>
+    <summary>Memories</summary>
+    <p>A networking dinner with a guestspeaker from Netflix</p>
+  <img src="{{ site.baseurl }}/assets/img/guestspeaker.jpg" width="500px" alt="" title="sahil and my students"/>
+    <br>
+<p>My first batch of students</p>
+  <img src="{{ site.baseurl }}/assets/img/myfirstclass" width="500px" alt="" title="my first class"/>
+</details>
