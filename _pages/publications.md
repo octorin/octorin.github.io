@@ -25,12 +25,12 @@ description: Manuscripts Under Revision/Review and Working Papers. * Indicates e
     &nbsp;
 
 
-# <h4> <strong>Working Papers</strong> </h4>
-# <h5 class="note">(Full draft available upon request)</h5>
+<h4> <strong>Working Papers</strong> </h4>
+<h5 class="note">(Full draft available upon request)</h5>
 
-# <h3 class="year"> &nbsp; </h3>
+<h3 class="year"> &nbsp; </h3>
 
-# - xxx
+- "Lorem Ipsum"
 
- #   - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
+1. [Lorem Ipsum]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
 
