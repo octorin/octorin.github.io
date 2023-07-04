@@ -18,7 +18,7 @@ I teach Graduate Management 4530/5530 Marketing Management. Click [here](https:/
     <p>Instructor rating: 4.8 / 5.0 (college average: 4.3 / 5.0)
       <li> undergraduate ratings: 5.0/5.0 (about 50% of the class)
 </details>
-
+<br>
 <details>
     <summary>Memories</summary>
     <p>A networking dinner with a guestspeaker from Netflix</p>
