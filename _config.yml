@@ -1,12 +1,15 @@
 # -----------------------------------------------------------------------------
 # Site settings
 # -----------------------------------------------------------------------------
+title: Y. Rin Yoon
+keyword: 
 name: Rin Yoon
 myfullname: Y. Rin Yoon
 email: yy878@cornell.edu
 description: > # this means to ignore newlines until "url:"
     Personal webpage of Rin Yoon, PhD in Marketing, Cornell University
 footer_text: > # Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+keywords: Rin Yoon, y. rin yoon, cornell, marketing, phd, professor, cb, consumer behavior, quant, scholar, research, incentive, johnson, cv, rinyoon
 
 icon: /assets/img/favicon.ico
 url: https://octorin.github.io # the base hostname & protocol for your site
