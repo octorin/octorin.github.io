@@ -20,26 +20,17 @@ description: Manuscripts Under Revision/Review and Working Papers. * Indicates e
     3. <a href="TBD">OSF</a>
 
 
-<h3 class="year">{{2020}}</h3>
-
-- \* "Crypto? BNPL" (with SBS), *XX* 126(3): 577–631.
-
-    1. [Abstract]({% link misc_pages/abstracts/2019_abstract_flows.md %})
-    2. <a href="LINK"> Article </a>
-    3. <a href="LINK">Replication Code</a>
-
-
     &nbsp;
     &nbsp;
     &nbsp;
 
 
-<h4> <strong>Working Papers</strong> </h4>
-<h5 class="note">(Full draft available upon request)</h5>
+# <h4> <strong>Working Papers</strong> </h4>
+# <h5 class="note">(Full draft available upon request)</h5>
 
-<h3 class="year"> &nbsp; </h3>
+# <h3 class="year"> &nbsp; </h3>
 
-- "xxxxxx" Under review at *Journal Name*
+# - xxx
 
-    - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
+ #   - [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})
 
