@@ -2,7 +2,7 @@
 layout: page
 permalink: /teaching/
 title: Teaching
-description: 
+description: Course and experience
 ---
 
 I teach Graduate Management 4530/5530 Marketing Management. Click [here](https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530) for information about this course.
