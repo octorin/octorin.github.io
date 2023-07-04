@@ -1,8 +1,8 @@
 ---
-layout: page
-permalink: /teaching/
-title: Teaching
-description: Teaching & Lab materials
+# layout: page
+# permalink: /teaching/
+# title: Teaching
+# description: Teaching & Lab materials
 ---
 
 <!-- to revive, specify permalink, title, and description -->
