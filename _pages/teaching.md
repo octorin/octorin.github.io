@@ -22,8 +22,8 @@ I teach Graduate Management 4530/5530 Marketing Management. Click [here](https:/
 <details>
     <summary>Memories</summary>
     <p>A networking dinner with a guestspeaker from Netflix</p>
-  <img src="{{ site.baseurl }}/assets/img/guestspeaker.jpg" width="500px" alt="" title="sahil and my students"/>
+  <img src="{{ site.baseurl }}/assets/img/guestspeaker.jpg" width="400px" alt="" title="sahil and my students"/>
     <br>
 <p>My first batch of students</p>
-  <img src="{{ site.baseurl }}/assets/img/myfirstclass" width="500px" alt="" title="my first class"/>
+  <img src="{{ site.baseurl }}/assets/img/myfirstclass.jpg" width="700px" alt="" title="my first class"/>
 </details>
