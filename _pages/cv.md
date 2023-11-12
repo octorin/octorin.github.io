@@ -4,8 +4,7 @@ permalink: /cv/
 title: CV
 description: Updated July 2023. 
 ---
-You can also download a copy <a class="page-link" target="_blank" href="{{ '/assets/pdf/Yoon_CV.pdf' | prepend: site.baseurl | prepend: site.url }}">here</a>.
-<br>
+<!--- You can also download a copy <a class="page-link" target="_blank" href="{{ '/assets/pdf/Yoon_CV.pdf' | prepend: site.baseurl | prepend: site.url }}">here</a>. <br> --->
 <iframe src="{{ '/assets/pdf/Yoon_CV.pdf#toolbar=0' | prepend: site.baseurl | prepend: site.url }}" style="width: 100%" class="myIframe" >
 <p>Hi SOF</p>
 </iframe>
