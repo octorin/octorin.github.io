@@ -18,7 +18,7 @@ social: true
 recent_posts: false
 ---
 
-Welcome! I am a Ph.D. candidate in Marketing at [Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. My research explores how receiving payments or benefits influences consumer perceptions and decision-making processes. My dissertation explores how even the slightest benefits offered by vendors, charitable organizations, and hotels influence and shape consumer judgments and decisions, especially in an online setting.
+Welcome! I am a Ph.D. candidate in Marketing at [Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. My research explores how receiving payments or benefits influences consumer perceptions and decision-making processes. Specifically, my dissertation looks into how even the slightest benefits offered by vendors, charitable organizations, and hotels influence and shape consumer judgments and decisions, especially in an online setting.
 
 <details>
     <summary>More about me?</summary>
