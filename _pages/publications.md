@@ -27,7 +27,7 @@ description: Manuscripts Under Revision/Review and Working Papers.
 
 <h3 class="year"> &nbsp; </h3>
 
-- <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment method as a cue to subjective wealth,” <i>in preparation</i>.
+- <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment method as a cue,” <i>in preparation</i>.
 - <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “From a Penny Stock to Option Trading,” <i>in progress</i>.
 - <b>Yoon, Y. Rin</b> and Alycia Chin, ““Passing of Wealth: in view of life history theory,” <i>in progress</i>.
 
