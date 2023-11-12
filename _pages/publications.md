@@ -5,7 +5,7 @@ title: Research
 description: Manuscripts Under Revision/Review and Working Papers.
 ---
 
-<h4> <strong>Manuscripts Under Revision/Review</strong> </h4>
+<h4> <strong>Manuscripts with Invited Revision</strong> </h4>
 
 <h3 class="year">{{2023}}</h3> 
 
@@ -22,7 +22,7 @@ description: Manuscripts Under Revision/Review and Working Papers.
     &nbsp;
 
 
-<h4> <strong>Selected Working Papers</strong> </h4>
+<h4> <strong>Select Research in Progress (Data collected, additional studies ongoing or planned)</strong> </h4>
  <!--- <h5 class="note">(Full draft available upon request)</h5>---> 
 
 <h3 class="year"> &nbsp; </h3>
