@@ -26,6 +26,6 @@ Before joining Cornell, I worked for Pfizer and Hyundai Motor Company HQs on a v
 </details>
 
 
-I will be on **next year**'s job market, 2024-25.
+I will be on next year's job market, 2024-25.
 
 <!-- While my old blog from my graduate years is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}). -->
