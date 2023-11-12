@@ -1,7 +1,7 @@
 ---
 layout: About
 permalink: /
-title: Y. <strong>Rin</strong> Yoon
+title: <strong>Y. Rin Yoon</strong>
 description: PhD Candidate in Marketing, Johnson Graduate School of Management, Cornell University
 
 profile:
