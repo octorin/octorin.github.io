@@ -1,17 +1,17 @@
 ---
 layout: About
 permalink: /
-title: <strong>Y. Rin</strong> Yoon
+title: Y. <strong>Rin</strong> Yoon
 description: PhD Candidate in Marketing, Johnson Graduate School of Management, Cornell University
 
 profile:
   align: right
   image: photo_square.png
-  # address:
-  #   <p>201 Sage Hall</p>
-  #   <p>Cornell University</p>
-  #   <p>Ithaca, NY 14850</p>
-  #   [yy878@cornell.edu](mailto:yy878@cornell.edu]
+   address:
+     <p>Office 201AK Sage Hall</p>
+     <p>Cornell University</p>
+     <p>Ithaca, NY 14850</p>
+     [yy878@cornell.edu](mailto:yy878@cornell.edu]
 
 news: false
 social: true
