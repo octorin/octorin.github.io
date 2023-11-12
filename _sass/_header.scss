@@ -1,6 +1,6 @@
 .site-header {
     border-bottom: 1px solid $grey-color-light;
-    background-color: #FBBC04;
+    background-color: #fff;
     opacity: 0.95;
     position:fixed;
     left:0px;
@@ -120,5 +120,5 @@
     padding-bottom: $space-4;
     line-height: 1.5em;
     z-index: 25;
-    color: #4285F4 /*$dark-gray*/
+    color: $dark-gray
 }
