@@ -2,10 +2,11 @@
 
   <div class="wrapper">
 
-    {% if page.layout != "About" %}
+  {% if page.layout != "About" %} 
     <span class="site-title">
         {% assign name = site.name | split: ' ' %}
-        <strong>{{ name | first }}</strong> {{ name | last }}
+      Y. <strong>Rin</strong> Yoon
+         <!--  <strong>{{ name | first }}</strong> {{ name | last }}-->
     </span>
     {% endif %}
 
@@ -43,7 +44,7 @@
   </div>
 
   <script src="{{ '/assets/highlighting/highlight.pack.js' | prepend: site.baseurl | prepend: site.url }}"></script>
-  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
   <script> window.onload = function () {
     var allPre, i, j;
     allPre = document.querySelectorAll(".language-cpp, .language-r");
