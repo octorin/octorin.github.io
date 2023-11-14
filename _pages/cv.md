@@ -2,12 +2,12 @@
 layout: page
 permalink: /cv/
 title: CV
-description: Updated July 2023. 
+description: to be updated. 
 ---
 <!--- You can also download a copy <a class="page-link" target="_blank" href="{{ '/assets/pdf/Yoon_CV.pdf' | prepend: site.baseurl | prepend: site.url }}">here</a>. <br> --->
-<iframe src="{{ '/assets/pdf/Yoon_CV.pdf#toolbar=0' | prepend: site.baseurl | prepend: site.url }}" style="width: 95%" class="myIframe" >
+<!--- <iframe src="{{ '/assets/pdf/Yoon_CV.pdf#toolbar=0' | prepend: site.baseurl | prepend: site.url }}" style="width: 95%" class="myIframe" >
 <p>Hi SOF</p>
-</iframe>
+</iframe> --->
 
 <script type="text/javascript" language="javascript"> 
 $('.myIframe').css('height', $(window).height()+'px');
