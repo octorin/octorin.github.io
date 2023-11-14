@@ -2,7 +2,7 @@
 layout: page
 permalink: /research/
 title: Research
-description: Research interests: Digital marketing | Incentives | Financial decision making | Online payment
+description: Digital marketing | Incentives | Financial decision making | Online payment
 ---
 
 <h4> <strong>Manuscripts with Invited Revision</strong> </h4>
