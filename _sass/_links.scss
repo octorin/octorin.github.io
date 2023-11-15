@@ -1,6 +1,6 @@
 //빨간바 움직이는 애니메이션 지우려면 여기부터
 a {
-  display: block;
+  color: $text-color;
   position: relative;
   padding: 0.2em 0;
 }
