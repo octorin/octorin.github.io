@@ -16,7 +16,7 @@ description: Digital marketing | Incentives | Financial decision making | Online
    <!--- 3. <a href="TBD">OSF</a>   ---> 
 
 
-<h4><b>Manuscripts in Preparation </b>/h4>
+<h4><b>Manuscripts in Preparation </b></h4>
 - <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment method as a cue,” <i>in preparation</i>.
 
 
