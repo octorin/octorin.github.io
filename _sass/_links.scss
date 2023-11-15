@@ -21,9 +21,12 @@ a {
 article a, .news a {
     color: $theme-color;
     font-weight: 100;
+    display: block; //애니메이션용
+    position: relative; //애니메이션용
+    padding: 0.2em 0; //애니메이션용
 
     &:hover {
-        text-decoration: underline;
+        text-decoration: none; //원래언더라인
     }
 }
 
