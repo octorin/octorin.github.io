@@ -13,26 +13,6 @@
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-    <!-- MathJax -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      jax: ["input/TeX", "output/CommonHTML"],
-      tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'], ["\\[","\\]"]],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      messageStyle: "none",
-      styles: {
-        ".MathJax_Display": {
-        color: "#333"
-        }
-     }
-    });
-    </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript" ></script>
-
   <!-- Syntax Highlighting -->
   <link rel="stylesheet"  href="{{ '/assets/highlighting/styles/custom.css' | prepend: site.baseurl | prepend: site.url }}">
 
