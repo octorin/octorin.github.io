@@ -24,6 +24,6 @@ description: Digital marketing | Incentives | Financial decision making | Online
 
 - <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “From a Penny Stock to Option Trading,” <i>in progress</i>.
 - <b>Yoon, Y. Rin</b> and Alycia Chin, “Passing of Wealth,” <i>in progress</i>.
-- <b>Yoon, Y. Rin</b>, Emily N. Garbinsky, and Alycia Chin, “Saving for Yourself versus Your Child;,” <i>in progress</i>.
+- <b>Yoon, Y. Rin</b>, Emily N. Garbinsky, and Alycia Chin, “Saving for Yourself versus Your Child,” <i>in progress</i>.
 
 <!--- <h3 class="year">{{2023}}</h3>--->
