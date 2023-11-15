@@ -1,14 +1,42 @@
+//빨간바 움직이는 애니메이션 지우려면 여기부터
 a {
-    color: $text-color;
-    text-decoration: none;
-
-
-    &:hover {
-        color: $theme-color;
-        text-decoration: none;
-        
-    }
+  display: block;
+  position: relative;
+  padding: 0.2em 0;
 }
+
+/* Fade in */
+a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: $theme-color;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+a:hover::after,
+a:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
+//여기까지 지울
+
+
+//그냥 기본 메뉴 링크 애니메이션 없는버전
+//a {
+//    color: $text-color;
+//    text-decoration: none;
+//
+//    &:hover {
+//        color: $theme-color;
+//        text-decoration: none;
+//        
+//    }
+//}
 
 
 .teaching-posts a {
