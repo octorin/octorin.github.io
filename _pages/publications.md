@@ -17,7 +17,7 @@ description: Digital marketing | Incentives | Financial decision making | Online
 
 
 <h4><b>Manuscripts in Preparation </b></h4>
-- <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment method as a cue,” <i>in preparation</i>.
+- <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>in preparation</i>.
 
 
 <h4><b>Working Papers</b></h4>
