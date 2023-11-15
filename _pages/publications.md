@@ -20,7 +20,7 @@ description: Digital marketing | Incentives | Financial decision making | Online
 - <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment method as a cue,” <i>in preparation</i>.
 
 
-<h4><b>Working Papers</b>/h4>
+<h4><b>Working Papers</b></h4>
 
 - <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “From a Penny Stock to Option Trading,” <i>in progress</i>.
 - <b>Yoon, Y. Rin</b> and Alycia Chin, “Passing of Wealth,” <i>in progress</i>.
