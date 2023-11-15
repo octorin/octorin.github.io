@@ -5,7 +5,7 @@ title: Research
 description: Digital marketing | Incentives | Financial decision making | Online payment
 ---
 
-<h4><b>Manuscripts with Invited Revision </b>/h4>
+<h4><b>Manuscripts with Invited Revision </b></h4>
 - <b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu,"Increasing Hotel Loyalty Through Psychological Ownership,"  <i>Invited revision, preparing to resubmit</i>.
 
 
