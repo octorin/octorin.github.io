@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /cv/
-title: CV
+title: Curriculum Vitae
 description: Updated Nov 2023. 
 ---
 <!--- You can also download a copy <a class="page-link" target="_blank" href="{{ '/assets/pdf/Yoon_CV.pdf' | prepend: site.baseurl | prepend: site.url }}">here</a>. <br> --->
