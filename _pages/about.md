@@ -5,7 +5,7 @@ title: <strong>Y. Rin Yoon</strong>
 description: PhD Candidate in Marketing, Johnson Graduate School of Management, Cornell University
 
 profile:
-  align: right
+  align: left
   image: photo_2021.jpg
  # address: [yy878@cornell.edu](mailto:yy878@cornell.edu]
    #  <p>Office 201AK Sage Hall</p>
