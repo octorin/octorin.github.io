@@ -19,8 +19,9 @@ I teach Graduate Management 4530/5530 Marketing Management. Click [here](https:/
     <li>NCC 4530: Marketing Management (undergraduate) Instructor Rating 5.0/5.0</li>
     <li> Student testimonials from course and teaching evaluations:
     <div style="text-align:center"><span style="font-size:12pt"><i>
-        “I have had the privilege of taking Rin’s NCC 5530, which has been instrumental in shaping my understanding not only of marketing-related knowledge but also of what it is like to be a good educator. I am really inspired by her teaching style and surprised by the impact she has made.”<br><br>
-“The class was super fun and Rin always made sure to go the extra mile to help us understand the course material and engage with real world marketing problems.”<br><br>
+      <br>  
+        “The class was super fun and Rin always made sure to go the extra mile to help us understand the course material and engage with real world marketing problems.”<br><br>
+“I have had the privilege of taking Rin’s NCC 5530, which has been instrumental in shaping my understanding not only of marketing-related knowledge but also of what it is like to be a good educator. I am really inspired by her teaching style and surprised by the impact she has made.”<br><br>
 “I love her class so much and her class made me find out what I am passionate about. I just found a marketing intern job for this summer and will apply the knowledge she taught us this semester to reality.”<br><br>
 “This class was a highlight of my time at Cornell”<br><br>
 “She is so enthusiastic about teaching and guiding us to participate in class, as well as learn the material. I am always excited about her class, and all material can be applied to the assignments and projects. To be honest I hope she can teach more classes.”</i></span></div></li>
