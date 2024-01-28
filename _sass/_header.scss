@@ -6,9 +6,11 @@
     left:0px;
     top:0px;
     width: 100vw;
-    padding-right: calc(100vw - 17px);
-    box-sizing: border-box;
+    padding-right: calc(100vw - 17px);    
     z-index: 50;
+    html {
+    scrollbar-gutter: stable;
+    }
 }
 
 .site-title {
