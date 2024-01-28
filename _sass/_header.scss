@@ -10,6 +10,9 @@
     box-sizing: border-box;
     scrollbar-gutter: stable;
     z-index: 50;
+    html {
+    scrollbar-gutter: stable;
+    }
 }
 
 .site-title {
