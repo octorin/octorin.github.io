@@ -18,8 +18,7 @@
 .site-nav {
     float: right;
     line-height: $nav-height;
-    scrollbar-gutter: stable;
-
+    padding-right: 15px; /* Average scrollbar width */
     
     .nav-trigger {
         display: none;
@@ -63,7 +62,7 @@
             line-height: 0;
             padding-top: 10px;
             text-align: center;
-            scrollbar-gutter: stable;
+            padding-right: 15px; /* Average scrollbar width */
             > svg path {
                 fill: $grey-color-dark;
             }
