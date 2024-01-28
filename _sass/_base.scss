@@ -42,6 +42,10 @@ body {
 }
 
 //////////////////for detail animation///////////////////////
+html {
+    scrollbar-gutter: stable;
+}
+
 details {
   margin: 0 auto ;
   margin-bottom: .5rem;
