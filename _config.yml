@@ -2,14 +2,14 @@
 # Site settings
 # -----------------------------------------------------------------------------
 title: Y. Rin Yoon
-keyword: 
-name: Rin Yoon
+keywords: "Rin Yoon,y. rin yoon,rin yoon cornell,marketing,phd,y. rin yoon cornell,cb,consumer behavior,quant,scholar,research,university,johnson,cv,rinyoon,university"
+
+name: Y. Rin Yoon
 myfullname: Y. Rin Yoon
 email: yy878@cornell.edu
 description: > # this means to ignore newlines until "url:"
-    Personal webpage of Rin Yoon, PhD in Marketing, Cornell University
+    Personal webpage of Rin Yoon, PhD Candidate in Marketing, Cornell University
 footer_text: > # Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: Rin Yoon, y. rin yoon, cornell, marketing, phd, professor, cb, consumer behavior, quant, scholar, research, incentive, johnson, cv, rinyoon
 
 icon: /assets/img/favicon.ico
 url: https://octorin.github.io # the base hostname & protocol for your site
@@ -25,7 +25,7 @@ linkedin_username: yerinyoon # your LinkedIn user name
 scholar_userid: ofRZEUUAAAAJ # your Google Scholar ID
 orcid_id: # 0000-0002-9220-2616 # your ORCID ID
 osf_id: q3bsc
-contact_note:
+contact_note: yy878@cornell.edu
 google_analytics: UA-130591619-1
 
 # -----------------------------------------------------------------------------
