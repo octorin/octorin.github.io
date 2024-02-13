@@ -13,7 +13,7 @@ profile:
    #  <p>Ithaca, NY 14850</p>
      
 
-news: false
+news: true
 social: true
 recent_posts: false
 ---
