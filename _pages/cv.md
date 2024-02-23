@@ -2,7 +2,7 @@
 layout: page
 permalink: /cv/
 title: CV
-description: Updated Nov 2023. 
+description: Updated Feb 2024. 
 ---
 <!--- You can also download a copy <a class="page-link" target="_blank" href="{{ '/assets/pdf/Yoon_CV.pdf' | prepend: site.baseurl | prepend: site.url }}">here</a>. <br> --->
 <iframe src="{{ '/assets/pdf/Yoon_CV.pdf#toolbar=0' | prepend: site.baseurl | prepend: site.url }}" style="width: 90%" class="myIframe" >
