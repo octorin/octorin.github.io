@@ -15,8 +15,7 @@ I teach Graduate Management 4530/5530 Marketing Management. Click [here](https:/
 <br>
 <details>
     <summary>Teaching details</summary>
-    <li>NCC 4530: Marketing Management (undergraduate) Instructor Rating 5.0/5.0</li>
-    <li>NCC 5530: Marketing Management (graduate) Instructor Rating 4.8/5.0; School average: 4.3</li>
+    <li>NCC 4530/5530: Marketing Management Instructor Rating 4.8/5.0; School average: 4.3</li>
     <li> Student testimonials from course and teaching evaluations:
     <div style="text-align:center"><span style="font-size:12pt"><i>
       <br>  
