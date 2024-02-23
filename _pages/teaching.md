@@ -15,8 +15,9 @@ I teach Graduate Management 4530/5530 Marketing Management. Click [here](https:/
 <br>
 <details>
     <summary>Teaching details</summary>
-    <li>NCC 4530/5530: Marketing Management Instructor Rating 4.8/5.0; School average: 4.3</li>
-    <li> Student testimonials from course and teaching evaluations:
+    <li>NCC 4530/5530: Marketing Management</li>
+    <li>Instructor Rating 4.8/5.0; School average: 4.3</li>
+    <li>Student testimonials from course and teaching evaluations:
     <div style="text-align:center"><span style="font-size:12pt"><i>
       <br>  
         “The class was super fun and Rin always made sure to go the extra mile to help us understand the course material and engage with real world marketing problems.”<br><br>
