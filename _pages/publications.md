@@ -4,7 +4,7 @@ permalink: /research/
 title: Research
 description: Digital marketing | Incentives | Financial decision making | Online payment
 ---
-<b>Yoon, Y. Rin</b> and Kaitlin Woolley (forthcoming), “<a target="_blank" style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/09567976241234560?casa_token=xy88uaJX2gYAAAAA:az7vR526gNd-km8wec-IromU89eAj0QWzDN-QvisO5ePeKzXOxpWIFS-aT8nmO1_7LwhxFJFAV0J">The Interactive Effect of Incentive Salience and Prosocial Motivation on Prosocial Behavior</a>,” <i>Psychological Science</i>. 
+<b>Yoon, Y. Rin</b> and Kaitlin Woolley (forthcoming), “<a style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/09567976241234560?casa_token=xy88uaJX2gYAAAAA:az7vR526gNd-km8wec-IromU89eAj0QWzDN-QvisO5ePeKzXOxpWIFS-aT8nmO1_7LwhxFJFAV0J">The Interactive Effect of Incentive Salience and Prosocial Motivation on Prosocial Behavior</a>,” <i>Psychological Science</i>. 
 <ul>
 <li><span style="color: $theme-color">See related media→ <em><a href="https://news.cornell.edu/stories/2024/03/promoting-thank-you-gifts-can-boost-charitable-donations">Cornell Chronicle</a></em>, <a href="https://www.insidehighered.com/news/business/fundraising/2024/03/18/small-thank-you-gifts-may-boost-alumni-donor-engagement"><em>Inside Higher Ed</em></a></span></li>
 </ul>
