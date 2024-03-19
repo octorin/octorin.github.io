@@ -16,7 +16,7 @@ description: Digital marketing | Incentives | Financial decision making | Online
 - <b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu,"Increasing Hotel Loyalty Through Psychological Ownership,"  <i>Invited revision</i>.
 
 
-<h4><span style="color:#bebebe;"><b>Manuscripts under Review</b> </span></h4> 
+<h4><span style="color:#bebebe;"><b>Manuscripts Under Review</b> </span></h4> 
 - <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>Under review</i>.
 
 
