@@ -24,6 +24,6 @@ Welcome! I am a Ph.D. candidate in Marketing at [Johnson Graduate School of Mana
     <summary>More about me?</summary>
 Before joining Cornell, I worked for Pfizer and Hyundai Motor Company HQs on a variety of management consulting projects. I have also hosted a <a href="https://jtr.strikingly.com">local NPR show in South Korea</a> (which flew far under the radar), where I had a blast monologuing on my favorite topics including, but not limited to, behavioral science and philosophy. I received my bachelor's degree with honors in Communication Studies and a minor in Statistics from UCLA, and my Master's degree with the award of excellence in Marketing from Korea University Business School.
 </details> <br>
-I will be on next year's job market, 2024-25.
+I will be on this year's job market, 2024-25.
 
 <!-- While my old blog is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}). -->
