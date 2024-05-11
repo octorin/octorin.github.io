@@ -2,7 +2,7 @@
 layout: page
 permalink: /research/
 title: Research
-description: Digital marketing | Incentives | Financial decision making | Online payment
+description: Digital marketing | Incentives | Payment mechanisms | Financial decision making
 ---
 <b>Yoon, Y. Rin</b> and Kaitlin Woolley (2024), “<a style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/09567976241234560?casa_token=xy88uaJX2gYAAAAA:az7vR526gNd-km8wec-IromU89eAj0QWzDN-QvisO5ePeKzXOxpWIFS-aT8nmO1_7LwhxFJFAV0J">The Interactive Effect of Incentive Salience and Prosocial Motivation on Prosocial Behavior</a>,” <i>Psychological Science, 35</i>(4), 390–404.
 <ul>
