@@ -10,7 +10,7 @@ I teach Graduate Management 4530/5530 Marketing Management. Click [here](https:/
 <br>
 <details>
     <summary>Syllabus</summary>
-    <iframe src= "{{ '/assets/pdf/NCC5530_Syllabus_2023 Spring.pdf' | prepend: site.baseurl | prepend: site.url }}" style="width: 100%" height="50%" class="myIframe" ></iframe>
+    <iframe src= "{{ '/assets/pdf/NCC5530_Syllabus_2023 Spring.pdf' | prepend: site.baseurl | prepend: site.url }}" style="width: 100%" height="100%" class="myIframe" ></iframe>
 </details>
 <br>
 <details>
