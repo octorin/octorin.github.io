@@ -13,11 +13,11 @@ description: Digital marketing | Incentives | Payment mechanisms | Financial dec
    <!--- 3. <a href="TBD">OSF</a>   ---> 
    
 <h4><span style="color:#bebebe;"><b>Manuscripts with Invited Revision</b></span></h4>
-- <b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu,"Increasing Hotel Loyalty Through Psychological Ownership,"  <i>Invited revision</i>.
+- <b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu,"Increasing Hotel Loyalty Through Psychological Ownership,"  <i>Invited revision</i>. [<u><a style="color: #000000" href="https://rinyoon.com/assets/pdf/Hotel%20loyalty.pdf">PDF</u></a>]
 
 
 <h4><span style="color:#bebebe;"><b>Manuscripts Under Review</b> </span></h4> 
-- <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>Under review</i>.
+- <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>Under review</i>. [<u><a style="color: #000000" href="https://rinyoon.com/assets/pdf/Buy%20now%20pain%20less.pdf">PDF</u></a>]
 
 
  <!--- <h4><span style="color:#bebebe;"><b>Manuscripts in Preparation</b> </span></h4>--->
