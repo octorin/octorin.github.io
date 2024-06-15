@@ -24,11 +24,13 @@ I teach Graduate School of Management Marketing Core for undergraduate and non-M
 <br>
 <details>
     <summary>Memories</summary>
+    <div style="text-align:center">
     <p>A networking dinner with a guest speaker from Netflix</p>
   <img src="{{ site.baseurl }}/assets/img/guestspeaker.jpg" width="400px" alt="" title="sahil and my students"/>
     <br>
 <p>My first batch of students</p>
   <img src="{{ site.baseurl }}/assets/img/myfirstclass.jpg" width="700px" alt="" title="my first class"/>
+        </div>
 </details>
 <br>
 <details>
