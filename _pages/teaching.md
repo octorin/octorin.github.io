@@ -5,7 +5,7 @@ title: Teaching
 description:
 ---
 
-I have successfully taught a Marketing Core (<i>Marketing Management</i>) as a sole instructor for a full semester, earning high ratings and positive comments (see Teaching details below). I will  have taught the same course for another full semester by the time I graduate. I employ a variety of instructional methods including business cases, audiovisuals, guest speakers, interactive discussions, and team projects, to create a course experience that is relevant, evidence-based, and personalized, to enable students to see how marketing concepts apply to both real business situations and personal decisions.
+I have successfully taught a Marketing Core (<i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530">Marketing Management</a></i>) as a sole instructor for a full semester, earning high ratings and positive comments (see Teaching details below). I will  have taught the same course for another full semester by the time I graduate. I employ a variety of instructional methods including business cases, audiovisuals, guest speakers, interactive discussions, and team projects, to create a course experience that is relevant, evidence-based, and personalized, to enable students to see how marketing concepts apply to both real business situations and personal decisions.
 
 I am deeply passionate about and committed to my role as an educator. I am interested in and ready to teach courses in marketing management, consumer behavior, social and digital marketing, brand management, and managerial decision making at all levels.
 <br>
