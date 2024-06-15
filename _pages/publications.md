@@ -4,6 +4,8 @@ permalink: /research/
 title: Research
 description: Digital marketing | Incentives | Payment mechanisms | Financial decision making
 ---
+
+<h4><span style="color:#bebebe;"><b>Peer-reviewed Journal Publication</b></span></h4>
 <b>Yoon, Y. Rin</b> and Kaitlin Woolley (2024), “<a style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/09567976241234560?casa_token=xy88uaJX2gYAAAAA:az7vR526gNd-km8wec-IromU89eAj0QWzDN-QvisO5ePeKzXOxpWIFS-aT8nmO1_7LwhxFJFAV0J">The Interactive Effect of Incentive Salience and Prosocial Motivation on Prosocial Behavior</a>,” <i>Psychological Science, 35</i>(4), 390–404.
 <ul>
 <li><span style="color: $theme-color">See related media→ <em><a href="https://news.cornell.edu/stories/2024/03/promoting-thank-you-gifts-can-boost-charitable-donations">Cornell Chronicle</a></em>, <a href="https://www.insidehighered.com/news/business/fundraising/2024/03/18/small-thank-you-gifts-may-boost-alumni-donor-engagement"><em>Inside Higher Ed</em></a>, <a href="https://www.philanthropy.com/article/small-thank-you-gifts-encourage-uncommitted-lapsed-donors-to-give-study-finds"><em>The Chronicle of Philanthropy</em></a></span></li>
@@ -13,11 +15,11 @@ description: Digital marketing | Incentives | Payment mechanisms | Financial dec
    <!--- 3. <a href="TBD">OSF</a>   ---> 
    
 <h4><span style="color:#bebebe;"><b>Manuscripts with Invited Revision</b></span></h4>
-- <b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu,"Increasing Hotel Loyalty Through Psychological Ownership,"  <i>Invited revision</i>. [<a style="color: #000000" href="https://cornell.box.com/s/qt520bbjx31hk7un5aiwnp4u1709g27w">PDF</a>]
+<b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu,"Increasing Hotel Loyalty Through Psychological Ownership,"  <i>Invited revision</i>. [<a style="color: #000000" href="https://cornell.box.com/s/qt520bbjx31hk7un5aiwnp4u1709g27w">PDF</a>]
 
 
 <h4><span style="color:#bebebe;"><b>Manuscripts Under Review</b> </span></h4> 
-- <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>Under review</i>. [<a style="color: #000000" href="https://cornell.box.com/s/rsie3dajb0p9eisyicap5mew8hzlh01w">PDF</a>]
+<b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>Under review</i>. [<a style="color: #000000" href="https://cornell.box.com/s/rsie3dajb0p9eisyicap5mew8hzlh01w">PDF</a>]
 
 
  <!--- <h4><span style="color:#bebebe;"><b>Manuscripts in Preparation</b> </span></h4>--->
