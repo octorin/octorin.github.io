@@ -5,7 +5,7 @@ title: Teaching
 description:
 ---
 
-I teach a Marketing Core to undergraduate and non-MBA master's students. Click [here](https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530) for information about this course.
+I teach a Marketing Core to undergraduate and non-MBA master's students. Click <a class="page-link" target="_blank" href="https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530">here</a> for information about this course.
 <br><br>
 I employ a variety of instructional methods including business cases, audiovisuals, guest speakers, interactive discussions, and team projects, to create a course experience that is relevant, evidence-based, and personalized. My goal is to enable students to see how marketing concepts apply to both real business situations and personal decisions.
 
@@ -38,4 +38,7 @@ I employ a variety of instructional methods including business cases, audiovisua
     <iframe src= "{{ '/assets/pdf/NCC5530_Syllabus_2023 Spring.pdf#toolbar=0' | prepend: site.baseurl | prepend: site.url }}" style="width: 80%" class="myIframe">
 <p>Hi syllabus</p>
 </iframe>
+    <script type="text/javascript" language="javascript"> 
+$('.myIframe').css('height', $(window).height()+'px');
+</script>
 </details>
