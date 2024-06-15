@@ -5,7 +5,9 @@ title: Teaching
 description:
 ---
 
-I teach the Graduate School of Management Marketing Core to undergraduate and non-MBA master's students. Click [here](https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530) for information about this course.
+I teach a Marketing Core to undergraduate and non-MBA master's students. Click [here](https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530) for information about this course.
+<br><br>
+I employ a variety of instructional methods including business cases, audiovisuals, guest speakers, interactive discussions, and team projects, to create a course experience that is relevant, evidence-based, and personalized. My goal is to enable students to see how marketing concepts apply to both real business situations and personal decisions.
 
 <br>
 <details>
@@ -21,7 +23,6 @@ I teach the Graduate School of Management Marketing Core to undergraduate and no
 “I love her class so much and her class made me find out what I am passionate about. I just found a marketing intern job for this summer and will apply the knowledge she taught us this semester to reality.”<br><br>
 “She is so enthusiastic about teaching and guiding us to participate in class, as well as learn the material. I am always excited about her class, and all material can be applied to the assignments and projects. To be honest I hope she can teach more classes.”</i></span></div></li>
 </details>
-<br>
 <details>
     <summary>Memories</summary>
     <div style="text-align:center">
@@ -32,7 +33,6 @@ I teach the Graduate School of Management Marketing Core to undergraduate and no
   <img src="{{ site.baseurl }}/assets/img/myfirstclass.jpg" width="700px" alt="" title="my first class"/>
         </div>
 </details>
-<br>
 <details>
     <summary>Syllabus</summary>
     <iframe src= "{{ '/assets/pdf/NCC5530_Syllabus_2023 Spring.pdf#toolbar=0' | prepend: site.baseurl | prepend: site.url }}" style="width: 80%" class="myIframe">
