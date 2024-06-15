@@ -5,12 +5,12 @@ title: Teaching
 description:
 ---
 
-I teach Graduate School of Management Marketing Core for undergraduate and non-MBA master students. Click [here](https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530) for information about this course.
+I teach the Graduate School of Management Marketing Core to undergraduate and non-MBA master's students. Click [here](https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530) for information about this course.
 
 <br>
 <details>
     <summary>Teaching details</summary>
-    <li>NCC 4530/5530: Marketing Management (undergraduates and graduate)</li>
+    <li>NCC 4530/5530: Marketing Management (undergraduate and graduate)</li>
     <li>Undergraduate rating: <b>5.0 / 5.0</b>, Graduate rating: <b>4.7 / 5.0</b>; School common core average: 4.3</li>
     <li>Student comments from course and teaching evaluations:
     <div style="text-align:center"><span style="font-size:12pt"><i>
@@ -25,7 +25,7 @@ I teach Graduate School of Management Marketing Core for undergraduate and non-M
 <details>
     <summary>Memories</summary>
     <div style="text-align:center">
-    <p>A networking dinner with a guest speaker from Netflix</p>
+    <p>A networking dinner with an industry guest speaker from Netflix</p>
   <img src="{{ site.baseurl }}/assets/img/guestspeaker.jpg" width="400px" alt="" title="sahil and my students"/>
     <br>
 <p>My first batch of students</p>
@@ -35,5 +35,7 @@ I teach Graduate School of Management Marketing Core for undergraduate and non-M
 <br>
 <details>
     <summary>Syllabus</summary>
-    <iframe src= "{{ '/assets/pdf/NCC5530_Syllabus_2023 Spring.pdf' | prepend: site.baseurl | prepend: site.url }}" style="width: 80%" class="myIframe" ></iframe>
+    <iframe src= "{{ '/assets/pdf/NCC5530_Syllabus_2023 Spring.pdf#toolbar=0' | prepend: site.baseurl | prepend: site.url }}" style="width: 80%" class="myIframe">
+<p>Hi syllabus</p>
+</iframe>
 </details>
