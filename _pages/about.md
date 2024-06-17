@@ -18,7 +18,7 @@ social: true
 recent_posts: false
 ---
 
-Welcome! I am a Ph.D. candidate in Marketing at [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. I study what happens in consumer psychology at the moment of payment to identify more effective ways to provide incentives and design payment environments for consumers. Specifically, my dissertation examines how even the slightest consumer benefits offered at the moment of payment by vendors, charitable organizations, and hotels shape consumers' decision-making and behavior, particularly in online settings. My research has been published in <i>Psychological Science</i>.
+Welcome! I am a Ph.D. candidate in Marketing at [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. I study what happens in consumer psychology at the moment of payment to identify more effective ways to provide incentives and design better payment environments for consumers. Specifically, my dissertation examines how even the slightest consumer benefits offered at the moment of payment by vendors, charitable organizations, and hotels shape consumers' decision-making and behavior, particularly in online settings. My research has been published in <i>Psychological Science</i>.
 
 <details>
     <summary>More about me?</summary>
