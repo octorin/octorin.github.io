@@ -18,13 +18,12 @@ social: true
 recent_posts: false
 ---
 
-Welcome! I am a Ph.D. candidate in Marketing at [Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. My research explores how receiving payments or benefits influences consumer perceptions and decision-making. Specifically, my dissertation looks into how even the slightest benefits offered by vendors, charitable organizations, and hotels influence and shape consumer judgments and decisions, especially in an online setting.
+Welcome! I am a Ph.D. candidate in Marketing at [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. I study what happens in consumer psychology at the moment of payment to identify more effective ways to provide incentives and design payment environments for consumers. Specifically, my dissertation investigates how even the slightest consumer benefits offered at the moment of payment by vendors, charitable organizations, and hotels shape consumers' decision-making and behavior, particularly in online settings. My research has been published in <i>Psychological Science</i>.
 
 <details>
     <summary>More about me?</summary>
-Before joining Cornell, I worked for Pfizer and Hyundai Motor Company HQs on a variety of management consulting projects. I have also hosted a local NPR show in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics including, but not limited to, behavioral science and philosophy. I received my bachelor's degree with honors in Communication Studies and a minor in Statistics from UCLA, and my Master's degree in Marketing with the award of excellence from Korea University Business School.
+Before my Ph.D., I worked for Pfizer and Hyundai Motor Company HQs on a variety of management consulting projects. I have also produced and hosted a radio show in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics, such as behavioral science, social psychology, and philosophy. I received my B.A. in Communication Studies from UCLA, and my M.S. in Marketing from Korea University.
 </details> <br>
-I am on the 2024-25 job market.
-<br><strong><a href="http://rinyoon.com/assets/pdf/Yoon_CV.pdf" target="_blank">Download CV</a></strong>
+I am on the 2024-2025 job market. <strong><a href="https://www.dropbox.com/scl/fi/nul3p1lal83o1liuvemwe/Yoon_CV.pdf?rlkey=wf71l20uwqtrt1ncvmzmenu9u&e=2&raw=1" target="_blank">Download CV</a></strong>
 
 <!-- While my old blog is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}). -->
