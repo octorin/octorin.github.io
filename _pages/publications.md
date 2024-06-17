@@ -28,9 +28,8 @@ description: Digital marketing | Incentives | Payment mechanisms | Financial dec
 
 <h4><span style="color:#bebebe;"><b>Research In Progress</b></span></h4>
 
-- “From a Penny Stock to Option Trading,” with Suzanne Shu.
+- “The Effect of Financial Education on Risk Taking,” with Suzanne Shu and Alycia Chin.
+- “Gap Between Payers and Payees,” with Geoff Fisher.
 - “Online SNAP Payment,” with Sai Chintala.
-- “Payers and Payees,” with Geoff Fisher.
-- “Generational Passing of Wealth,” with Alycia Chin.
 
 <!--- - “Short-term rental market,” with Peng Liu and Marcos Medeiros. <h3 class="year">{{2023}}</h3>--->
