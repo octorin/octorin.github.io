@@ -2,7 +2,7 @@
 layout: page
 permalink: /research/
 title: Research
-description: Digital marketing | Incentives | Payment mechanisms | Financial decision making
+description: Digital marketing | Incentives mechanisms | Online Payments | Consumer Finances
 ---
 
 <h4><span style="color:#bebebe;"><b>Peer-reviewed Journal Publication</b></span></h4>
