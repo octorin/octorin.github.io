@@ -16,7 +16,7 @@ description: Incentives mechanisms | Online Payments | Consumer Finances | Digit
    
 <h4><span style="color:#bebebe;"><b>Manuscripts with Invited Revision</b></span></h4>
 <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. [<a style="color: #3b3b3b" href="https://cornell.box.com/s/pullok30s9g7m0iax11ce64hcdsdds0i">PDF</a>]
-<br>
+<br> <br>
 <b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu,"Increasing Hotel Loyalty Through Psychological Ownership," <i>R&R</i> at <i>Cornell Hospitality Quarterly</i>. [<a style="color: #3b3b3b" href="https://cornell.box.com/s/qt520bbjx31hk7un5aiwnp4u1709g27w">PDF</a>]
 
 
