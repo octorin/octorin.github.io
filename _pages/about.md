@@ -22,7 +22,7 @@ Welcome! I am a Ph.D. candidate in Marketing at the [SC Johnson Graduate School 
 
 <details>
     <summary>More about me?</summary>
-Before my Ph.D., I worked for Pfizer and Hyundai Motor Company HQs on a variety of management consulting projects. I have also produced and hosted a radio show in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics, such as behavioral science, social psychology, and philosophy. I received my B.A. in Communication Studies from UCLA, and my M.S. in Marketing from Korea University.
+Before Ph.D., I worked for Pfizer and Hyundai Motor Company HQs on a variety of consulting projects. I have also produced and hosted a local radio show in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics, such as behavioral science, social psychology, and philosophy. I received my B.A. in Communication Studies from UCLA, graduating with college and departmental honors, and my M.S. in Marketing from Korea University Business School, graduating with the Award of Academic Excellence.
 </details> <br>
 <b>*I am on the 2024-2025 job market!*</b> <strong><a href="https://www.dropbox.com/scl/fi/nul3p1lal83o1liuvemwe/Yoon_CV.pdf?rlkey=wf71l20uwqtrt1ncvmzmenu9u&e=2&raw=1" target="_blank">Check out my CV here.</a></strong>
 
