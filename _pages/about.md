@@ -18,7 +18,7 @@ social: true
 recent_posts: false
 ---
 
-Welcome! I am a Ph.D. candidate in Marketing at the [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. I focus on consumer psychology at the moment of transaction to help organizations create more effective incentives and payment environments. My dissertation examines how various factors at the point of transaction—in vendors, charitable organizations, and hotels—influence decisions and behaviors. My research has appeared in <i>Psychological Science</i>.
+Welcome! I am a Ph.D. candidate in Marketing at the [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University, specializing in Consumer Behavior. I focus on consumer psychology at the moment of transaction to help organizations create more effective incentives and payment environments. My dissertation examines how various factors at the point of transaction—in vendors, charitable organizations, and hotels—influence decisions and behaviors. My research has appeared in <i>Psychological Science</i> and the <i>Cornell Hospitality Quarterly</i>.
 
 <details>
     <summary>More about me?</summary>
