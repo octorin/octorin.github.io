@@ -13,24 +13,20 @@ description: Incentive mechanism | Online Payment | Consumer Finance | Digital m
 <li><span style="color:#EA4335">See related media→ <em><a href="https://news.cornell.edu/stories/2024/03/promoting-thank-you-gifts-can-boost-charitable-donations">Cornell Chronicle</a></em>, <a href="https://www.insidehighered.com/news/business/fundraising/2024/03/18/small-thank-you-gifts-may-boost-alumni-donor-engagement"><em>Inside Higher Ed</em></a>, <a href="https://www.philanthropy.com/article/small-thank-you-gifts-encourage-uncommitted-lapsed-donors-to-give-study-finds"><em>The Chronicle of Philanthropy</em></a></span></li>
 </ul>
    <!--- 1. [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})---> 
-   <!--- 2. What we made our Ps do: <a target="_blank" href="https://johnson.yul1.qualtrics.com/jfe/preview/previewId/3179a1e6-e7b6-446a-8c9f-8f9e184f3ad3/SV_7R5HQDCp5R46FTw/BL_eD5lDRgge4KQ0x8?Q_SurveyVersionID=current">demo1</a>, <a target="_blank" href="https://johnson.yul1.qualtrics.com/jfe/preview/previewId/3179a1e6-e7b6-446a-8c9f-8f9e184f3ad3/SV_7R5HQDCp5R46FTw/BL_3eIUIh36JBzryuN?Q_SurveyVersionID=current">demo2</a> ---> 
+   <!--- 2. [<a style="color: #3b3b3b" href="https://cornell.box.com/s/pullok30s9g7m0iax11ce64hcdsdds0i">PDF</a>] ---> 
    <!--- 3. <a href="TBD">OSF</a>   ---> 
 <h4><span style="color:#bebebe;"><b>Manuscripts with Invited Revision</b></span></h4>
-<b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. [<a style="color: #3b3b3b" href="https://cornell.box.com/s/pullok30s9g7m0iax11ce64hcdsdds0i">PDF</a>]
+<b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. 
 
 
 
  <!--- <h4><span style="color:#bebebe;"><b>Manuscripts Under Review</b> </span></h4> --->
 
 
- <!--- <h4><span style="color:#bebebe;"><b>Manuscripts in Preparation</b> </span></h4>--->
+ <!--- <h4><span style="color:#bebebe;"><b>Manuscripts in Preparation</b> </span></h4> --->
 
 
 
-<h4><span style="color:#bebebe;"><b>Research In Progress</b></span></h4>
-
-- “The Effect of Financial Education on Risk Taking,” with Suzanne Shu and Alycia Chin.
-- “Gap Between Payers and Payees,” with Geoff Fisher.
-- “Online SNAP Payment,” with Sai Chintala.
+ <!--- <h4><span style="color:#bebebe;"><b>Research In Progress</b></span></h4> --->
 
 <!--- - “Short-term rental market,” with Peng Liu and Marcos Medeiros. <h3 class="year">{{2023}}</h3>--->
