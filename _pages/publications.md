@@ -17,7 +17,9 @@ description: Incentive mechanism | Online Payment | Consumer Finance | Digital m
 <br>
 <h4><span style="color:#bebebe;"><b>Manuscripts with Invited Revision</b></span></h4>
 <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. 
-
+“Stock Performance Graphs,” <i>work in progress</i>. 
+“Psychology of Payers and Payees,” <i>work in progress</i>. 
+“Investment Ownership,” <i>work in progress</i>.
 
 
  <!--- <h4><span style="color:#bebebe;"><b>Manuscripts Under Review</b> </span></h4> --->
