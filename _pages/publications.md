@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /research/
-title: Research
+title: Research Interests
 description: Incentive mechanism | Online Payment | Consumer Finance | Digital marketing
 ---
 <h4><b>Publications</b></h4>
