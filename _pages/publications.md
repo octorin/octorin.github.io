@@ -4,7 +4,7 @@ permalink: /research/
 title: Research Interests
 description: Incentive mechanism | Online Payment | Consumer Finance | Digital marketing
 ---
-<h3><span style="text-align:center"><b>Publications</b></span></h3>
+<h3><div style="text-align: center;"><b>Publications</b></div></h3>
 <b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu (forthcoming), “<a style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/19389655241309634">Increasing Hotel Loyalty Through Psychological Ownership</a>,” <i>Cornell Hospitality Quarterly</i>.
 <br> <br>
 <b>Yoon, Y. Rin</b> and Kaitlin Woolley (2024), “<a style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/09567976241234560?casa_token=xy88uaJX2gYAAAAA:az7vR526gNd-km8wec-IromU89eAj0QWzDN-QvisO5ePeKzXOxpWIFS-aT8nmO1_7LwhxFJFAV0J">The Interactive Effect of Incentive Salience and Prosocial Motivation on Prosocial Behavior</a>,” <i>Psychological Science, 35</i>(4), 390–404.
@@ -15,7 +15,7 @@ description: Incentive mechanism | Online Payment | Consumer Finance | Digital m
    <!--- 2. [<a style="color: #3b3b3b" href="https://cornell.box.com/s/pullok30s9g7m0iax11ce64hcdsdds0i">PDF</a>] ---> 
    <!--- 3. <a href="TBD">OSF</a>   ---> 
 <br>
-<h3><span style="text-align:center"><b>Research In Progress</b></span></h3>
+<h3><div style="text-align:center"><b>Research In Progress</b></div></h3>
 <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. <br> 
 “Stock Performance Graphs,” <i>work in progress</i>. <br>
 “Psychology of Payers and Payees,” <i>work in progress</i>. <br>
