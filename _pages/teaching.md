@@ -5,7 +5,7 @@ title: Teaching
 description:
 ---
 
-I teach NCC4530/5530 Marketing Management as a sole instructor, earning high ratings and positive comments from both undergraduates and postgraduates (see Teaching details below). Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530">here</a></i>for information about this course. 
+I teach NCC4530/5530 Marketing Management as a sole instructor, and have earned high ratings and positive comments from both undergraduates and postgraduates. Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP25/class/NCC/5530">here</a></i> for information about this course. 
 
 <br>
 <details>
@@ -13,7 +13,7 @@ I teach NCC4530/5530 Marketing Management as a sole instructor, earning high rat
     <li>NCC 4530/5530: Marketing Management (undergraduate and graduate), Spring 2023</li>
     <li>Undergraduate rating: <b>5.0 / 5.0</b>, Graduate rating: <b>4.7 / 5.0</b>; College average: 4.3</li>
     <li>Comments from students:
-    <div style="text-align:center"><span style="font-size:12pt"><i>
+    <div style="text-align:left"><span style="font-size:12pt"><i>
       <br>  
         “This class was a highlight of my time at Cornell”<br><br>
         “The class was super fun and Rin always made sure to go the extra mile to help us understand the course material and engage with real world marketing problems.”<br><br>
