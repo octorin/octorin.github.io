@@ -16,9 +16,9 @@ description: Incentive mechanism | Online Payment | Consumer Finance | Digital m
    <!--- 3. <a href="TBD">OSF</a>   ---> 
 <br>
 <h4><span style="color:#bebebe;"><b>Research In Progress</b></span></h4>
-<b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. 
-“Stock Performance Graphs,” <i>work in progress</i>. 
-“Psychology of Payers and Payees,” <i>work in progress</i>. 
+<b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. <br> <br>
+“Stock Performance Graphs,” <i>work in progress</i>. <br> <br>
+“Psychology of Payers and Payees,” <i>work in progress</i>. <br> <br>
 “Investment Ownership,” <i>work in progress</i>.
 
 
