@@ -5,15 +5,12 @@ title: Teaching
 description:
 ---
 
-I have successfully taught a Marketing Core (<i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530">Marketing Management</a></i>) as a sole instructor for a full semester, earning high ratings and positive comments from both undergraduates and postgraduates (see Teaching details below). I am also scheduled to teach this course again in Spring 2025.
+I teach NCC4530/5530 Marketing Management as a sole instructor, earning high ratings and positive comments from both undergraduates and postgraduates (see Teaching details below). Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP23/class/NCC/5530">here</a></i>for information about this course. 
 
-I employ a variety of instructional methods including business cases, audiovisuals, guest speakers, interactive discussions, and team projects, to create a course experience that is relevant, evidence-based, and personalized, to enable students to see how marketing concepts apply to both real business situations and personal decisions.
-
-I am deeply passionate about and committed to my role as an educator. I am interested in and ready to teach courses in marketing management, consumer behavior, social and digital marketing, brand management, and managerial decision making at all levels.
 <br>
 <details>
     <summary>Teaching details</summary>
-    <li>NCC 4530/5530: Marketing Management (undergraduate and graduate)</li>
+    <li>NCC 4530/5530: Marketing Management (undergraduate and graduate), Spring 2023</li>
     <li>Undergraduate rating: <b>5.0 / 5.0</b>, Graduate rating: <b>4.7 / 5.0</b>; College average: 4.3</li>
     <li>Comments from students:
     <div style="text-align:center"><span style="font-size:12pt"><i>
