@@ -5,9 +5,9 @@ title: Research
 description: Incentive mechanism | Online Payment | Consumer Finance | Digital marketing
 ---
 <h3><div style="text-align: center;"><b>Publications</b></div></h3>
-<b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu (forthcoming), “<a style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/19389655241309634">Increasing Hotel Loyalty Through Psychological Ownership</a>,” <i>Cornell Hospitality Quarterly</i>.
+<b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu (forthcoming), “<a style="color: #4285f4" href="https://journals.sagepub.com/doi/pdf/10.1177/19389655241309634">Increasing Hotel Loyalty Through Psychological Ownership</a>,” <i>Cornell Hospitality Quarterly</i>.
 <br> <br>
-<b>Yoon, Y. Rin</b> and Kaitlin Woolley (2024), “<a style="color: #0076df" href="https://journals.sagepub.com/doi/pdf/10.1177/09567976241234560?casa_token=xy88uaJX2gYAAAAA:az7vR526gNd-km8wec-IromU89eAj0QWzDN-QvisO5ePeKzXOxpWIFS-aT8nmO1_7LwhxFJFAV0J">The Interactive Effect of Incentive Salience and Prosocial Motivation on Prosocial Behavior</a>,” <i>Psychological Science, 35</i>(4), 390–404.
+<b>Yoon, Y. Rin</b> and Kaitlin Woolley (2024), “<a style="color: #4285f4" href="https://journals.sagepub.com/doi/pdf/10.1177/09567976241234560?casa_token=xy88uaJX2gYAAAAA:az7vR526gNd-km8wec-IromU89eAj0QWzDN-QvisO5ePeKzXOxpWIFS-aT8nmO1_7LwhxFJFAV0J">The Interactive Effect of Incentive Salience and Prosocial Motivation on Prosocial Behavior</a>,” <i>Psychological Science, 35</i>(4), 390–404.
 <ul>
 <li><span style="color:#EA4335">See related media→ <em><a href="https://news.cornell.edu/stories/2024/03/promoting-thank-you-gifts-can-boost-charitable-donations">Cornell Chronicle</a></em>, <a href="https://www.insidehighered.com/news/business/fundraising/2024/03/18/small-thank-you-gifts-may-boost-alumni-donor-engagement"><em>Inside Higher Ed</em></a>, <a href="https://www.philanthropy.com/article/small-thank-you-gifts-encourage-uncommitted-lapsed-donors-to-give-study-finds"><em>The Chronicle of Philanthropy</em></a></span></li>
 </ul>
