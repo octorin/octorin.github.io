@@ -1,12 +1,13 @@
 .site-header {
     border-bottom: 1px solid $grey-color-light;
-    background-color: #FBBC04;
+    background-color: ##fff;
     opacity: 0.95;
     position:fixed;
     left:0px;
     top:0px;
-    width:100%;
+    width:100vw;
     z-index: 50;
+    padding-right: calc(100vw - 17px); 
 }
 
 .site-title {
