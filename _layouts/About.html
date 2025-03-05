@@ -4,6 +4,9 @@ layout: page
 <div class = "row">
 {% if page.profile %}
   <div class="profile col one {{ page.profile.align }}">
+   <div class = "text">
+  {{ content }}
+</div>
     {% if page.profile.image %}
       <img class="right" src="{{ page.profile.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}" >
     {% endif %}
@@ -15,7 +18,5 @@ layout: page
   </div>
 {% endif %}
 
-<div class = "text">
-  {{ content }}
-</div>
+
 </div>
