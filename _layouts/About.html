@@ -1,20 +1,21 @@
 ---
 layout: page
 ---
-<div class="row">
-  {% if page.profile %}
-    <div class="profile col {{ page.profile.align }}">
-      {% if page.profile.image %}
-        <img class="one" src="{{ page.profile.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}">
-      {% endif %}
-      {% if page.profile.address %}
-        <div class="address">
-          {{ page.profile.address }}
-        </div>
-      {% endif %}
-      <div class="text">
-        {{ content }}
+<div class = "row">
+{% if page.profile %}
+  <div class="profile col one {{ page.profile.align }}">
+    {% if page.profile.image %}
+      <img class="one" src="{{ page.profile.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}" >
+    {% endif %}
+    {% if page.profile.address %}
+      <div class="address">
+        {{ page.profile.address }}
       </div>
-    </div>
-  {% endif %}
+    {% endif %}
+  </div>
+{% endif %}
+
+<div class = "text">
+  {{ content }}
+</div>
 </div>
