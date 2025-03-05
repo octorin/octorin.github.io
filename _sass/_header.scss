@@ -1,12 +1,11 @@
 .site-header {
     border-bottom: 1px solid $grey-color-light;
-    background-color: #fff;
+    background-color: #FBBC04;
     opacity: 0.95;
     position:fixed;
     left:0px;
     top:0px;
-    width: 100vw;
-    padding-right: calc(100vw - 17px);    
+    width:100%;
     z-index: 50;
     html {
     scrollbar-gutter: stable;
