@@ -18,7 +18,9 @@ social: true
 recent_posts: false
 ---
 
-Welcome! I am an incoming Assistant Professor of Marketing at the University of Iowa, Tippie College of Business. I am currently finishing my PhD in Marketing at the [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University. My research focuses on consumer psychology at the moment of transaction to help organizations design incentives and payment environments that are more effective. My research has appeared in <i>Psychological Science</i> and the <i>Cornell Hospitality Quarterly</i>.
+Welcome! I am an incoming Assistant Professor of Marketing at the University of Iowa, Tippie College of Business. I am currently finishing my PhD in Marketing at the [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University.
+<br><br>
+I study consumer psychology at the moment of transaction to help organizations design incentives and payment environments that are more effective. My research has appeared in <i>Psychological Science</i> and the <i>Cornell Hospitality Quarterly</i>.
 
 <details>
     <summary>More about me?</summary>
