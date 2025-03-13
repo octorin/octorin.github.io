@@ -5,7 +5,7 @@ title: Teaching
 description:
 ---
 
-I teach NCC4530/5530 Marketing Management as a sole instructor, and have earned high ratings and positive comments from both undergraduates and postgraduates. Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP25/class/NCC/5530">here</a></i> for information about this course. 
+I have taught the core marketing course to undergraduate and master's students at Cornell University as a sole instructor, and have earned high ratings and positive comments. Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP25/class/NCC/5530">here</a></i> for information about this course. 
 
 <br>
 <details>
