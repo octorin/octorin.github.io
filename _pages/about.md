@@ -26,7 +26,7 @@ I study consumer psychology at the moment of transaction to help organizations d
     <summary>More about me?</summary>
 Before joining academia, I worked for Pfizer and Hyundai Motor Company HQs on various consulting projects. I have also hosted and produced a local radio show in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics, such as behavioral economics, social psychology, and experimental philosophy.<br><br>
   
-I earned a bachelor's degree with college and departmental honors in Communication Studies from UCLA, and a master's in Marketing from Korea University Business School, graduating with The Award of Academic Excellence.
+I earned a bachelor's degree with college and departmental honors in Communication Studies from UCLA, and a master's in Marketing from Korea University Business School, graduating with the Award of Academic Excellence.
 </details> <br>
 
 <!-- While my old blog is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}). -->
