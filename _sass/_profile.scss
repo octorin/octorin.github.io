@@ -10,8 +10,8 @@
 .text {
     width: 65%;
     display: inline-block;
-    text-align: justify;
-    text-align-last: left;
+    text-align: left;
+    text-justify: inter-character;
 }
 
 .address {
