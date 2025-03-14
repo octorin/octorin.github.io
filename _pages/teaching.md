@@ -5,7 +5,7 @@ title: Teaching
 description:
 ---
 
-I have taught the core marketing course to undergraduate and master's students at Cornell University as a sole instructor, and have earned high ratings and positive comments. Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP25/class/NCC/5530">here</a></i> for information about this course. 
+I teach the core marketing course to undergraduate and master's students at Cornell University as a sole instructor, and have earned high ratings and positive comments. Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP25/class/NCC/5530">here</a></i> for information about this course. 
 
 <br>
 <details>
