@@ -24,7 +24,7 @@ I study consumer psychology at the moment of transaction to help organizations d
 
 <details>
     <summary>More about me?</summary>
-Before joining academia, I worked for Pfizer and Hyundai Motor Company HQs on various consulting projects. I have also hosted and produced a local <a href="https://archive.org/embed/kerouac_201704?start=1307" target="_blank">radio show</a> in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics, such as behavioral economics, social psychology, and experimental philosophy.<br><br>
+Before joining academia, I worked for Pfizer and Hyundai Motor Company HQs on various consulting projects. I have also hosted and produced a local <a href="https://archive.org/embed/kerouac_201704?start=1307" target="_blank" rel="noopener noreferrer">radio show</a> in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics, such as behavioral economics, social psychology, and experimental philosophy.<br><br>
   
 I earned a bachelor's degree with college and departmental honors in Communication Studies from UCLA, and a master's in Marketing from Korea University Business School, graduating with the Award of Academic Excellence.
 </details> <br>
