@@ -2,7 +2,7 @@
 layout: About
 permalink: /
 title: <strong>Y. Rin Yoon</strong>
-description: PhD Candidate in Marketing, Johnson Graduate School of Management, Cornell University
+description: PhD in Marketing, Johnson Graduate School of Management, Cornell University
 
 profile:
   align: right
@@ -18,15 +18,13 @@ social: true
 recent_posts: false
 ---
 
-Welcome! I am an incoming Assistant Professor of Marketing at the University of Iowa, Tippie College of Business. I am currently finishing my PhD in Marketing at the [SC Johnson Graduate School of Management](https://www.johnson.cornell.edu/programs/phd-program/current-students/yy878/) at Cornell University.
+Welcome! I’m an incoming Assistant Professor of Marketing at the Tippie College of Business at the University of Iowa.
 <br><br>
-I study consumer psychology at the moment of transaction to help organizations design incentives and payment environments that are more effective. My research has appeared in <i>Psychological Science</i> and the <i>Cornell Hospitality Quarterly</i>.
-
+My main research interest is in studying consumer psychology at the moment of transaction, and in helping organizations design more effective incentives and payment environments.
+<br><br>
+I hold a Ph.D. in Marketing from the Johnson Graduate School of Management at Cornell University, in Ithaca, NY—a town I wrote a short ode to in my <a class="page-link" href="{{ 'acknowledgments' | prepend: site.baseurl | prepend: site.url }}">dissertation acknowledgments</a>. I also hold a B.A. in Communications, with a minor in Statistics, from UCLA, and an M.S. in Marketing from Korea University Business School.
 <details>
     <summary>More about me?</summary>
-Before joining academia, I worked in consulting at Pfizer and Hyundai Motor Company HQs. I have also hosted and produced a local <a href="https://archive.org/embed/kerouac_201704?start=1307" target="_blank" rel="noopener noreferrer">radio show</a> in Korea (which flew far under the radar), where I had a blast monologuing on my favorite topics, such as behavioral economics, social psychology, and experimental philosophy.<br><br>
-  
-I earned a bachelor's degree in Communication Studies with a minor in Statistics from UCLA, graduating with college and departmental honors. I also received a master's degree in Marketing from Korea University Business School, graduating with the highest distinction.
-</details> <br>
+Before entering academia, I worked in consulting with clients including Pfizer and Hyundai Motor Company HQs. I also hosted and produced a local radio show in Korea (which flew far under the radar), where I monologued on behavioral science, odd science and tech news, <a href="https://archive.org/embed/kerouac_201704?start=1307" target="_blank" rel="noopener noreferrer">Korean poetry</a>, and experimental philosophy.</details> <br>
 
 <!-- While my old blog is currently closed, previously uploaded posts can be found [here]({{ site.baseurl }}{% link blog/index.html %}). -->
