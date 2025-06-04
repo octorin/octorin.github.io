@@ -2,7 +2,9 @@
 layout: About
 permalink: /
 title: <strong>Y. Rin Yoon</strong>
-description: PhD in Marketing, Johnson Graduate School of Management, Cornell University
+description: Behavioral Scientist & Assistant Professor of Marketing
+
+
 
 profile:
   align: right
@@ -18,11 +20,11 @@ social: true
 recent_posts: false
 ---
 
-Welcome! I’m an incoming Assistant Professor of Marketing at the Tippie College of Business at the University of Iowa.
+Welcome! I’m an incoming Assistant Professor of Marketing at the Tippie College of Business, University of Iowa.
 <br><br>
-My main research interest is in studying consumer psychology at the moment of transaction, and in helping organizations design more effective incentives and payment environments.
+I study consumer psychology at the moment of transaction, with the goal of helping organizations design more effective incentives and payment environments.
 <br><br>
-I hold a Ph.D. in Marketing from the Johnson Graduate School of Management at Cornell University, in Ithaca, NY—a town I wrote a short ode to in my <a class="page-link" href="{{ 'acknowledgments' | prepend: site.baseurl | prepend: site.url }}">dissertation acknowledgments</a>. I also hold a B.A. in Communications, with a minor in Statistics, from UCLA, and an M.S. in Marketing from Korea University Business School.
+I hold a Ph.D. in Marketing from the Johnson Graduate School of Management at Cornell University, in Ithaca, NY—a town I wrote a short ode to in my <a class="page-link" href="{{ '/acknowledgments' | prepend: site.baseurl | prepend: site.url }}">dissertation acknowledgments</a>. I also hold a B.A. in Communications, with a minor in Statistics, from UCLA, and an M.S. in Marketing from Korea University Business School.
 <details>
     <summary>More about me?</summary>
 Before entering academia, I worked in consulting with clients including Pfizer and Hyundai Motor Company HQs. I also hosted and produced a local radio show in Korea (which flew far under the radar), where I monologued on behavioral science, odd science and tech news, <a href="https://archive.org/embed/kerouac_201704?start=1307" target="_blank" rel="noopener noreferrer">Korean poetry</a>, and experimental philosophy.</details> <br>
