@@ -13,4 +13,4 @@ View my CV below or by clicking <a class="page-link" target="_blank" href="https
 $('.myIframe').css('height', $(window).height()+'px');
 </script>
 <br><br>
-<i>The crudest curriculum vitae crows and flaps its wings in a style peculiar to the undersigner. I doubt whether you can even give your telephone number without giving something of yourself.</i> –Vladimir Nabokov, 'Nikolai Gogol'
+<i>The crudest curriculum vitae crows and flaps its wings in a style peculiar to the undersigner. I doubt whether you can even give your telephone number without giving something of yourself.</i><br>–Vladimir Nabokov, 'Nikolai Gogol'
