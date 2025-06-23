@@ -5,7 +5,7 @@ title: Research
 description: Incentives | Online Payment | Consumer Finance | Psychological Ownership
 ---
 <h3><div style="text-align: center;"><b>Publications</b></div></h3>
-<b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu (2025), “<a style="color: #4285f4" href="https://journals.sagepub.com/doi/pdf/10.1177/19389655241309634">Increasing Hotel Loyalty Through Psychological Ownership</a>,” <i>Cornell Hospitality Quarterly 66</i>(3), 277-293.
+<b>Yoon, Y. Rin</b>, Joann Peck, and Suzanne B. Shu (2025), “<a style="color: #4285f4" href="https://journals.sagepub.com/doi/pdf/10.1177/19389655241309634">Increasing Hotel Loyalty Through Psychological Ownership</a>,” <i>Cornell Hospitality Quarterly 66</i>.
 <ul>
 <li><span style="color:#EA4335">See related media→ <em><a href="https://business.cornell.edu/hub/2025/03/05/enabling-hotel-guests-customize-their-rooms-fosters-customer-loyalty/">Johnson BusinessFeed</a></em>,  <em><a href="https://news.cornell.edu/stories/2025/03/enabling-hotel-guests-customize-their-rooms-fosters-customer-loyalty">Cornell Chronicle</a></em></span></li>
 </ul><br>
