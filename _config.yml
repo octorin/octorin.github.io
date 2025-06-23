@@ -55,6 +55,9 @@ enable_anchorjs:    false
 # Collections
 # -----------------------------------------------------------------------------
 collections:
+  pages:
+    output: true
+    permalink: /:path/
   news:
     defaults:
       layout: post
@@ -79,7 +82,7 @@ markdown: kramdown
 # highlighter: rouge
 
 # Includes & excludes
-include: ['_pages']
+ # include: ['_pages']
 exclude: [vendor]
 keep_files: [images]
 #exclude: [vendor, node_modules]
