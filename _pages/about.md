@@ -2,7 +2,7 @@
 layout: About
 permalink: /
 title: <strong>Y. Rin Yoon</strong>
-description: Behavioral Scientist & Assistant Professor of Marketing
+description: Behavioral Scientist & Assistant Professor of Marketing 
 
 
 
