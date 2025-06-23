@@ -13,9 +13,12 @@ description: Incentives | Online Payment | Consumer Finance | Psychological Owne
 <ul>
 <li><span style="color:#EA4335">See related media→ <em><a href="https://news.cornell.edu/stories/2024/03/promoting-thank-you-gifts-can-boost-charitable-donations">Cornell Chronicle</a></em>, <a href="https://www.insidehighered.com/news/business/fundraising/2024/03/18/small-thank-you-gifts-may-boost-alumni-donor-engagement"><em>Inside Higher Ed</em></a>, <a href="https://www.philanthropy.com/article/small-thank-you-gifts-encourage-uncommitted-lapsed-donors-to-give-study-finds"><em>The Chronicle of Philanthropy</em></a></span></li>
 </ul>
-   <!--- 1. [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})---> 
+  {% comment %}
+   1. [Abstract]({% link misc_pages/abstracts/2019_abstract_socspace.md %})---> 
    <!--- 2. [<a style="color: #3b3b3b" href="https://cornell.box.com/s/pullok30s9g7m0iax11ce64hcdsdds0i">PDF</a>] ---> 
-   <!--- 3. <a href="TBD">OSF</a>   ---> 
+   <!--- 3. <a href="TBD">OSF</a>
+   {% endcomment %}
+
 <br>
 <h3><div style="text-align:center"><b>Research In Progress</b></div></h3>
 <b>Yoon, Y. Rin</b> and Suzanne B. Shu, “Payment Method as a Cue,” <i>R&R</i> at the <i>Journal of Consumer Research</i>. <br> 
