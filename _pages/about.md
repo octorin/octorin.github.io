@@ -8,7 +8,7 @@ description: Behavioral Scientist & Assistant Professor of Marketing
 
 profile:
   align: right
-  image: photo_2021.jpg
+  image: jacob_square.jpg
   # address: [yy878@cornell.edu](mailto:yy878@cornell.edu]
    #  <p>Office 201AK Sage Hall</p>
    #  <p>Cornell University</p>
@@ -28,3 +28,4 @@ I hold a Ph.D. in Marketing from the Johnson Graduate School of Management at Co
 <details>
     <summary>More about me?</summary>
 Before entering academia, I worked in consulting with clients including Pfizer and Hyundai Motor Company HQs. I also hosted and produced a local radio show in Korea (which flew far under the radar), where I <a href="https://ia903208.us.archive.org/23/items/2017.8.17Jtr/2017.8.17_jtr.mp3" target="_blank" rel="noopener noreferrer">mono</a><a href="https://ia800407.us.archive.org/11/items/2017.5.25Jtr_kierkegaard/2017.5.25_jtr.mp3" target="_blank" rel="noopener noreferrer">logued</a> on behavioral science, offbeat science and tech news, Korean poetry, and experimental philosophy.</details> <br>
+
