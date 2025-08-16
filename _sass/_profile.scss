@@ -2,9 +2,11 @@
     img {
         box-shadow: 0 0 5px $grey-color;
         width: 100%;
-        margin-right: 35px;
-        display: inline-block;
+        display: block;
     }
+    width: 32%;
+    margin-right: 35px;
+    vertial-align: middle;
 }
 
 .text {
@@ -50,5 +52,6 @@
     margin-top: 50px;
     padding-top: 20px;
 }
+
 
 
