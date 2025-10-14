@@ -1,17 +1,17 @@
 ---
 layout: page
 permalink: /teaching/
-title: 
+title: Teaching
 description:
 ---
 
-I teach the core marketing course to undergraduate and master's students at Cornell University as a sole instructor, and have earned high ratings and positive comments. Click <i><a class="page-link" href="https://classes.cornell.edu/browse/roster/SP25/class/NCC/5530">here</a></i> for information about this course. 
+I currently teach Marketing 3200 Consumer Behavior. 
 
+Previously, I taught the core marketing management course for undergraduate and master's students at Cornell University.
 <br>
 <details>
     <summary>Teaching details</summary>
-    <li>NCC 4530/5530: Marketing Management (undergraduate and graduate), Spring 2023</li>
-    <li>Undergraduate rating: <b>5.0 / 5.0</b>, Graduate rating: <b>4.7 / 5.0</b>; College average: 4.3</li>
+    <li>NCC 4530/5530: Marketing Management (undergraduate and graduate), Spring 2023, Spring 2025</li>
     <li>Comments from students:
     <div style="text-align:left"><span style="font-size:12pt"><i>
       <br>  
