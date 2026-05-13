@@ -24,7 +24,7 @@ Welcome! I am an Assistant Professor of Marketing at the Tippie College of Busin
 <br><br>
 I study how people think and feel at the moment of transaction, and how we can design payment experiences and incentive systems that work better for people.
 <br><br>
-My work has been recognized with the John A. Howard/AMA Doctoral Dissertation Award Honorable Mention (2026) and the ACR Best Paper Award (2025).
+My work has been recognized with the ACR Best Paper Award (2025), the AMS Mary Kay Doctoral Dissertation Award (Winner, 2026), and the John A. Howard/AMA Doctoral Dissertation Award (Honorable Mention, 2026).
 <br><br>
 I completed my Ph.D. at Cornell University, in Ithaca, NY—a small town I wrote a short ode to in my <a class="page-link" href="{{ '/acknowledgments/' | prepend: site.baseurl | prepend: site.url }}">dissertation acknowledgments</a>. I also hold a B.A. in Communication Studies with a minor in Statistics from UCLA, where I graduated with college and departmental honors, and an M.S. in Marketing from Korea University Business School, where I graduated first in my class.
 <details>
