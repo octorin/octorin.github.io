@@ -8,7 +8,7 @@ description: Behavioral Scientist & Assistant Professor of Marketing
 
 profile:
   align: right
-  image: jacob_square.jpg
+  image: goat.jpg
   # address: [yy878@cornell.edu](mailto:yy878@cornell.edu]
    #  <p>Office 201AK Sage Hall</p>
    #  <p>Cornell University</p>
