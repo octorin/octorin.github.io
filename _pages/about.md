@@ -8,7 +8,7 @@ description: Behavioral Scientist & Assistant Professor of Marketing
 
 profile:
   align: right
-  image: goat.png
+  image: goat.jpg
   address: GPT
    #  [rin-yoon@uiowa.edu](mailto:rin-yoon@uiowa.edu]
    #  <p>Office 201AK Sage Hall</p>
