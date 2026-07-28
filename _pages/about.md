@@ -9,7 +9,8 @@ description: Behavioral Scientist & Assistant Professor of Marketing
 profile:
   align: right
   image: goat.jpg
-  address: [rin-yoon@uiowa.edu](mailto:rin-yoon@uiowa.edu]
+  address: GPT
+   #  [rin-yoon@uiowa.edu](mailto:rin-yoon@uiowa.edu]
    #  <p>Office 201AK Sage Hall</p>
    #  <p>Cornell University</p>
    #  <p>Ithaca, NY 14850</p>
