@@ -6,7 +6,7 @@ keywords: "Rin Yoon,y. rin yoon,rin yoon cornell,marketing,phd,y. rin yoon corne
 
 name: Y. Rin Yoon
 myfullname: Y. Rin Yoon
-email: 
+email: rin-yoon@uiowa.edu
 description: > # this means to ignore newlines until "url:"
     Personal webpage of Rin Yoon, PhD Candidate in Marketing, Cornell University
 footer_text: > # Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -25,7 +25,7 @@ linkedin_username: yerinyoon # your LinkedIn user name
 scholar_userid: ofRZEUUAAAAJ # your Google Scholar ID
 orcid_id: # 0000-0002-9220-2616 # your ORCID ID
 osf_id: q3bsc
-contact_note: rin-yoon@uiowa.edu
+contact_note: 
 
 # -----------------------------------------------------------------------------
 # Blog
